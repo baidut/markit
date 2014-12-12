@@ -9,7 +9,7 @@
 
 <ol>
 	<?php foreach($query->result() as $row): ?>
-	<li><?=$row->username?></li>
+	<li><a href=<?=$row->link?> ><?=$row->title?></li>
 	<?php endforeach; ?>
 </ol>
 	

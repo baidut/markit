@@ -2,17 +2,14 @@
 
 class Marks extends MY_Controller {
 
+// 显示所有书签
 	public function view($page = 'home'){
-
-		if ( ! file_exists(APPPATH.'/views/pages/'.$page.'.php')){
-		// 页面不存在
-			show_404();
-		}
-  
-		$data['title'] = ucfirst($page); // 将title中的第一个字符大写
-  
-		$this->load->view('templates/header', $data);
-		$this->load->view('pages/'.$page, $data);
-		$this->load->view('templates/footer', $data);
+		$data['title'] = 'Mark name';
+		$data['heading'] = 'Mark heading';
+		
+		$this->load->database();
+		$data['query'] = $this->db->get('mark');
+		
+		$this->load->view('mark_view',$data);
 	}
 }
