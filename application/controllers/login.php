@@ -1,77 +1,84 @@
 <?php
 
+/*
+Login控制器负责进行用户登陆校验和注册功能
+
+*/
+
 class Login extends CI_Controller {
-	
-	function index()
-	{
+
+	function index() {
 		$data['main_content'] = 'login_form';
 		$data['title'] = 'User Login';
-		$this->load->view('includes/template', $data);		
+		$this->load->view('includes/template', $data);
+	}
+
+	function username_check($str){
+		if(!$this->membership_model->exist() ){
+			$this->form_validation->set_message('username_check', 'Username \'%s\' does not exist!');
+			return FALSE;
+		}
+		return TRUE;
+	}
+	function password_check($str){
+		if(!$this->membership_model->validate() ){
+			$this->form_validation->set_message('password_check', 'Incorrect username or password');
+			return FALSE;
+		}
+		return TRUE;
 	}
 	
-	function validate_credentials()
-	{		
+	function validate_credentials() {
+		$this->load->library('form_validation');		
 		$this->load->model('membership_model');
-		$query = $this->membership_model->validate();
-		
-		if($query) // if the user's credentials validated...
-		{
+
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|callback_username_check');
+		$this->form_validation->set_rules('password', 'Password', 'required|callback_password_check');
+
+		if($this->form_validation->run() == FALSE) {
+			$this->index();//$this->load->view('login_form');
+		}
+		else{ // if the user's credentials validated...
 			$data = array(
-				'username' => $this->input->post('username'),
+				'username' => $this->input->post('username'), 
 				'is_logged_in' => true
 			);
 			$this->session->set_userdata($data);
 			redirect('site/members_area');
 		}
-		else // incorrect username or password
-		{
-			$this->index();
-		}
 	}	
 	
-	function signup()
-	{
+	function signup() {
 		$data['main_content'] = 'signup_form';
 		$this->load->view('includes/template', $data);
 	}
 	
-	function create_member()
-	{
+	function create_member() {
 		$this->load->library('form_validation');
 		
 		// field name, error message, validation rules
-		$this->form_validation->set_rules('first_name', 'Name', 'trim|required');
-		$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
 		$this->form_validation->set_rules('email_address', 'Email Address', 'trim|required|valid_email');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 		$this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
-		
-		
-		if($this->form_validation->run() == FALSE)
-		{
-			$this->load->view('signup_form');
+				
+		if($this->form_validation->run() == FALSE) {
+			$this->signup();
 		}
-		
-		else
-		{			
+		else {			
 			$this->load->model('membership_model');
 			
-			if($query = $this->membership_model->create_member())
-			{
+			if($query = $this->membership_model->create_member()) {
 				$data['main_content'] = 'signup_successful';
 				$this->load->view('includes/template', $data);
 			}
-			else
-			{
+			else {
 				$this->load->view('signup_form');			
 			}
 		}
-		
 	}
 	
-	function logout()
-	{
+	function logout() {
 		$this->session->sess_destroy();
 		$this->index();
 	}

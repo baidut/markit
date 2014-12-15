@@ -1,10 +1,9 @@
 <?php
 
-class Site extends Controller 
-{
+class Site extends MY_Controller {
 	function __construct()
 	{
-		parent::Controller();
+		parent::__construct();
 		$this->is_logged_in();
 	}
 
