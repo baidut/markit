@@ -1,0 +1,217 @@
+@charset "utf-8";
+html,body,div,span,h1,h2,h3,h4,p,img,dl,dt,dd,ol,ul,li,form,label,table,tr,th,td {margin:0;padding:0;border:0;outline:0;font-weight:normal;font-style:inherit;font-family:"Lucida Grande","\5FAE\8F6F\96C5\9ED1",Helvetica,Arial,Verdana,sans-serif;font-size:12px;}
+body {background-color:#fff;}
+ul,li {list-style-type:none;}
+em {font-style:normal;}
+.clear {clear:both;height:1px;overflow:hidden;}
+a, a:hover {color:#407ACC;text-decoration:none;}
+a:hover {color:#084B91;text-decoration:underline;}
+:focus { outline:0;}
+.f14 {font-size:14px;}
+.bold {font-weight:bold;}
+.header {position:relative;width:960px;height:64px;margin:0 auto;padding:0px 10px;}
+.header .logo {float:left;width:196px;height:41px;margin-top:20px;}
+.header .user_action {position:absolute;top:10px;right:10px;height:18px;}
+.header .user_action li {float:left;margin-left:10px;}
+.header .user_action li a {overflow:hidden;display:inline-block;height:18px;line-height:18px;#line-height:20px;color:#333;}
+.header .user_action li a:hover {color:#084B91;}
+.header .user_action li .reg, .header .user_action li .reg:hover {padding:0px 3px;background-color:#7AA516;color:#fff;text-decoration:none;border-radius:2px;}
+.header .nav {position:absolute;top:38px;right:10px;height:26px;}
+.header .nav ul {float:left;}
+.header .nav li {float:left;height:26px;line-height:26px;margin-right:20px;}
+.header .nav li a, .header .nav li a:hover {font-size:14px;color:#407ACC;}
+.header .nav p {float:left;height:26px;line-height:26px;}
+.header .nav p a, .header .nav p a:hover {overflow:hidden;display:inline-block;height:26px;padding:0px 5px;line-height:26px;#line-height:28px;color:#fff;font-size:14px;background-color:#3F79CC;text-decoration:none;border-radius:2px;}
+.wrap {width:960px;margin:0 auto;padding:0px 10px;}
+.index_cang {position:relative;width:100%;height:80px;margin:15px auto;background-color:#407ACC;}
+.index_cang .reg_login {float:left;width:255px;}
+.index_cang .intro h2 {width:542px;height:30px;background:url(http://res.laicang.com/lcres/cang_bg.png) no-repeat left top;text-indent:-9999px;}
+.index_cang .intro p {padding-top:10px;font-size:14px;color:#FFFFCC;}
+.index_cang .act {padding:12px 0px;}
+.index_cang .act p {padding-bottom:12px;font-size:14px;color:#fff;}
+.index_cang .act .input_txt {overflow:hidden;float:left;width:327px;height:24px;line-height:24px;padding-left:3px;border:1px #ccc solid;background-color:#fff;font-size:14px;color:#333;letter-spacing:1px;}
+.index_cang .act .input_submit {overflow:hidden;float:left;width:55px;height:28px;border:none;background-color:#7AA516;font-size:14px;cursor:pointer;color:#fff;}
+.main .content {float:left;width:760px;min-height:500px;_height:500px;}
+.main .content .t, .main .hot_tags .t {height:39px;line-height:39px;border-bottom:1px #999 solid;font-size:14px;font-weight:bold;color:#666;}
+.main .content .list_box .item {overflow:hidden;#zoom:1;margin-top:8px;padding-bottom:8px;line-height:18px;border-bottom:1px #d5d5d5 solid;color:#999;}
+.main .content .list_box .item h4 {margin-bottom:8px;font-size:14px;font-weight:bold;}
+.main .content .list_box .item .tags {clear:both;margin-bottom:10px;height:18px;}
+.main .content .list_box .item .t_item {float:left;height:18px;margin-right:5px;}
+.main .content .list_box .item .t_item a {display:inline-block;height:18px;line-height:18px;padding:0 3px;background-color:#E9E9E9;color:#333;}
+.main .content .list_box .item .t_item a:hover {background-color:#ccc;text-decoration:none;}
+.main .content .list_box .item .a_item {float:left;margin-right:10px;padding-top:3px;}
+.main .content .list_box .item .a_item .num {color:#3F79CC;}
+.main .content .list_box .item .a_item a {margin-right:3px;}
+.main .content .list_box .item .url {clear:both;}
+.page {clear:both;height:66px;text-align:right;}
+.page ul {float:right;}
+.page li {display:inline-block;float:left;margin-top:22px;margin-right:3px;}
+.page li a, .page li a:hover, .page li span {display:block;float:left;height:24px;padding:0px 10px;border:1px #3F79CC solid;background-color:#fff;line-height:24px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+.page li a:hover {background-color:#3F79CC;color:#fff;text-decoration:none;}
+.page li.current span {background-color:#3F79CC;color:#fff;font-weight:bold;}
+.page li.total span {border:none;line-height:24px;color:#545454;}
+.page_next li {float:right;margin-left:10px;}
+.main .sidebar {float:right;width:180px;}
+.main .hot_tags, .main .left_common_box {clear:both;}
+.main .hot_tags .t {border-bottom:none;}
+.main .left_common_box .t {padding-bottom:8px;padding-left:5px;font-weight:bold;font-size:14px;color:#666;}
+.main .hot_tags ul {padding:3px 0px;}
+.main .hot_tags li {height:24px;border-bottom:1px #ccc solid;line-height:24px;}
+.main .hot_tags p.more a, .main .hot_tags p.more a:hover {float:right;}
+.footer {clear:both;padding-top:40px;padding-bottom:15px;text-align:center;color:#ccc;}
+/** home **/
+.inner_cang {height:100px;}
+.inner_cang {height:auto;}
+.inner_cang .act {top:20px;}
+.inner_cang .reg_login a, .inner_cang .reg_login a:hover {display:inline-block;float:left;width:117px;height:36px;margin-top:51px;margin-left:10px;background:url(http://res.laicang.com/lcres/inner_btn.jpg) no-repeat left top;text-decoration:none;text-indent:-9999px;}
+.inner_cang .reg_login a.btn_reg:hover {background-position:-117px top;}
+.inner_cang .reg_login a.btn_login {background-position:left -36px;}
+.inner_cang .reg_login a.btn_login:hover {background-position:-117px -36px;}
+.profile_other {overflow:hidden;padding-top:10px;}
+.profile_other .u_face {float:left;width:54px;height:54px;margin-right:12px;}
+.profile_other .u_face  img {width:48px;height:48px;padding:2px;border:1px #EBEBEB solid;}
+.profile_other .u_info {float:left;}
+.profile_other .u_info dt a.u_name, .profile_other .u_info dt a.u_name:hover {font-size:18px;font-weight:bold;color:#3271C0;}
+.profile_other .u_info dt a.u_url, .profile_other .u_info dt a.u_url:hover {margin-left:15px;color:#999;}
+.profile_other .u_info dd {padding-top:10px;}
+.profile_other .u_info dd a, .profile_other .u_info dd a:hover {font-size:14px;}
+.profile_other .u_info dd span {margin:0 10px;color:#999;font-size:14px;}
+.tab_box {clear:both;height:32px;margin-top:15px;background:url(http://res.laicang.com/lcres/inner_btn.jpg) repeat-x left -72px;}
+.tab_box ul {margin-left:20px;}
+.tab_box li {float:left;height:30px;margin-right:6px;}
+.tab_box li a, .tab_box li a:hover {display:block;float:left;height:30px;padding-right:18px;padding-left:18px;border:1px #EAEAEA solid;border-bottom:none;background-color:#F9F9F9;line-height:30px;font-size:14px;-moz-border-radius:5px 5px 0px 0px;border-radius:5px 5px 0px 0px;}
+.tab_box li.current a, .tab_box li.current a:hover {height:31px;background-color:#fff;color:#545454;font-weight:bold;}
+.total_num {zoom:1;padding-top:10px;padding-left:10px;color:#666;font-size:14px;}
+.total_num s {display:block;float:left;width:10px;height:10px;margin-top:3px;margin-right:5px;background:url(http://res.laicang.com/lcres/inner_btn.jpg) no-repeat left -136px;}
+.total_num span {margin:0 3px;font-size:14px;font-weight:bold;color:#ff6600;font-family:Verdana;}
+.main .left_common_box {clear:both;}
+.main .left_common_box .t {padding-bottom:0px;height:36px;line-height:36px;}
+.main .left_common_box p.more, .main .left_common_box p.more:hover {clear:both;float:right;}
+.main .left_common_box .tags_box {text-align:left}
+.main .left_common_box .tags_box a, .main .left_common_box .tags_box a:hover {margin-right:5px;line-height:24px;}
+.main .left_common_box .friends_box {padding-top:10px;}
+.main .left_common_box .friends_box .list_box {overflow:hidden;clear:both;height:58px;margin-bottom:6px;margin-left:5px;}
+.main .left_common_box .friends_box .list_box .u_face {float:left;width:53px;height:53px;margin-right:8px;background:url(http://res.laicang.com/lcres/sidebar_box.png) no-repeat left -3px;}
+.main .left_common_box .friends_box .list_box .u_face img {width:48px;height:48px;margin-top:2px;margin-left:2px;}
+.main .left_common_box .friends_box .list_box .u_info {float:left;}
+.main .left_common_box .friends_box .list_box .u_info dt {padding-bottom:8px;}
+.main .left_common_box .friends_box .list_box .u_info dt a, .main .left_common_box .friends_box .list_box .u_info dt a:hover {font-size:13px;}
+.main .left_common_box .friends_box .list_box .u_info dd.num {padding-bottom:2px;color:#666;}
+.main .left_common_box .friends_box .list_box .u_info dd.add {padding-left:13px;background:url(http://res.laicang.com/lcres/sidebar_box.png) no-repeat -56px -4px;}
+.main .left_common_box .friends_box .list_box .u_info dd.add a, .main .left_common_box .friends_box .list_box .u_info dd.add a:hover {color:#5598EC;}
+/** my **/
+.main .my_help {border:1px #EAEAEA solid;background-color:#F9F9F9;border-radius:3px;}
+.main .my_help li {padding-left:10px;height:26px;line-height:26px;}
+/** friends **/
+.list_friends .item {overflow:hidden;zoom:1;padding:10px 0px;border-bottom:1px #ccc dotted;}
+.list_friends .item .u_face {float:left;display:inline;width:50px;height:50px;margin-left:10px;}
+.list_friends .item .u_face img {width:48px;height:48px;border:1px #EFEFEF solid;padding:1px;}
+.list_friends .item .u_info {float:left;width:615px;margin-left:10px;}
+.list_friends .item .u_info dt {padding-top:7px;padding-bottom:10px;}
+.list_friends .item .u_info dt a, .list_friends .item .u_info dt a:hover {font-size:14px;font-weight:bold;}
+.list_friends .item .u_info dd {color:#ccc;}
+.list_friends .item .u_info dd span {margin:0 7px;}
+.list_friends .item .u_info dd a {color:#525252;}
+.list_friends .item .u_info dd a:hover {color:#3271C0;}
+/** tags **/
+.list_tags {padding:5px 0px;}
+.list_tags li {position:relative;line-height:28px;color:#999;border-bottom:1px solid #D5D5D5;}
+.list_tags li span {float:right;}
+.list_tags li .del, .list_tags li .del:hover {font-size:0px;display:block;float:right;width:14px;height:14px;margin:6px 0px 0px 5px;background:url(http://res.laicang.com/lcres/btn_bg.png) no-repeat left top;}
+.list_tags li .del:hover {background-position:left -14px;}
+/** profile **/
+.profile_box {width:667px;padding:10px;}
+.profile_box .u_face {float:left;width:165px;margin-right:15px;border:1px #C0BABA solid;padding:1px;font-size:0px;}
+.profile_box .u_face a, .profile_box .u_face a:hover {font-size:0px;}
+.profile_box .u_info {float:left;width:483px;}
+.profile_box .u_info dl {width:473px;margin-bottom:10px;padding-bottom:10px;padding-left:10px;border-bottom:1px #ccc dotted;}
+.profile_box .u_info dt a.name, .profile_box .u_info dt a.name:hover {margin-right:20px;font-size:22px;}
+.profile_box .u_info dt a.add, .profile_box .u_info dt a.add:hover {margin-right:20px;padding-left:15px;background:url(http://res.laicang.com/lcres/my_dot.gif) no-repeat left -90px;*background-position:left -93px;}
+.profile_box .u_info dt a.send, .profile_box .u_info dt a.send:hover {padding-left:24px;background:url(http://res.laicang.com/lcres/my_dot.gif) no-repeat left -111px;*background-position:left -113px;}
+.profile_box .u_info dd {padding-top:5px;color:#333;}
+.profile_box .u_info li {overflow:hidden;padding-bottom:6px;line-height:2;font-size:14px;color:#3271C0;}
+.profile_box .u_info li span {display:block;float:left;font-size:14px;}
+.profile_box .u_info li .tit {display:block;float:left;width:100px;text-align:right;color:#333;font-size:14px;}
+.profile_box .u_info li a, .profile_box .u_info  li a:hover {font-size:14px;}
+.profile_box .u_info li input, .profile_box .u_info  li select {float:left;}
+/** login **/
+.page_login {width:600px;height:430px;margin:0 auto;padding-top:40px;}
+.page_login .login_box {float:left;width:245px;margin-right:47px;padding-top:10px;}
+.page_login .login_box li {overflow:hidden;zoom:1;padding-bottom:10px;}
+.page_login .login_box .notice_tip li {padding:5px 0;}
+.page_login .login_box li label {display:block;float:left;width:65px;height:28px;line-height:28px;font-size:14px;color:#333;text-align:right;}
+.page_login .login_box li .input_txt {overflow:hidden;float:left;width:172px;height:22px;line-height:24px;padding:2px 3px;border:1px #ccc solid;;font-size:14px;color:#535353;}
+.page_login .login_box li.check {padding-left:61px;}
+.page_login .login_box li.check input {float:left;*margin-top:-3px;}
+.page_login .login_box li.check span.auto {display:block;float:left;margin-top:1px;margin-left:2px;color:#333;}
+.page_login .login_box li.check a, .page_login .login_box li.check a:hover {display:block;float:left;width:60px;margin-top:1px;margin-left:10px;text-decoration:underline;}
+.page_login .login_box li.submit {padding-left:65px;}
+.page_login .login_box li.submit input {width:82px;height:30px;margin-right:10px;background-color:#87B226;color:#fff;font-size:14px;border-radius:3px;font-weight:bold;border:none;cursor:pointer;}
+.page_login .reg_box {float:left;height:300px;padding-left:28px;border-left:1px #E6EAEC solid;}
+.page_login .reg_box dt {padding-top:50px;padding-bottom:14px;font-size:14px;color:#333;}
+.page_login .reg_box dd a, .page_login .reg_box dd a:hover {display:block;float:left;width:100px;height:34px;line-height:34px;background-color:#3F79CC;text-align:center;color:#fff;text-decoration:none;font-size:16px;font-weight:bold;border-radius:3px;}
+.page_login .login_other {clear:both;margin-top:15px;margin-right:-30px;padding-top:15px;border-top:1px #CCC dotted;}
+.page_login .login_other dt {margin-bottom:10px;font-size:20px;font-weight:bold;color:#3F79CC;}
+.page_login .login_other dd {height:32px;margin-bottom:8px;padding-left:20px;}
+
+/** reg **/
+.page_reg {padding-top:40px;}
+.page_reg .reg_box {padding-bottom:10px;}
+.page_reg .reg_box p, .page_login .login_box p {margin-bottom:25px;margin-left:30px;color:#3F79CC;font-size:20px;font-weight:bold;}
+.page_reg .reg_box li {overflow:hidden;zoom:1;padding-bottom:12px;}
+.page_reg .reg_box li label {float:left;display:block;width:92px;height:30px;line-height:30px;color:#333;text-align:right;font-size:14px;}
+.page_reg .reg_box li input {float:left;height:22px;padding:3px;line-height:22px;font-size:14px;border:1px #ccc solid;color:#333;border-radius:3px;}
+.page_reg .reg_box li input.input_txt {width:218px;}
+.page_reg .reg_box li input.input_vcode {width:45px;margin-right:5px;}
+.page_reg .reg_box li input.input_submit {width:117px;height:36px;border:none;background-color:#87B226;color:#fff;font-size:20px;font-weight:bold;cursor:pointer;}
+.page_reg .login_box {height:30px;padding-left:92px;line-height:30px;padding-top:20px;font-size:14px;color:#333;border-top:1px #ccc dotted;}
+.page_reg .login_box a, .page_reg .login_box a:hover {display:inline-block;width:82px;height:30px;margin-left:18px;background-color:#3F79CC;text-align:center;color:#fff;text-decoration:none;font-size:14px;font-weight:bold;border-radius:3px;}
+li span.tip_box, li span.error_box, li span.ok_box, li span.checking_box {display:block;float:left;height:28px;margin-left:10px;padding-left:25px;line-height:28px;font-size:12px;color:#666;background:url(http://res.laicang.com/lcres/check_bg.png) no-repeat left top;}
+li span.tip_box {padding:0 10px;border:1px solid #F2D263;background-image:none;background-color:#FFFFCC;border-radius:3px;}
+li span.error_box {background-position:left -32px;color:#EE4F11;}
+li span.ok_box {background-position:left 5px;text-indent:-9999px;}
+/** È«¾Ö **/
+.notice_tip {margin-bottom:20px;padding:5px 10px;color:#CC3300;border:1px #CCCCCC solid;background-color:#FFFFE5;font-weight:bold;}
+.btn_blue, .btn_blue:hover, .btn_blue b, .btn_blue:hover b {display:inline-block;padding-left:3px;background:url(http://res.laicang.com/lcres/btn2.png) no-repeat left top;height:32px;line-height:32px;overflow:hidden;font-size:14px;color:#fff;cursor:pointer;text-decoration:none;}
+.btn_blue b, .btn_blue:hover b {display:block;padding: 0 13px 0 10px;background-position: right -50px;font-weight:normal;}
+.btn_blue:hover {background-position:left -100px;}
+.btn_blue:hover b {background-position:right -150px;}
+.url_get {clear:both;padding-top:10px;color:#333;}
+.url_get .notice_tip {width:200px;margin-left:10px;}
+.url_get li {overflow:hidden;#zoom:1;padding:0 10px;}
+.url_get .tit {height:32px;line-height:32px;}
+.url_get li .input_txt, .profile_box .u_info li .input_txt {float:left;width:450px;height:22px;padding:3px 3px 2px;border: 1px solid #ACACAC;background:url(http://res.laicang.com/lcres/372.png) no-repeat left top #fff;}
+.url_get li textarea, .profile_box .u_info li textarea {width:450px;height:100px;border: 1px solid #ACACAC;padding: 3px 4px;background:url(http://res.laicang.com/lcres/372.png) no-repeat left top #fff;}
+.url_get .tit_status {padding:10px;}
+.url_get .tit_status input {margin-right:10px;}
+.profile_box .u_info li .input_txt {width:200px;}
+.profile_box .u_info li textarea {width:300px;}
+.url_title {font-size:14px;font-weight:bold;}
+.url_link {padding:8px 0px 3px 0px;color:#999;}
+.url_info {color:#999;}
+.mod {clear:both;margin-top:10px;border:1px #D5D5D5 solid;color:#555;}
+.mod .tit, .feedback .tit {font-size:14px;padding-left:10px;height:28px;line-height:28px;background-color:#f1f1f1;border-bottom:1px #D5D5D5 solid;}
+.mod .item {overflow:hidden;#zoom:1;padding:10px 0px;}
+.mod .item li {float:left;height:24px;line-height:24px;padding-left:10px;}
+.feedback {margin-top:10px;}
+.feedback textarea {width:758px;height:60px;border:1px #D5D5D5 solid;}
+/** userbind **/
+.page_bind {height:500px;}
+.page_bind .login_box, .page_bind .login_box p {width:600px;}
+.page_bind .tab_box a:hover {text-decoration:none;}
+.page_bind .mod_reg {clear:both;padding:20px 0 0 10px;}
+.page_bind .notice_tip {width:200px;margin-top:-20px;margin-bottom:15px;margin-left:100px;padding:5px 10px;}
+.page_bind .notice_tip li {padding:0;line-height:22px;}
+.page_bind .login_box li label {width:100px;}
+.page_bind .login_box li .input_txt {width:202px;}
+.page_bind .login_box li.submit {padding-top:5px;padding-left:0;}
+/** pop **/
+.pop_mask {position:absolute;z-index:99;top:0;left:0;width:100%;background-color:#000;opacity:0.3;filter:alpha(opacity=60)}
+.mod_pop {position:fixed;_position:absolute;z-index:999;background-color:#fff;border:3px #D1D1D1 solid;border-radius:2px;}
+.mod_pop .pop_hd {_width:100%;height:32px;padding:0 10px;text-align:left;line-height:32px;background-color:#f1f1f1;border-bottom:1px #D1D1D1 solid;}
+.mod_pop .pop_hd h3 {font-weight:bold;font-size:14px;color:#444;}
+.mod_pop .pop_hd a:link, .mod_pop .pop_hd a:visited, 
+.mod_pop .pop_hd a:active {display:inline-block;float:right;width:14px;height:14px;margin-top:8px;background:url(http://res.laicang.com/lcres/btn_bg.png) no-repeat left top;}
+.mod_pop .pop_hd a:hover {background-position:left -14px;}
+.pop_common_box {_width:250px;padding:20px;}
+.pop_common_box h2 {min-width:250px;height:40px;line-height:40px;font-size:14px;font-weight:bold;}

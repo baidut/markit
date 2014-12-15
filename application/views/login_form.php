@@ -1,5 +1,4 @@
 <div id="login_form">
-
 	<h1>Login, Fool!</h1>
     <?php 
 	echo form_open('login/validate_credentials'); // 表单提交到login/validate_credentials
