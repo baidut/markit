@@ -170,7 +170,7 @@ li span.tip_box, li span.error_box, li span.ok_box, li span.checking_box {displa
 li span.tip_box {padding:0 10px;border:1px solid #F2D263;background-image:none;background-color:#FFFFCC;border-radius:3px;}
 li span.error_box {background-position:left -32px;color:#EE4F11;}
 li span.ok_box {background-position:left 5px;text-indent:-9999px;}
-/** È«¾Ö **/
+/** ??? **/
 .notice_tip {margin-bottom:20px;padding:5px 10px;color:#CC3300;border:1px #CCCCCC solid;background-color:#FFFFE5;font-weight:bold;}
 .btn_blue, .btn_blue:hover, .btn_blue b, .btn_blue:hover b {display:inline-block;padding-left:3px;background:url(http://res.laicang.com/lcres/btn2.png) no-repeat left top;height:32px;line-height:32px;overflow:hidden;font-size:14px;color:#fff;cursor:pointer;text-decoration:none;}
 .btn_blue b, .btn_blue:hover b {display:block;padding: 0 13px 0 10px;background-position: right -50px;font-weight:normal;}
