@@ -24,17 +24,22 @@
 		</h1>
 		<div class="user_action">
 			<ul>
+			<?php if($this->session->userdata('username')): ?>
+				<li><a href="<?=site_url('login/logout')?>"><?=$this->session->userdata('username')?></a></li>
+				<li><a href="<?=site_url('login/logout')?>" class="reg">注销</a></li>
+			<?php else: ?>
 				<li><a href="<?=site_url('login')?>">登陆</a></li>
 				<li><a href="<?=site_url('login/signup')?>" class="reg">注册</a></li>	
+			<?php endif; ?>
 			</ul>
 		</div>
 		<div class="nav">
 			<ul>
 				<li><a href="<?=site_url()?>">首页</a></li>
-				<li><a href="<?=site_url('new')?>">最新收藏</a></li>
-				<li><a href="<?=site_url('tool')?>">收藏工具</a></li>
+				<li><a href="<?=site_url('marks/latest')?>">最新收藏</a></li>
+				<li><a href="<?=site_url('downloads')?>">收藏工具</a></li>
 				<li><a href="<?=site_url('help')?>">帮助中心</a></li>
-				<li><a href="<?=site_url('top')?>">排行榜</a></li>
+				<li><a href="<?=site_url('users/top')?>">排行榜</a></li>
 			</ul>
 			<p><a href="<?=site_url('login')?>">进入我的收藏</a></p>
 		</div>
@@ -45,7 +50,7 @@
 		<div class="wrap">
 			<div class="act">
 				<p>将网址复制到下面的输入框中，点击收藏按钮立即收藏！</p>
-				<form action="http://www.laicang.com/gettitle.php?getby=u" method="post">
+				<form action="<?=site_url('user/add_mark')?>" method="post">
 					<input type="text" value="请输入网址url..." name="url" class="input_txt" onfocus="this.value=''" onblur="if(this.value=='') {this.value='请输入网址url...'}"style="color:#666;"/>
 					<input type="submit" value="收藏" class="input_submit">
 				</form>

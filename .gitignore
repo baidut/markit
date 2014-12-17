@@ -48,4 +48,4 @@ Temporary Items
 # =========================
 system
 user_guide
-application/config/database.php
+database.php

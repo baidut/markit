@@ -8,8 +8,7 @@ class User extends MY_Controller {
 	 */
 	 
 	// 显示当前用户的收藏
-	public function index()
-	{ 
+	public function index() { 
 		$data['title'] = 'User name';
 		$data['heading'] = 'User heading';
 		$data['marks'] = array(
@@ -20,8 +19,9 @@ class User extends MY_Controller {
 		$this->load->view('user_view',$data);
 	}
 	
-	// 添加书签
-	public function addBookmark(){
-		
+	// 添加书签页面
+	public function add_mark(){
+		$data['main_content'] = 'create_mark_form';
+		$this->load->view('includes/template', $data);
 	}
 }

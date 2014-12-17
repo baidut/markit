@@ -1,19 +1,16 @@
 <?php
-
-// about/home/contactµÈ¶ÀÁ¢Ò³ÃæµÄ·ÃÎÊ
+// è´Ÿè´£about/home/contactç­‰ç‹¬ç«‹é¡µé¢çš„è®¿é—®
 class Pages extends CI_Controller {
 
 	public function view($page = 'home'){
 
 		if ( ! file_exists(APPPATH.'/views/pages/'.$page.'.php')){
-		// Ò³Ãæ²»´æÔÚ
+		// é¡µé¢ä¸å­˜åœ¨
 			show_404();
 		}
   
-		$data['title'] = ucfirst($page); // ½«titleÖÐµÄµÚÒ»¸ö×Ö·û´óÐ´
-  
-		$this->load->view('templates/header', $data);
-		$this->load->view('pages/'.$page, $data);
-		$this->load->view('templates/footer', $data);
+		$data['title'] = ucfirst($page); // å°†titleä¸­çš„ç¬¬ä¸€ä¸ªå­—ç¬¦å¤§å†™
+		$data['main_content'] = 'pages/'.$page;
+		$this->load->view('includes/template', $data);
 	}
 }
