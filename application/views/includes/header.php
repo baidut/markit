@@ -1,3 +1,4 @@
+<!--页眉-->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -13,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/main.css?ver=2013102001">
 </head>
 <body>
-  	<!--头部-->
+	<!-- 头部 -->
 	<div class="header">
 		<h1 class="logo">
 			<a href="<?=site_url()?>">
@@ -37,8 +38,8 @@
 			<ul>
 				<li><a href="<?=site_url()?>">首页</a></li>
 				<li><a href="<?=site_url('marks/latest')?>">最新收藏</a></li>
-				<li><a href="<?=site_url('downloads')?>">收藏工具</a></li>
-				<li><a href="<?=site_url('help')?>">帮助中心</a></li>
+				<li><a href="<?=site_url('pages/view/downloads')?>">收藏工具</a></li>
+				<li><a href="<?=site_url('pages/view/help')?>">帮助中心</a></li>
 				<li><a href="<?=site_url('users/top')?>">排行榜</a></li>
 			</ul>
 			<p><a href="<?=site_url('login')?>">进入我的收藏</a></p>
@@ -58,3 +59,4 @@
 		</div>
 	</div>
 	<!--/藏-->
+<!--/页眉-->
