@@ -42,7 +42,7 @@
 				<li><a href="<?=site_url('pages/view/help')?>">帮助中心</a></li>
 				<li><a href="<?=site_url('users/top')?>">排行榜</a></li>
 			</ul>
-			<p><a href="<?=site_url('login')?>">进入我的收藏</a></p>
+			<p><a href="<?=site_url('user')?>">进入我的收藏</a></p>
 		</div>
 	</div>
 	<!-- /头部 -->

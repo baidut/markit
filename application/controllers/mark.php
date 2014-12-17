@@ -5,11 +5,11 @@ class Mark extends MY_Controller {
 	public function view($page = 'home'){
 
 		if ( ! file_exists(APPPATH.'/views/pages/'.$page.'.php')){
-		// Ò³Ãæ²»´æÔÚ
+		// é¡µé¢ä¸å­˜åœ¨
 			show_404();
 		}
   
-		$data['title'] = ucfirst($page); // ½«titleÖĞµÄµÚÒ»¸ö×Ö·û´óĞ´
+		$data['title'] = ucfirst($page); // å°†titleä¸­çš„ç¬¬ä¸€ä¸ªå­—ç¬¦å¤§å†™
   
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/'.$page, $data);
