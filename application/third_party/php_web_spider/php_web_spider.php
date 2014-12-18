@@ -165,8 +165,10 @@ class spider{
             $html = str_get_html($this-> html);
             $header = $html->find('head',0);
             $info['title'] = $header ->find('title',0)->plaintext;
-            $info['keywords'] = $header ->find('meta[name=keywords]',0)->content;
-            $info['description'] = $header ->find('meta[name=description]',0)->content;
+            if( $keywords = $header ->find('meta[name=keywords]',0) )
+                $info['keywords'] = $keywords->content;
+            if( $description = $header ->find('meta[name=description]',0))
+                $info['description'] = $description ->content;
             return $info;
         }
         return false;
