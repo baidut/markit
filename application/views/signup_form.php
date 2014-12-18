@@ -9,8 +9,8 @@
 				<form action="<?=site_url('login/create_member')?>" method="post" id="regform" name="regform" onsubmit="return myReg.formSubmit();">
 				<ul>
 					<li><label>用户名：</label><input type="text" value="" class="input_txt" name="username" autocomplete="auto" onblur="myReg.checkUserName()" onfocus="myReg.showTip('UserName');" style="ime-mode:disabled"/><span id="resUserName"></span></li>
-					<li><label>密码：</label><input type="password" value="" class="input_txt" name="password" onblur="myReg.checkPwd()" onfocus="myReg.showTip('Pwd');"/><span id="resPwd"></span></li>
-					<li><label>重复密码：</label><input type="password" value="" class="input_txt" name="pwdconfirm" onblur="myReg.checkPwdConfirm()" onfocus="myReg.showTip('PwdConfirm');"/><span id="resPwdConfirm"></span></li>
+					<li><label>密码：</label><input type="password" value="" class="input_txt" name="password" onblur="myReg.checkpassword()" onfocus="myReg.showTip('Password');"/><span id="resPassword"></span></li>
+					<li><label>重复密码：</label><input type="password" value="" class="input_txt" name="passwordconfirm" onblur="myReg.checkpasswordConfirm()" onfocus="myReg.showTip('PasswordConfirm');"/><span id="resPasswordConfirm"></span></li>
 					<li><label>邮箱地址：</label><input type="text" value="" class="input_txt" name="email" onblur="myReg.checkEmail()" onfocus="myReg.showTip('Email');"/><span id="resEmail"></span></li>
 					<li><label>验证码：</label><input type="text" value="" class="input_txt input_vcode" name="vcode"/><img src="vcode.php" alt="验证码点击切换" onclick="myReg.vodeChange(this);"/></li>
 					<li><label></label><input type="submit" value="注册" class="input_submit"  name="submit"/></li>
@@ -34,12 +34,12 @@ function checkReg(formId,objSelf) {
 	var self = this;
 	this.objSelf = objSelf;
 	this.passed = false;
-	this.checkitem = ["UserName","Pwd","PwdConfirm","Email"];
+	this.checkitem = ["UserName","Password","PasswordConfirm","Email"];
 	this.classname = ["tip_box","checking_box","error_box","ok_box"];
 	this.tip = {
 		'UserName' : '使用英文、数字，总字符数在 4 - 14 之间。',
-		'Pwd' : '长度为 6 - 20 个字符。',
-		'PwdConfirm' : '重复输入',
+		'Password' : '长度为 6 - 20 个字符。',
+		'PasswordConfirm' : '重复输入',
 		'Email' : '正确的格式'
 	}
 	//字符串长度
@@ -98,6 +98,9 @@ function checkReg(formId,objSelf) {
 			this.showTip("UserName", 2, tip);
 			return false;
 		} else {
+			this.showTip("UserName",3,"此用户名可以注册");
+	//		self.objForm.submit.removeAttribute("disabled");
+			return true;	//下面那个函数应该修改，与现在数据库相连
 			this.checkUserNameAjax();
 			return 'checking';
 		}
@@ -118,38 +121,38 @@ function checkReg(formId,objSelf) {
 			
 	}
 	//密码验证
-	this.checkPwd = function () {
-		if(this.objForm.pwd.value.length == 0) {
+	this.checkpassword = function () {
+		if(this.objForm.password.value.length == 0) {
 			tip = "密码不能为空";
-			this.showTip("Pwd",2,tip);
+			this.showTip("Password",2,tip);
 			return false;
-		} else if (this.objForm.pwd.value.length < 6 || this.objForm.pwd.value.length >20) {
+		} else if (this.objForm.password.value.length < 6 || this.objForm.password.value.length >20) {
 			tip = "密码长度在6到20之间";
-			this.showTip("Pwd",2,tip);
+			this.showTip("Password",2,tip);
 			return false;
 		} else {
 			tip = "密码ok";
-			this.showTip("Pwd",3,tip);
+			this.showTip("Password",3,tip);
 			return true;
 		}
 	}
 	//密码确认验证
-	this.checkPwdConfirm = function () {
-		if(this.objForm.pwdconfirm.value.length == 0) {
+	this.checkpasswordConfirm = function () {
+		if(this.objForm.passwordconfirm.value.length == 0) {
 			tip = "密码不能为空！";
-			this.showTip("PwdConfirm",2,tip);
+			this.showTip("PasswordConfirm",2,tip);
 			return false;
-		} else if (this.objForm.pwdconfirm.value.length < 6 || this.objForm.pwdconfirm.value.length >20) {
+		} else if (this.objForm.passwordconfirm.value.length < 6 || this.objForm.passwordconfirm.value.length >20) {
 			tip = "密码长度在6到20之间";
-			this.showTip("PwdConfirm",2,tip);
+			this.showTip("PasswordConfirm",2,tip);
 			return false;
-		} else if (this.objForm.pwdconfirm.value != this.objForm.pwd.value) {
+		} else if (this.objForm.passwordconfirm.value != this.objForm.password.value) {
 			tip = "两次密码不一致";
-			this.showTip("PwdConfirm",2,tip);
+			this.showTip("PasswordConfirm",2,tip);
 			return false;
 		} else {
 			tip = "确认密码ok";
-			this.showTip("PwdConfirm",3,tip);
+			this.showTip("PasswordConfirm",3,tip);
 			return true;
 		}
 	}
@@ -164,6 +167,8 @@ function checkReg(formId,objSelf) {
 			this.showTip("Email",2,tip);
 			return false;
 		} else {
+			this.showTip("Email",3,"此邮箱可以注册");
+			return true;	//下面函数自己定义邮箱规则
 			this.checkEmailAjax();
 			return 'checking';
 		}
