@@ -12,6 +12,7 @@
 			content="Markit,网络收藏夹,免费网络收藏夹,收藏夹,书签,网络书签,免费网络书签,网站推广,网络推广,网站营销,网络营销" />
 	<link rel="shortcut icon" href="<?=base_url('favicon.ico')?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/main.css?ver=2013102001">
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 </head>
 <body>
 	<!-- 头部 -->

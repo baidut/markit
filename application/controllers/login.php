@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 
 	function username_check($str){
 		if(!$this->membership_model->exist() ){
-			$this->form_validation->set_message('username_check', 'Username \'%s\' does not exist!');
+			$this->form_validation->set_message('username_check', '用户名不存在!');
 			return FALSE;
 		}
 		return TRUE;
@@ -30,7 +30,7 @@ class Login extends CI_Controller {
 	
 	function password_check($str){
 		if(!$this->membership_model->validate() ){
-			$this->form_validation->set_message('password_check', 'Incorrect username or password');
+			$this->form_validation->set_message('password_check', '账号或者密码不对请重新填写');
 			return FALSE;
 		}
 		return TRUE;
@@ -49,6 +49,7 @@ class Login extends CI_Controller {
 		else{ // if the user's credentials validated...
 			$data = array(
 				'username' => $this->input->post('username'), 
+				'userid' => $this->membership_model->get_userid(),
 				'is_logged_in' => true
 			);
 			$this->session->set_userdata($data);

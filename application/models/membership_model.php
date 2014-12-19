@@ -1,6 +1,6 @@
 <?php
 // Membership_model的生命周期只有登录这段时间
-class Membership_model extends MY_Model {
+class Membership_model extends CI_Model {
 	private $member;
 
 	function _encrypt($password){

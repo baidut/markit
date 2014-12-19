@@ -4,7 +4,7 @@
 		<div class="content">
 		<div class="t">收藏新网页</div>
 		<div class="url_get">
-			<form action="=site_url('user/add_mark')" method="post" id="urlGet">
+			<form action="<?=site_url('user/add_mark')?>" method="post" id="urlGet">
 			<ul>
 				<li class="f14 bold tit">网页标题：</li>
 				<li><input type="text" name="gettitle" value="<?=isset($fetched_title)?$fetched_title:"";?>" class="input_txt"><span id="resTitle"></span></li>

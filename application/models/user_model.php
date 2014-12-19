@@ -1,5 +1,5 @@
 <?php 
-	class User_model extends MY_Model{
+	class User_model extends CI_Model{
 		public function getBookmark(){
 		
 		}

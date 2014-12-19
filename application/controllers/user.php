@@ -46,7 +46,12 @@ class User extends MY_Controller {
 		$this->load->view('includes/template', $data);
 	}
 	function add_mark(){
-		
-
+		// 用户提交收藏
+		$this->load->model('mark_model');
+		$url = $this->input->post('geturl');
+		$title = $this->input->post('gettitle');
+		$info = $this->input->post('info');
+		// echo "$url,$title,$info";
+		$this->mark_model->create($url,$title,$info);
 	}
 }
