@@ -23,10 +23,14 @@ class User extends MY_Controller {
 	// 用户主页-显示当前用户的收藏
 	function index() { 
 		$userid = $this->session->userdata['userid'];
-		$this->db->where('userid', $userid);
-		$data['query'] = $this->db->get('user_mark');
+		// $this->db->where('userid', $userid);
+		// $data['query'] = $this->db->get('user_mark');
 		// TODO： 查询被多少人收藏以及url $sql = "SELECT usernum FROM mark WHERE mark "
 
+		// AR操作的好处是可以进行数据校验，这里不需要，所以直接采用sql语句
+		// 先从user_mark中筛选中user的mark，然后和mark连接
+		$sql = "SELECT * FROM user_mark,mark WHERE userid = '$userid' AND user_mark.markid = mark.markid";// 最粗暴的写法
+		$data['query'] = $this->db->query($sql);
 		$data['main_content'] = 'user_main_page';
 		$data['sidebar'] = 'user_sidebar';
 		$data['is_self'] = TRUE;
@@ -49,6 +53,16 @@ class User extends MY_Controller {
 			$info = $sp-> fetch_info($url);
 
 			$data['url'] = $url;
+// A PHP Error was encountered
+// Severity: Notice
+// Message: Undefined index: keywords
+// Filename: controllers/user.php
+// Line Number: 57
+// A PHP Error was encountered
+// Severity: Notice
+// Message: Undefined index: description
+// Filename: controllers/user.php
+// Line Number: 58
 			$data['fetched_title'] = $info['title'];
 			$data['fetched_keywords'] = $info['keywords'];
 			$data['fetched_description'] = $info['description'];
@@ -62,7 +76,8 @@ class User extends MY_Controller {
 		$url = $this->input->post('geturl');
 		$title = $this->input->post('gettitle');
 		$info = $this->input->post('info');
+		$keywords = $this->input->post('tags');
 		// echo "$url,$title,$info";
-		$this->mark_model->create($url,$title,$info);
+		$this->mark_model->create($url,$title,$info,$keywords);
 	}
 }

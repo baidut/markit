@@ -5,7 +5,7 @@
 			$query = $this->db->get('mark'); 
 			return ($row = $query-> row())?$row->markid:FALSE;
 		}
-		function create($url,$title,$info){
+		function create($url,$title,$info,$keywords){
 			$userid = $this->session->userdata('userid');
 			$username = $this->session->userdata('username');
 			$markid = $this->get_id($url);
@@ -25,7 +25,13 @@
 				$this->db->where('markid', $markid);
 				$this->db->update('mytable', array('usernum' => 'usernum+1')); 
 			}
-			echo "[$userid]($username):$markid";
+			if($keywords){
+				$tags = explode(',',$keywords); //按逗号分离字符串
+				foreach ($tags as $key => $tag) {
+					$this->db->insert('mark_tag', array('markid' => $markid,'tag'=>$tag)); 
+					// 标签重复问题由数据库自行处理
+				}
+			}
 			// 再更新user_mark数据库
 			$data = array(
                'userid' => $userid ,
@@ -35,5 +41,6 @@
                'description' => $info
             );
 			$this->db->insert('user_mark', $data); 
+			redict('user/index');
 		}
 	}

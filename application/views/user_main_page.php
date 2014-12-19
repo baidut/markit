@@ -41,7 +41,7 @@
 		<!--/选项卡-->
 		<!--总数-->
 		<div class="total_num">
-			<s></s><?=WHO?>共有<span id="t_num">1</span>条收藏</div>
+			<s></s><?=WHO?>共有<span id="t_num"><?=$query->num_rows()?></span>条收藏</div>
 		<!--/总数-->
 		<div class="list_box">
 			<ul>
@@ -51,13 +51,18 @@
 				<h4><a href="http://www.laicang.com/url/u57670" target="_blank" class="item_tit"><?=$row->markname?></a></h4>
 				<div class="tags">
 					<ul>
-					<li class="t_item"><a href="http://www.laicang.com/tag/%E7%BD%91%E9%A1%B5%E5%85%B3%E9%94%AE%E8%AF%8D1" target="_blank">网页关键词1</a></li><li class="t_item"><a href="http://www.laicang.com/tag/%E7%BD%91%E9%A1%B5%E5%85%B3%E9%94%AE%E8%AF%8D2" target="_blank">网页关键词2</a></li></ul>
+						<?php foreach ( $this->db->query("SELECT tag FROM mark_tag WHERE markid = '".$row->markid."' ")-> result() as $t) : ?>
+						<li class="t_item">
+							<a href="http://www.laicang.com/tag/%E7%BD%91%E9%A1%B5%E5%85%B3%E9%94%AE%E8%AF%8D1" target="_blank"><?=$t->tag?></a>
+						</li>
+						<?php endforeach; ?>
+					</ul>
 				</div>
-				<div class="url">http://php.net/manual/en/class.datetime.php</div>
+				<div class="url"><?=$row->link?></div>
 				<div class="notes"><?=$row->description?></div>
 				<div class="actions">
 					<ul>
-						<li class="a_item"><?=$row->datetime?> 收藏</li><li class="a_item">共<span class="num">1</span>人收藏</li><li class="a_item"><a href="http://www.laicang.com/cache/u57670" target="_blank">快照</a><a href="update.php?id=66423&uid=2495&urlid=57670">修改</a><a href="javascript:;" onclick="myGetAjax('del.php?id=66423&uid=2495&urlid=57670',delaction,'2495-66423')">删除</a></li>
+						<li class="a_item"><?=$row->datetime?> 收藏</li><li class="a_item">共<span class="num"><?=$row->usernum?></span>人收藏</li><li class="a_item"><a href="http://www.laicang.com/cache/u57670" target="_blank">快照</a><a href="update.php?id=66423&uid=2495&urlid=57670">修改</a><a href="javascript:;" onclick="myGetAjax('del.php?id=66423&uid=2495&urlid=57670',delaction,'2495-66423')">删除</a></li>
 					</ul>
 				</div>
 			</li>
