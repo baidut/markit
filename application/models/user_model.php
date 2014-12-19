@@ -1,9 +1,8 @@
 <?php 
 	class User_model extends CI_Model{
-		public function getBookmark(){
-		
+		function get_all_mark($usrid){
 		}
-		public function addBookmark(){
+		function get_public_mark(){
 		
 		}
 	}

@@ -22,13 +22,24 @@ class User extends MY_Controller {
 	}
 	// 用户主页-显示当前用户的收藏
 	function index() { 
-		$data['marks'] = array(
-			array('title'=>'百度','link'=>'http://www.baidu.com'),
-			array('title'=>'github','link'=>'https://github.com'),
-		);
-		$data['query'] = $this->db->get('user');
-		$data['main_content'] = 'user_view';
+		$userid = $this->session->userdata['userid'];
+		$this->db->where('userid', $userid);
+		$data['query'] = $this->db->get('user_mark');
+		// TODO： 查询被多少人收藏以及url $sql = "SELECT usernum FROM mark WHERE mark "
+
+		$data['main_content'] = 'user_main_page';
+		$data['sidebar'] = 'user_sidebar';
+		$data['is_self'] = TRUE;
 		$this->load->view('includes/template', $data);
+	}
+	// 显示用户收藏的标签
+	function tags() { 
+	}
+	// 显示用户好友
+	function friends() { 
+	}
+	// 显示用户个人资料
+	function profile() { 
 	}
 	// 添加书签页面
 	function add_url(){
