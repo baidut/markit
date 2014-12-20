@@ -48,5 +48,5 @@ Temporary Items
 # =========================
 system
 user_guide
-captcha
+captcha/*.jpg
 database.php
