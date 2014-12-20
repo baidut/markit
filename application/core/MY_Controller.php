@@ -1,12 +1,12 @@
 <?php
 /* 
 |--------------------------------------------------------------------------
-| À©Õ¹CIµÄ¿ØÖÆÆ÷
+| æ‰©å±•CIçš„æŽ§åˆ¶å™¨
 |--------------------------------------------------------------------------
 | 
-| ²»ÄÜÖ±½ÓÐÞ¸ÄÄÚºË£¬¶øÊÇÐÂ½¨¿ØÖÆÆ÷Àà¼Ì³Ð×ÔÄÚºË¿ØÖÆÆ÷
-| application/core/MY_Controller.php±ØÐëÓÃÕâ¸öÃû×Ö½á¹¹£¬Ç°×º²»Ò»¶¨ÊÇMY_
-| ¿ÉÒÔÍ¨¹ýÐÞ¸ÄÕâ¸öÅäÖÃÀ´¸ü¸Ä
+| ä¸èƒ½ç›´æŽ¥ä¿®æ”¹å†…æ ¸ï¼Œè€Œæ˜¯æ–°å»ºæŽ§åˆ¶å™¨ç±»ç»§æ‰¿è‡ªå†…æ ¸æŽ§åˆ¶å™¨
+| application/core/MY_Controller.phpå¿…é¡»ç”¨è¿™ä¸ªåå­—ç»“æž„ï¼Œå‰ç¼€ä¸ä¸€å®šæ˜¯MY_
+| å¯ä»¥é€šè¿‡ä¿®æ”¹è¿™ä¸ªé…ç½®æ¥æ›´æ”¹
 | application/config/config.php
 | $config['subclass_prefix'] = 'MY_';
 | 
@@ -15,12 +15,40 @@
 |
 */
 	class MY_Controller extends CI_Controller{
-		public function __construct(){
+		function __construct(){
 			parent::__construct();
 			
-			// µÇÂ½ÑéÖ¤
-			// È¨ÏÞÑéÖ¤
+			// ç™»é™†éªŒè¯
+			// æƒé™éªŒè¯
 		
+		}
+		function get_captcha() {
+			$this->load->helper('captcha');
+			$vals = array(
+			    'word' => rand(1000,9999),//'Random word',
+			    'img_path' => './captcha/',
+			    'img_url' => base_url().'captcha/',  // base_url('captcha/') ä¼šç¼ºå°‘/é€ æˆå›¾ç‰‡æ— æ³•æ˜¾ç¤º
+			    'img_width' => '60',
+			    'img_height' => 30,
+			    'expiration' => 7200
+			    );
+			$cap = create_captcha($vals);
+
+			if (!session_id()) session_start();
+			$_SESSION['cap']= $cap['word'];
+
+			return $cap['image'];
+		}
+		function captcha_check($str){
+			// éªŒè¯ç æ˜¯å¦æ­£ç¡®
+			if (!session_id()) session_start();
+			// session_start(); // Message: Undefined variable: _SESSION
+			if($this->input->post('vcode') != $_SESSION['cap']){
+				$this->form_validation->set_message('captcha_check', 'éªŒè¯ç è¾“å…¥æœ‰è¯¯');
+				$this->signup();
+				return FALSE;
+			}
+			return TRUE;
 		}
 	
 	}

@@ -6,13 +6,19 @@
 		<div class="page_reg">
 			<div class="reg_box">
 				<p>注册只需10秒！快来体验一下吧！</p>
+				<?=validation_errors('<div class="notice_tip">','</div>')?>
 				<form action="<?=site_url('login/create_member')?>" method="post" id="regform" name="regform" onsubmit="return myReg.formSubmit();">
 				<ul>
 					<li><label>用户名：</label><input type="text" value="" class="input_txt" name="username" autocomplete="auto" onblur="myReg.checkUserName()" onfocus="myReg.showTip('UserName');" style="ime-mode:disabled"/><span id="resUserName"></span></li>
 					<li><label>密码：</label><input type="password" value="" class="input_txt" name="password" onblur="myReg.checkpassword()" onfocus="myReg.showTip('Password');"/><span id="resPassword"></span></li>
 					<li><label>重复密码：</label><input type="password" value="" class="input_txt" name="passwordconfirm" onblur="myReg.checkpasswordConfirm()" onfocus="myReg.showTip('PasswordConfirm');"/><span id="resPasswordConfirm"></span></li>
 					<li><label>邮箱地址：</label><input type="text" value="" class="input_txt" name="email" onblur="myReg.checkEmail()" onfocus="myReg.showTip('Email');"/><span id="resEmail"></span></li>
-					<li><label>验证码：</label><input type="text" value="" class="input_txt input_vcode" name="vcode"/><img src="vcode.php" alt="验证码点击切换" onclick="myReg.vodeChange(this);"/></li>
+					<li>
+						<label>验证码：</label>
+						<input type="text" value="" class="input_txt input_vcode" name="vcode"/>
+						<?=$cap?>
+						<!-- <img src="vcode.php" alt="验证码点击切换" onclick="myReg.vodeChange(this);"/> -->
+					</li>
 					<li><label></label><input type="submit" value="注册" class="input_submit"  name="submit"/></li>
 				</ul>
 				</form>
