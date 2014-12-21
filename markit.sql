@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2014 年 12 月 19 日 10:03
+-- 生成日期: 2014 年 12 月 21 日 07:08
 -- 服务器版本: 5.5.32
 -- PHP 版本: 5.4.19
 
@@ -21,6 +21,50 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `markit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `markit`;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `ci_sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- 转存表中的数据 `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+('1ebeca6245d56c6f7ae73f1b7966aea6', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36', 1419139612, 'a:3:{s:9:"user_data";s:0:"";s:22:"flash:new:captcha_word";s:8:"Iy01HiNA";s:22:"flash:new:captcha_time";d:1419139647.163928985595703125;}');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `login_attempts`
+--
+
+CREATE TABLE IF NOT EXISTS `login_attempts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(40) COLLATE utf8_bin NOT NULL,
+  `login` varchar(50) COLLATE utf8_bin NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- 转存表中的数据 `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '::1', '201181086', '2014-12-21 05:27:18'),
+(2, '::1', '201181086', '2014-12-21 05:27:19');
 
 -- --------------------------------------------------------
 
@@ -94,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- 转存表中的数据 `user`
@@ -104,7 +148,53 @@ INSERT INTO `user` (`userid`, `username`, `password`, `email`) VALUES
 (1, 'Jack', '123456', NULL),
 (2, 'Bob', '123456', NULL),
 (3, 'Tommy', 'tommy', 'tom@163.com'),
-(4, 'lili', '123456', 'lili@163.com');
+(4, 'lili', '123456', 'lili@163.com'),
+(5, 'xiaoq', '123456', 'xiaoq@163.com'),
+(6, 'wangx', '123456', 'xiaoq@163.com'),
+(7, 'hello', '123456', 'hello@163.com'),
+(8, 'dgdffgd', '123456', 'jiji@133.com'),
+(9, 'thankyou', '123456', 'thankyou@163.com'),
+(10, '1234', 'dddddd', '18018985037@163.com');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) COLLATE utf8_bin NOT NULL,
+  `password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `activated` tinyint(1) NOT NULL DEFAULT '1',
+  `banned` tinyint(1) NOT NULL DEFAULT '0',
+  `ban_reason` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `new_password_key` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `new_password_requested` datetime DEFAULT NULL,
+  `new_email` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `new_email_key` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
+  `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `user_autologin`
+--
+
+CREATE TABLE IF NOT EXISTS `user_autologin` (
+  `key_id` char(32) COLLATE utf8_bin NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
+  `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
+  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`key_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -130,6 +220,20 @@ INSERT INTO `user_mark` (`userid`, `markid`, `datetime`, `description`, `marknam
 (1, 8, '2014-12-19 05:37:42', ' CI简单的插入数据库操作(含详尽的思路流程分析和代码) ,CodeIgniter 中国开发者社区', 'CI简单的插入数据库操作(含详尽的思路流程分析和代码) - '),
 (1, 9, '2014-12-19 08:37:29', '来藏-为您提供免费网络收藏夹,帮助您收藏自己喜欢的网页,存放安全,永远不会丢失,还可以为您的网站增加外链,提高权重,欢迎您的使用。', '来藏-最好用的网络收藏夹'),
 (1, 10, '2014-12-19 09:00:41', '<?php \r\n//利用 explode 函数分割字符串到数组 \r\n$source = "hello1,hello2,hello3,hello4,hello5";//按逗号分离字符串 ', 'php 逗号 分割字符串 - 春哥也编程 - 博客园');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `user_profiles`
+--
+
+CREATE TABLE IF NOT EXISTS `user_profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `country` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
