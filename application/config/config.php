@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/ci';
+$config['base_url']	= 'http://markit.sinaapp.com';//default:'';
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'SAE_';
 
 
 /*
@@ -180,7 +180,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------
@@ -211,6 +211,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 |
 | Leave this BLANK unless you would like to set something other than the default
 | system/cache/ folder.  Use a full server path with trailing slash.
+| 若为空，默认key前缀为system_cache，对memcache和kvdb的数据缓存有效
 |
 */
 $config['cache_path'] = '';
@@ -247,7 +248,7 @@ $config['encryption_key'] = 'mZh~0)8Y3Jc@@ET.~8hkq=[:L#+!';
 $config['sess_cookie_name']		= 'ci_session';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= TRUE;//default:FALSE;
+$config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= FALSE;
 $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
@@ -357,6 +358,15 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*  SAE 特定配置 */
+/* 输出类页面缓存配置 
+ * 使用 $config['cache_path'] 的配置作为前缀 默认为 "system_cache_"
+ * 值：
+ * '' 即使使用了 $this->output->cache(n); 也不会缓存
+ * 'kvdb' 使用 KVDB 缓存 (需要开启SAE KVDB服务)
+ * 'memcache' 使用 memcache 缓存 (需要开启SAE Memcache服务)
+ */
+$config['sae_output_cache'] = 'kvdb';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

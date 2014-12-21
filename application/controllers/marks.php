@@ -1,6 +1,6 @@
 <?php
 
-class Marks extends MY_Controller {
+class Marks extends CI_Controller {
 	// 显示大家正在收藏的书签
 	function index(){
 		$this->load->database();

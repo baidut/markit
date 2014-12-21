@@ -3,7 +3,7 @@ define('SPIDER_PATH',APPPATH.'third_party/php_web_spider/');
 require_once(SPIDER_PATH.'php_web_spider.php');
 require_once(SPIDER_PATH.'simple_html_dom.php');
 
-class User extends MY_Controller {
+class User extends CI_Controller {
 	/**
 	 * 为登录用户提供的操作，登录用户继承自游客
 	 * index.php/user/index

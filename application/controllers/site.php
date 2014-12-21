@@ -1,6 +1,6 @@
 <?php
 // 不允许游客登陆
-class Site extends MY_Controller {
+class Site extends CI_Controller {
 	
 	function __construct() {
 		parent::__construct();

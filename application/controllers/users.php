@@ -1,6 +1,6 @@
 ﻿<?php
 
-class Users extends MY_Controller {
+class Users extends CI_Controller {
 	// 显示所有用户
 	public function view(){
 		$data['title'] = 'User name';
