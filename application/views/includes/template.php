@@ -4,9 +4,7 @@
 	<!--左边-->
 	<?php if(isset($main_content)): ?>
 	<div class="content">
-		<?php if(isset($title)): ?>
-		<div class="t"><?=$title?></div>
-		<?php endif; ?>
+		<?=isset($title)?'<div class="t">'.$title."</div>\n":NULL?>
 		<?php $this->load->view($main_content); ?>
 	</div>
 	<?php endif; ?>

@@ -39,17 +39,7 @@
 
 			return $cap['image'];
 		}
-		function captcha_check($str){
-			// 验证码是否正确
-			if (!session_id()) session_start();
-			// session_start(); // Message: Undefined variable: _SESSION
-			if($this->input->post('vcode') != $_SESSION['cap']){
-				$this->form_validation->set_message('captcha_check', '验证码输入有误');
-				$this->signup();
-				return FALSE;
-			}
-			return TRUE;
-		}
+		
 	
 	}
 

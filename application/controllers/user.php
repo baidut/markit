@@ -50,9 +50,8 @@ class User extends MY_Controller {
 		if($url = $this->input->post('url')){
 			// 抓取页面，分析提取页面的标题
 			$sp = new spider;
-			$info = $sp-> fetch_info($url);
-
 			$data['url'] = $url;
+			$data['fetched_info'] = $sp-> fetch_info($url);
 // A PHP Error was encountered
 // Severity: Notice
 // Message: Undefined index: keywords
@@ -63,10 +62,8 @@ class User extends MY_Controller {
 // Message: Undefined index: description
 // Filename: controllers/user.php
 // Line Number: 58
-			$data['fetched_title'] = $info['title'];
-			$data['fetched_keywords'] = $info['keywords'];
-			$data['fetched_description'] = $info['description'];
 		}
+		$data['title']='收藏新网页';
 		$data['main_content'] = 'create_mark_form';
 		$this->load->view('includes/template', $data);
 	}
@@ -79,5 +76,15 @@ class User extends MY_Controller {
 		$keywords = $this->input->post('tags');
 		// echo "$url,$title,$info";
 		$this->mark_model->create($url,$title,$info,$keywords);
+		redirect('user/index');
+	}
+	function remove_mark(){
+		// 删除需要用户确认，确认工作交给js做
+		// 删除采用AJAX实现
+		if($this->input->is_ajax_request()){
+			$this->load->model('mark_model');
+			$markid = $this->input->post('markid');
+			echo $this->mark_model->remove($markid);
+		}
 	}
 }

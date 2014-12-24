@@ -1,11 +1,14 @@
 <?php
 
 /*
-Login控制器负责进行用户登陆校验和
+Login控制器负责用户登记工作
 
-login/		 点击登录	
-login/signup 点击注册
-login/logout 点击退出
+index 					点击登录-转到登陆页面	
+signup 					点击注册-转到注册页面
+validate_credentials	验证登陆信息-处理登陆页面提交的信息
+create_member 			根据注册信息创建用户-处理注册页面提交的信息
+logout 					点击退出
+
 */
 
 class Login extends MY_Controller {

@@ -47,7 +47,7 @@
 			<ul>
 			<?php foreach($query->result() as $row): ?>
 			<!--单个-->
-			<li class="item" id="box2495-66423">
+			<li class="item" id="<?=$row->markid?>">
 				<h4><a href="http://www.laicang.com/url/u57670" target="_blank" class="item_tit"><?=$row->markname?></a></h4>
 				<div class="tags">
 					<ul>
@@ -62,7 +62,7 @@
 				<div class="notes"><?=$row->description?></div>
 				<div class="actions">
 					<ul>
-						<li class="a_item"><?=$row->datetime?> 收藏</li><li class="a_item">共<span class="num"><?=$row->usernum?></span>人收藏</li><li class="a_item"><a href="http://www.laicang.com/cache/u57670" target="_blank">快照</a><a href="update.php?id=66423&uid=2495&urlid=57670">修改</a><a href="javascript:;" onclick="myGetAjax('del.php?id=66423&uid=2495&urlid=57670',delaction,'2495-66423')">删除</a></li>
+						<li class="a_item"><?=$row->datetime?> 收藏</li><li class="a_item">共<span class="num"><?=$row->usernum?></span>人收藏</li><li class="a_item"><a href="http://www.laicang.com/cache/u57670" target="_blank">快照</a><a href="update.php?id=66423&uid=2495&urlid=57670">修改</a><a href="javascript:;" onclick="remove_mark(<?=$row->markid?>)">删除</a></li>
 					</ul>
 				</div>
 			</li>
@@ -72,3 +72,24 @@
 	</div>
 	<div class="page">
 	</div>
+
+
+<script type="text/javascript">
+// remove为函数名时自动删除了自身 应该是和jQuery冲突了
+// 我有几条收藏需要更新
+function remove_mark(id){
+	if(!confirm("确认删除？"))return;
+	var form_data = {
+		markid: id,
+	};
+	$.ajax({
+		url: "<?=site_url('user/remove_mark')?>",
+		type: 'POST',
+		data: form_data,
+		success: function(msg) {
+			alert(msg);
+		}
+	});
+	$("#"+id).remove();
+}
+</script>

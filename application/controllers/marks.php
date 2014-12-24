@@ -8,6 +8,7 @@ class Marks extends MY_Controller {
 		$data['query'] = $this->db->get('mark');
 		$data['title'] = '大家正在收藏';
 		$data['main_content'] = 'mark_view';
+		$data['sidebar']='tag_list';
 		
 		$this->load->view('includes/template', $data);
 	}
@@ -18,6 +19,7 @@ class Marks extends MY_Controller {
 		$data['query'] = $this->db->get('mark');
 		$data['title'] = '最新收藏';
 		$data['main_content'] = 'mark_view';
+		$data['sidebar']='tag_list';
 		
 		$this->load->view('includes/template', $data);
 	}

@@ -1,28 +1,19 @@
-<!--主体内容-->
-	<div class="main wrap">
-		<!--左边-->
-		<div class="content">
-		<div class="t">收藏新网页</div>
 		<div class="url_get">
 			<form action="<?=site_url('user/add_mark')?>" method="post" id="urlGet">
 			<ul>
 				<li class="f14 bold tit">网页标题：</li>
-				<li><input type="text" name="gettitle" value="<?=isset($fetched_title)?$fetched_title:"";?>" class="input_txt"><span id="resTitle"></span></li>
+				<li><input type="text" name="gettitle" value="<?=isset($fetched_info['title'])?$fetched_info['title']:"";?>" class="input_txt"><span id="resTitle"></span></li>
 				<li class="f14 bold tit">网页地址：</li>
 				<li><input type="text" name="geturl" value="<?=isset($url)?$url:"请输入网址url..."?>" class="input_txt"><span id="resUrl"></span></li>
 				<li class="f14 bold tit">网页描述：</li>
-				<li><textarea name="info" rows="3" ><?=isset($fetched_description)?$fetched_description:''?></textarea></li>
+				<li><textarea name="info" rows="3" ><?=isset($fetched_info['description'])?$fetched_info['description']:''?></textarea></li>
 				<li class="f14 bold tit">关键词：</li>
-				<li><input type="text" name="tags" class="input_txt" value="<?=isset($fetched_keywords)?$fetched_keywords:''?>"></li>
+				<li><input type="text" name="tags" class="input_txt" value="<?=isset($fetched_info['keywords'])?$fetched_info['keywords']:''?>"></li>
 				<li class="f14 tit_status"><span class="bold f14">收藏状态：</span>公开<input type="radio" name="ishide" value="0" checked="">隐藏<input type="radio" name="ishide" value="1"></li> 注：目前还不支持私有收藏
 				<li><a class="btn_blue" onclick="myUrlGet.formSubmit();"><b>提 交</b></a></li>
 			</ul>
 			</form>
 		</div>
-		</div>
-		<!--/左边-->
-	</div>
-	<!--/主体内容-->
 	<script type="text/javascript">
 		function checkUrlGet(formId,objSelf) {
 			this.objForm = document.getElementById(formId);
