@@ -58,7 +58,7 @@
 						<?php endforeach; ?>
 					</ul>
 				</div>
-				<div class="url"><?=$row->link?></div>
+				<div class="url"><a href="<?=$row->link?>" target="_blank">点击直接访问<?=$row->link?></a></div>
 				<div class="notes"><?=$row->description?></div>
 				<div class="actions">
 					<ul>
