@@ -1,3 +1,5 @@
+<?php $this->load->view('includes/header'); ?>
+
 <h1><?php echo lang('edit_user_heading');?></h1>
 <p><?php echo lang('edit_user_subheading');?></p>
 
@@ -64,3 +66,5 @@
       <p><?php echo form_submit('submit', lang('edit_user_submit_btn'));?></p>
 
 <?php echo form_close();?>
+
+<?php $this->load->view('includes/footer'); ?>

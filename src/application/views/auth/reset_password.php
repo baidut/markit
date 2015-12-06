@@ -1,3 +1,5 @@
+<?php $this->load->view('includes/header'); ?>
+
 <h1><?php echo lang('reset_password_heading');?></h1>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -20,3 +22,5 @@
 	<p><?php echo form_submit('submit', lang('reset_password_submit_btn'));?></p>
 
 <?php echo form_close();?>
+
+<?php $this->load->view('includes/footer'); ?>
