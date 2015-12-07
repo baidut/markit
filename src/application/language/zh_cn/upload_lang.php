@@ -1,27 +1,22 @@
 <?php
-/**
- * System messages translation for CodeIgniter(tm)
- *
- * @author	CodeIgniter community
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['upload_userfile_not_set'] = '無法找到送出變數中檔案';
-$lang['upload_file_exceeds_limit'] = '上傳檔案超出PHP限制最大檔案';
-$lang['upload_file_exceeds_form_limit'] = '上傳檔案超出表單限制最大檔案大小';
-$lang['upload_file_partial'] = '部份檔案已經上傳';
-$lang['upload_no_temp_directory'] = '暫存資料夾遺失';
-$lang['upload_unable_to_write_file'] = '無法寫入檔案';
-$lang['upload_stopped_by_extension'] = '無法接受檔案格式';
-$lang['upload_no_file_selected'] = '尚未選擇上傳檔案';
-$lang['upload_invalid_filetype'] = '不允許上傳的檔案格式';
-$lang['upload_invalid_filesize'] = '檔案超出最大上傳檔案大小';
-$lang['upload_invalid_dimensions'] = '圖檔超出最大寬度或長度';
-$lang['upload_destination_error'] = '無法將檔案移動到最終位置';
-$lang['upload_no_filepath'] = '上傳檔案路徑不正確';
-$lang['upload_no_file_types'] = '尚未指定允許副檔名';
-$lang['upload_bad_filename'] = '檔案名稱已有相同存在於主機';
-$lang['upload_not_writable'] = '上傳目錄無法寫入';
+$lang['upload_userfile_not_set'] = "在POST数据中找不到userfile的变量。";
+$lang['upload_file_exceeds_limit'] = "上传文件的大小超出了PHP设置文件中设置的大小。";
+$lang['upload_file_exceeds_form_limit'] = "上传文件的大小超出了上传表单允许的大小。";
+$lang['upload_file_partial'] = "只上传了文件的一部分。";
+$lang['upload_no_temp_directory'] = "找不到临时文件夹。";
+$lang['upload_unable_to_write_file'] = "文件不能保存到硬盘上。";
+$lang['upload_stopped_by_extension'] = "文件后缀名不允许。";
+$lang['upload_no_file_selected'] = "未选择上传的文件。";
+$lang['upload_invalid_filetype'] = "不允许上传的文件类型。";
+$lang['upload_invalid_filesize'] = "上传的文件大小超出限制。";
+$lang['upload_invalid_dimensions'] = "上传图片的长度或宽度超出了限制。";
+$lang['upload_destination_error'] = "将文件移动到目标文件夹时出错。";
+$lang['upload_no_filepath'] = "文件上传路径无效。";
+$lang['upload_no_file_types'] = "您未指定可以上传的文件类型。";
+$lang['upload_bad_filename'] = "服务器上已经有相同文件名的文件。";
+$lang['upload_not_writable'] = "上传的目标文件夹不可写。";
+
+
+/* End of file upload_lang.php */
+/* Location: ./application/language/chinese/upload_lang.php */

@@ -1,23 +1,18 @@
 <?php
-/**
- * System messages translation for CodeIgniter(tm)
- *
- * @author	CodeIgniter community
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['ftp_no_connection'] = '無法找到一個有效的連線 ID。在執行任何檔案傳輸時請確認已經連線成功';
-$lang['ftp_unable_to_connect'] = '無法使用提供的主機名稱連接到 FTP 伺服器';
-$lang['ftp_unable_to_login'] = '無法登入 FTP 伺服器，請檢查使用者名稱及密碼是否正確';
-$lang['ftp_unable_to_mkdir'] = '無法建立指定的資料夾';
-$lang['ftp_unable_to_changedir'] = '無法切換目錄';
-$lang['ftp_unable_to_chmod'] = '無法設定檔案權限，請確認檢查檔案路徑或使用者權限';
-$lang['ftp_unable_to_upload'] = '無法上傳指定的檔案，檢查上傳路徑或使用者權限';
-$lang['ftp_unable_to_download'] = '無法下載指定的檔案，檢查下載路徑或使用者權限';
-$lang['ftp_no_source_file'] = '無法找到指定的原始檔案，請檢查檔案路徑或使用者權限';
-$lang['ftp_unable_to_rename'] = '無法重新命名';
-$lang['ftp_unable_to_delete'] = '無法刪除檔案';
-$lang['ftp_unable_to_move'] = '無法移動檔案，請檢查目標資料夾是否存在';
+$lang['ftp_no_connection']			= "无法找到有效的连接Id。请确定您已经连接成功。";
+$lang['ftp_unable_to_connect']		= "根据提供的主机名无法连接到FTP服务器。";
+$lang['ftp_unable_to_login']		= "无法登陆FTP服务器。请检查您的用户名和密码。";
+$lang['ftp_unable_to_makdir']		= "无法创建您指定的文件夹。";
+$lang['ftp_unable_to_changedir']	= "无法修改文件夹。";
+$lang['ftp_unable_to_chmod']		= "无法设置文件权限。请检查您的路径。注意: 只有PHP 5或更高版本的有此功能。";
+$lang['ftp_unable_to_upload']		= "无法上传指定文件。请检查您的路径。";
+$lang['ftp_unable_to_download']		= "无法下载指定文件。请检查您的路径。";
+$lang['ftp_no_source_file']			= "无法定位源文件。请检查您的路径。";
+$lang['ftp_unable_to_rename']		= "无法重命名文件。";
+$lang['ftp_unable_to_delete']		= "无法删除文件。";
+$lang['ftp_unable_to_move']			= "无法移动文件。请确定目标文件夹存在。";
+
+
+/* End of file ftp_lang.php */
+/* Location: ./system/application/chinese/ftp_lang.php */
