@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends MARKIT_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,8 +18,9 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
+	public function index() {
+		// $this->load->helper(array('url','language'));
+		// $this->lang->load('markit');
+		redirect('explore/themes', 'refresh');
 	}
 }
