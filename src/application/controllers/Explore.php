@@ -47,4 +47,22 @@ class Explore extends MARKIT_Controller {
 		$data['users'] = $this->user_model->get_leaderboard($order);
 		$this->load->view('explore_users_page', $data);
 	}
+
+	public function tag_search_marks($tag_id = null, $theme_id = null, $order = 'newest'){
+		$this->load->model('theme_model');
+		$this->theme_model->select($theme_id);
+		$this->load->model('mark_model');
+		$this->load->model('tag_model');
+
+		$data['marks'] 		= $this->tag_model->get_marks($tag_id, $theme_id, $order);
+		$data['theme_name'] = $this->theme_model->get_name();
+		$data['theme_id'] 	= $theme_id;
+
+        foreach ($data['marks'] as $key => $mk):
+            $data['tags'][$key] = $this->mark_model->get_tags($mk->mark_id);
+        endforeach;	
+
+		$this->load->view('explore_marks_page', $data);
+	}
+
 }

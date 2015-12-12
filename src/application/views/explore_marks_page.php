@@ -28,7 +28,7 @@ else {
 			
             <td>
             	<?php foreach ($tags[$key] as $tag): ?>
-            	<?php echo $tag->tag_name;?>
+            	<?php echo anchor('explore/tag_search_marks/'.$tag->tagid.'/'.$theme_id, $tag->tag_name);?>
             	<?php endforeach;?>
             </td>
 

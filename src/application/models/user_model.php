@@ -109,20 +109,26 @@ class User_model extends CI_Model{
 		 		->where('tag_name', $name)
 		 		->get('tag');
 		$result1 = $query1->row();
+		
+		if($result1){
+     		$query2 = $this->db->select('markid, tagid')
+		 			->where('tagid', $result1->id)
+		 			->where('markid', $mark_id)
+		 			->get('mark_to_tag');
+			$result2 = $query2->row();
+		}
+		else{
+			$result2 = 0;
+		}
 
-     	$query2 = $this->db->select('mark_id, tag_id')
-		 		->where('tag_id', $id)
-		 		->where('mark_id', $mark_id)
-		 		->get('mark_to_tag');
-		$result2 = $query2->row();	
 		if($result2){
 			;
 		}
 		else{
 			if($result1){
 				$data = array(
-				'mark_id' => $mark_id,
-				'tag_id' => $result1->id,
+				'markid' => $mark_id,
+				'tagid' => $result1->id,
 				);
 				$this->db->insert('mark_to_tag', $data);
 				$mark_to_tag_id = $this->db->insert_id();
@@ -135,9 +141,9 @@ class User_model extends CI_Model{
 				$id = $this->db->insert_id();
 
 				$data = array(
-				'mark_id' => $mark_id,
-				'tag_id' => $id,
-				'theme_id' => $theme_id,
+				'markid' => $mark_id,
+				'tagid' => $id,
+				'themeid' => $theme_id,
 				);
 				$this->db->insert('mark_to_tag', $data);
 				$mark_to_tag_id = $this->db->insert_id();			

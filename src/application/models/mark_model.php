@@ -3,7 +3,7 @@
 class mark_model extends CI_Model{
 	protected $_mark_id;
 	protected $_theme_id;
-	protected $_tag_id = array();
+	protected $_tag_id;
 
 	public function __construct() {
 
@@ -13,28 +13,11 @@ class mark_model extends CI_Model{
 
 	}
 
-	public function select($_mark_id) {
-		if($_mark_id){
-			$query = $this->db->select('mark_id, theme_id')
-	    					  ->where('mark_id', $_mark_id)
-							  ->get('mark');
-			$result = $query->row();
-
-			if(!$result){
-				show_error('Error in mark_model.select: mark cannot found!');
-			}
-			else {
-				$this->_mark_id = $mark_id;
-				$this->_theme_id = $result->theme_id;
-			}
-		}
-    }
-
     public function get_tags($mark_id){
-    	$this->db->select('tag_id, tag_name')
-		 		->where('mark_id', $mark_id)
+    	$this->db->select('tagid, tag_name')
+		 		->where('markid', $mark_id)
 		 		->from('mark_to_tag')
-		 		->join('tag','tag_id = id');
+		 		->join('tag','tagid = id');
 
 	    $query = $this->db->get();
 	    $result = $query->result();
