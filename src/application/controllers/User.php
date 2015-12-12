@@ -50,6 +50,18 @@ class User extends MARKIT_Controller {
 		$this->load->view('new_theme_page');
 	}
 
+	public function new_tag($mark_id, $theme_id) {
+		$data['theme_id'] = $theme_id;
+		$data['mark_id'] = $mark_id;
+		$this->load->view('new_tag_page', $data);
+	}
+
+	public function add_tag($mark_id, $theme_id) {
+		$this->user_model->add_tag(
+			$this->input->post('name'), $mark_id, $theme_id);
+		redirect('explore/themes', 'refresh');
+	}
+
 	public function new_theme() {
 		$this->user_model->new_theme(
 			$this->input->post('name'));

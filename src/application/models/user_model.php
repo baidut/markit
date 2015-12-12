@@ -103,4 +103,46 @@ class User_model extends CI_Model{
 	public function vote_url($up) {
 	}
 
+
+    public function add_tag($name, $mark_id, $theme_id){
+     	$query1 = $this->db->select('id, tag_name')
+		 		->where('tag_name', $name)
+		 		->get('tag');
+		$result1 = $query1->row();
+
+     	$query2 = $this->db->select('mark_id, tag_id')
+		 		->where('tag_id', $id)
+		 		->where('mark_id', $mark_id)
+		 		->get('mark_to_tag');
+		$result2 = $query2->row();	
+		if($result2){
+			;
+		}
+		else{
+			if($result1){
+				$data = array(
+				'mark_id' => $mark_id,
+				'tag_id' => $result1->id,
+				);
+				$this->db->insert('mark_to_tag', $data);
+				$mark_to_tag_id = $this->db->insert_id();
+			}
+			else{
+				$data = array(
+				'tag_name' => $name,
+				);
+				$this->db->insert('tag', $data);
+				$id = $this->db->insert_id();
+
+				$data = array(
+				'mark_id' => $mark_id,
+				'tag_id' => $id,
+				'theme_id' => $theme_id,
+				);
+				$this->db->insert('mark_to_tag', $data);
+				$mark_to_tag_id = $this->db->insert_id();			
+			}
+		}
+    }	
+
 }
