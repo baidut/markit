@@ -129,6 +129,7 @@ class User_model extends CI_Model{
 				$data = array(
 				'markid' => $mark_id,
 				'tagid' => $result1->id,
+				'themeid' => $theme_id,
 				);
 				$this->db->insert('mark_to_tag', $data);
 				$mark_to_tag_id = $this->db->insert_id();

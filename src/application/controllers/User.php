@@ -59,7 +59,7 @@ class User extends MARKIT_Controller {
 	public function add_tag($mark_id, $theme_id) {
 		$this->user_model->add_tag(
 			$this->input->post('name'), $mark_id, $theme_id);
-		redirect('explore/themes', 'refresh');
+		redirect('explore/marks/'.$theme_id, 'refresh');
 	}
 
 	public function new_theme() {
