@@ -16,7 +16,7 @@ else {
 
 <table class="table table-striped table-hover ">
 	<tbody>
-		<?php foreach ($marks as $mk):?>
+		<?php foreach ($marks as $key => $mk):?>
 		<tr>
 			<td>
 				<?php echo anchor('user/vote_mark/1/'.$mk->mark_id, '▲')
@@ -24,9 +24,17 @@ else {
 							.anchor('user/vote_mark/1/'.$mk->mark_id, '▼'); 
 				?>
 			</td>
-            <td><?php echo anchor($mk->url, $mk->title);?></td>
+			<td><?php echo anchor($mk->url, $mk->title);?></td>
 			<td><?php echo anchor('user/'.$mk->contributor, $mk->username.'('.$mk->contribution).')';?></td>
 			
+            <td>
+            	<?php foreach ($tags[$key] as $tag): ?>
+            	<?php echo anchor('explore/tag_search_marks/'.$tag->tagid.'/'.$theme_id, $tag->tag_name);?>
+            	<?php endforeach;?>
+            </td>
+
+			<td><?php echo anchor('user/new_tag/'.$mk->mark_id.'/'.$theme_id, '+');?></td>
+
 		</tr>
 		<?php endforeach;?>
 	</tbody>
