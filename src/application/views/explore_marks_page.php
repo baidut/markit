@@ -14,8 +14,9 @@ else {
 }
 </pre>
 
-<table cellpadding=0 cellspacing=10>
-	<?php foreach ($marks as $key => $mk):?>
+<table class="table table-striped table-hover ">
+	<tbody>
+		<?php foreach ($marks as $key => $mk):?>
 		<tr>
 			<td>
 				<?php echo anchor('user/vote_mark/1/'.$mk->mark_id, '▲')
@@ -35,7 +36,8 @@ else {
 			<td><?php echo anchor('user/new_tag/'.$mk->mark_id.'/'.$theme_id, '+');?></td>
 
 		</tr>
-	<?php endforeach;?>
+		<?php endforeach;?>
+	</tbody>
 </table>
 
 <?php $this->load->view('includes/footer'); ?>

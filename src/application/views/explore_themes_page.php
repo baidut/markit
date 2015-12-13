@@ -4,25 +4,27 @@
 
 <pre>while( You.at(here) ) {
 	if ( You.like(a_theme) ) {
-		press("❤"); // express your grateful.
+		You.press("❤"); // to express your grateful.
 		if ( You.have(a_good_mark) ){
-			press("↙"); // share your mark
+			You.press("↙"); // to share your mark
 		}
 	}
 }
 We.hope( You.love(this.website) ) );</pre>
 
 
-<table cellpadding=0 cellspacing=10>
-	<?php foreach ($themes as $th):?>
-		<tr>
-			<td><?php echo anchor('user/like_theme/'.$th->id, '❤')
-			.htmlspecialchars($th->like_num,ENT_QUOTES,'UTF-8');?></td>
-            <td><?php echo anchor('explore/marks/'.$th->id, $th->theme_name);?></td>
-			<td><?php echo $th->mark_num.'☍';?></td>
-			<td><?php echo anchor('user/contrib2theme/'.$th->id, '↙') ;?></td>
-		</tr>
-	<?php endforeach;?>
+<table class="table table-striped table-hover ">
+	<tbody>
+		<?php foreach ($themes as $th):?>
+			<tr>
+				<td><?php echo anchor('user/like_theme/'.$th->id, '❤')
+				.htmlspecialchars($th->like_num,ENT_QUOTES,'UTF-8');?></td>
+	            <td><?php echo anchor('explore/marks/'.$th->id, $th->theme_name);?></td>
+				<td><?php echo $th->mark_num.'☍';?></td>
+				<td><?php echo anchor('user/contrib2theme/'.$th->id, '↙') ;?></td>
+			</tr>
+		<?php endforeach;?>
+	</tbody>
 </table>
 
 <?php $this->load->view('includes/footer'); ?>
