@@ -50,13 +50,13 @@ class User extends MARKIT_Controller {
 		$this->load->view('new_theme_page');
 	}
 
-	public function new_tag($mark_id, $theme_id) {
+	public function new_tag($mark_id, $theme_id = 0) {
 		$data['theme_id'] = $theme_id;
 		$data['mark_id'] = $mark_id;
 		$this->load->view('new_tag_page', $data);
 	}
 
-	public function add_tag($mark_id, $theme_id) {
+	public function add_tag($mark_id, $theme_id = 0) {
 		$this->user_model->add_tag(
 			$this->input->post('name'), $mark_id, $theme_id);
 		redirect('explore/marks/'.$theme_id, 'refresh');

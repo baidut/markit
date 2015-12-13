@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 2015-12-13 03:25:47
--- 服务器版本： 10.1.8-MariaDB
--- PHP Version: 5.6.14
+-- 主机: 127.0.0.1
+-- 生成日期: 2015 �?12 �?13 �?16:39
+-- 服务器版本: 5.6.11
+-- PHP 版本: 5.5.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,11 +14,13 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `markit`
+-- 数据库: `markit`
 --
+CREATE DATABASE IF NOT EXISTS `markit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `markit`;
 
 -- --------------------------------------------------------
 
@@ -26,11 +28,12 @@ SET time_zone = "+00:00";
 -- 表的结构 `auth_groups`
 --
 
-CREATE TABLE `auth_groups` (
-  `id` mediumint(8) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `auth_groups` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  `description` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `description` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `auth_groups`
@@ -46,12 +49,13 @@ INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
 -- 表的结构 `auth_login_attempts`
 --
 
-CREATE TABLE `auth_login_attempts` (
-  `id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `auth_login_attempts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
-  `time` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `time` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -59,8 +63,8 @@ CREATE TABLE `auth_login_attempts` (
 -- 表的结构 `auth_users`
 --
 
-CREATE TABLE `auth_users` (
-  `id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `auth_users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(15) NOT NULL,
   `username` varchar(100) DEFAULT NULL,
   `contribution` int(11) NOT NULL DEFAULT '0',
@@ -69,16 +73,17 @@ CREATE TABLE `auth_users` (
   `email` varchar(100) NOT NULL,
   `activation_code` varchar(40) DEFAULT NULL,
   `forgotten_password_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
+  `forgotten_password_time` int(11) unsigned DEFAULT NULL,
   `remember_code` varchar(40) DEFAULT NULL,
-  `created_on` int(11) UNSIGNED NOT NULL,
-  `last_login` int(11) UNSIGNED DEFAULT NULL,
-  `active` tinyint(1) UNSIGNED DEFAULT NULL,
+  `created_on` int(11) unsigned NOT NULL,
+  `last_login` int(11) unsigned DEFAULT NULL,
+  `active` tinyint(1) unsigned DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `company` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `phone` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- 转存表中的数据 `auth_users`
@@ -89,7 +94,7 @@ INSERT INTO `auth_users` (`id`, `ip_address`, `username`, `contribution`, `passw
 (2, '::1', '応 振强', 0, '$2y$08$zOn4Z7RxYamx1qw3N2bbY.BTi4o4teT0iNjwiIr4UUPF0tZ7ihFY6', NULL, 'yingzhenqiang@163.com', NULL, NULL, NULL, NULL, 1449465516, 1449581081, 1, '振强', '応', '', ''),
 (4, '::1', '关 丽媛', 0, '$2y$08$xXm59t.azWRDVnyKxRMpSeAmtwojp405M/M2dG9h73qMKAcgt6H4q', NULL, 'yingzhenqiang@gmail.com', NULL, NULL, NULL, NULL, 1449471105, NULL, 1, '丽媛', '关', '', ''),
 (5, '::1', '程 徐媛', 0, '$2y$08$/RuKG3i8skFqcGVoCJAxoOObIUKA48vZKj6rhHFEKq/nmTxWsJY8C', NULL, 'chenxuyuan@163.com', NULL, NULL, NULL, NULL, 1449581421, 1449581497, 1, '徐媛', '程', '', ''),
-(6, '::1', 'w ccandcc', 0, '$2y$08$XQVLFEEFQQTYruVQbv78TuEp3dyj2HrUqb12ubfGElNQdeSnnyXru', NULL, '1272864784@qq.com', NULL, NULL, NULL, 'mu01VWPZfXDwElJmdjoek.', 1449714882, 1449971297, 1, 'ccandcc', 'w', 'pku', '88888888');
+(6, '::1', 'w ccandcc', 0, '$2y$08$XQVLFEEFQQTYruVQbv78TuEp3dyj2HrUqb12ubfGElNQdeSnnyXru', NULL, '1272864784@qq.com', NULL, NULL, NULL, 'mu01VWPZfXDwElJmdjoek.', 1449714882, 1450021039, 1, 'ccandcc', 'w', 'pku', '88888888');
 
 -- --------------------------------------------------------
 
@@ -97,11 +102,15 @@ INSERT INTO `auth_users` (`id`, `ip_address`, `username`, `contribution`, `passw
 -- 表的结构 `auth_users_groups`
 --
 
-CREATE TABLE `auth_users_groups` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `group_id` mediumint(8) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `auth_users_groups` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `group_id` mediumint(8) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
+  KEY `fk_users_groups_users1_idx` (`user_id`),
+  KEY `fk_users_groups_groups1_idx` (`group_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `auth_users_groups`
@@ -121,15 +130,18 @@ INSERT INTO `auth_users_groups` (`id`, `user_id`, `group_id`) VALUES
 -- 表的结构 `mark`
 --
 
-CREATE TABLE `mark` (
-  `mark_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mark` (
+  `mark_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `url` varchar(100) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `contributor` int(11) UNSIGNED NOT NULL,
+  `contributor` int(11) unsigned NOT NULL,
   `value` int(11) NOT NULL DEFAULT '0',
-  `theme_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `theme_id` int(11) NOT NULL,
+  PRIMARY KEY (`mark_id`),
+  KEY `themeid` (`theme_id`),
+  KEY `contributor` (`contributor`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- 转存表中的数据 `mark`
@@ -162,12 +174,13 @@ INSERT INTO `mark` (`mark_id`, `title`, `url`, `datetime`, `contributor`, `value
 -- 表的结构 `mark_to_tag`
 --
 
-CREATE TABLE `mark_to_tag` (
-  `mark_to_tag_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mark_to_tag` (
+  `mark_to_tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `markid` int(11) NOT NULL,
   `tagid` int(11) NOT NULL,
-  `themeid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `themeid` int(11) NOT NULL,
+  PRIMARY KEY (`mark_to_tag_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `mark_to_tag`
@@ -177,7 +190,8 @@ INSERT INTO `mark_to_tag` (`mark_to_tag_id`, `markid`, `tagid`, `themeid`) VALUE
 (1, 0, 1, 0),
 (2, 21, 2, 9),
 (3, 9, 3, 2),
-(4, 2, 3, 2);
+(4, 2, 3, 2),
+(5, 15, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -185,10 +199,11 @@ INSERT INTO `mark_to_tag` (`mark_to_tag_id`, `markid`, `tagid`, `themeid`) VALUE
 -- 表的结构 `tag`
 --
 
-CREATE TABLE `tag` (
-  `id` int(11) NOT NULL,
-  `tag_name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `tag`
@@ -197,7 +212,8 @@ CREATE TABLE `tag` (
 INSERT INTO `tag` (`id`, `tag_name`) VALUES
 (1, '无'),
 (2, '全零决策'),
-(3, '数据集');
+(3, '数据集'),
+(4, 'PHP');
 
 -- --------------------------------------------------------
 
@@ -205,13 +221,14 @@ INSERT INTO `tag` (`id`, `tag_name`) VALUES
 -- 表的结构 `theme`
 --
 
-CREATE TABLE `theme` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `theme` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `theme_name` varchar(30) NOT NULL,
   `like_num` int(11) NOT NULL DEFAULT '0',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `mark_num` int(11) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `mark_num` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- 转存表中的数据 `theme`
@@ -228,107 +245,6 @@ INSERT INTO `theme` (`id`, `theme_name`, `like_num`, `create_time`, `mark_num`) 
 (8, '意见反馈', 0, '2015-12-08 13:09:23', 1),
 (9, '视频编码', 0, '2015-12-12 04:54:40', 1);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `auth_groups`
---
-ALTER TABLE `auth_groups`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `auth_login_attempts`
---
-ALTER TABLE `auth_login_attempts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `auth_users`
---
-ALTER TABLE `auth_users`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `auth_users_groups`
---
-ALTER TABLE `auth_users_groups`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
-  ADD KEY `fk_users_groups_users1_idx` (`user_id`),
-  ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
-
---
--- Indexes for table `mark`
---
-ALTER TABLE `mark`
-  ADD PRIMARY KEY (`mark_id`),
-  ADD KEY `themeid` (`theme_id`),
-  ADD KEY `contributor` (`contributor`);
-
---
--- Indexes for table `mark_to_tag`
---
-ALTER TABLE `mark_to_tag`
-  ADD PRIMARY KEY (`mark_to_tag_id`);
-
---
--- Indexes for table `tag`
---
-ALTER TABLE `tag`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `theme`
---
-ALTER TABLE `theme`
-  ADD PRIMARY KEY (`id`);
-
---
--- 在导出的表使用AUTO_INCREMENT
---
-
---
--- 使用表AUTO_INCREMENT `auth_groups`
---
-ALTER TABLE `auth_groups`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- 使用表AUTO_INCREMENT `auth_login_attempts`
---
-ALTER TABLE `auth_login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- 使用表AUTO_INCREMENT `auth_users`
---
-ALTER TABLE `auth_users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- 使用表AUTO_INCREMENT `auth_users_groups`
---
-ALTER TABLE `auth_users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- 使用表AUTO_INCREMENT `mark`
---
-ALTER TABLE `mark`
-  MODIFY `mark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
---
--- 使用表AUTO_INCREMENT `mark_to_tag`
---
-ALTER TABLE `mark_to_tag`
-  MODIFY `mark_to_tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- 使用表AUTO_INCREMENT `tag`
---
-ALTER TABLE `tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- 使用表AUTO_INCREMENT `theme`
---
-ALTER TABLE `theme`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- 限制导出的表
 --
