@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-12-08 14:44:00
+-- Generation Time: 2015-12-13 03:25:47
 -- 服务器版本： 10.1.8-MariaDB
 -- PHP Version: 5.6.14
 
@@ -88,7 +88,8 @@ INSERT INTO `auth_users` (`id`, `ip_address`, `username`, `contribution`, `passw
 (1, '127.0.0.1', 'administrator', 0, '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1449581313, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', '応 振强', 0, '$2y$08$zOn4Z7RxYamx1qw3N2bbY.BTi4o4teT0iNjwiIr4UUPF0tZ7ihFY6', NULL, 'yingzhenqiang@163.com', NULL, NULL, NULL, NULL, 1449465516, 1449581081, 1, '振强', '応', '', ''),
 (4, '::1', '关 丽媛', 0, '$2y$08$xXm59t.azWRDVnyKxRMpSeAmtwojp405M/M2dG9h73qMKAcgt6H4q', NULL, 'yingzhenqiang@gmail.com', NULL, NULL, NULL, NULL, 1449471105, NULL, 1, '丽媛', '关', '', ''),
-(5, '::1', '程 徐媛', 0, '$2y$08$/RuKG3i8skFqcGVoCJAxoOObIUKA48vZKj6rhHFEKq/nmTxWsJY8C', NULL, 'chenxuyuan@163.com', NULL, NULL, NULL, NULL, 1449581421, 1449581497, 1, '徐媛', '程', '', '');
+(5, '::1', '程 徐媛', 0, '$2y$08$/RuKG3i8skFqcGVoCJAxoOObIUKA48vZKj6rhHFEKq/nmTxWsJY8C', NULL, 'chenxuyuan@163.com', NULL, NULL, NULL, NULL, 1449581421, 1449581497, 1, '徐媛', '程', '', ''),
+(6, '::1', 'w ccandcc', 0, '$2y$08$XQVLFEEFQQTYruVQbv78TuEp3dyj2HrUqb12ubfGElNQdeSnnyXru', NULL, '1272864784@qq.com', NULL, NULL, NULL, 'mu01VWPZfXDwElJmdjoek.', 1449714882, 1449971297, 1, 'ccandcc', 'w', 'pku', '88888888');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,8 @@ INSERT INTO `auth_users_groups` (`id`, `user_id`, `group_id`) VALUES
 (2, 1, 2),
 (3, 2, 2),
 (5, 4, 2),
-(6, 5, 2);
+(6, 5, 2),
+(7, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -151,7 +153,51 @@ INSERT INTO `mark` (`mark_id`, `title`, `url`, `datetime`, `contributor`, `value
 (16, '在线JS/CSS/HTML压缩', 'http://tool.oschina.net/jscompress', '2015-12-08 11:15:10', 2, 0, 4),
 (17, '在线正则表达式测试', 'http://tool.oschina.net/regex', '2015-12-08 11:16:19', 2, 0, 4),
 (18, 'xampp配置局域网访问', 'http://www.cnblogs.com/tiny-bj/p/4092715.html', '2015-12-08 12:22:08', 2, 0, 7),
-(19, '在这里写下你的反馈意见', '#', '2015-12-08 13:10:09', 2, 0, 8);
+(19, '在这里写下你的反馈意见', '#', '2015-12-08 13:10:09', 2, 0, 8),
+(21, 'Fast Zero Block Detection and Early CU Termination for HEVC Video Coding', 'http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6572177', '2015-12-13 01:57:40', 6, 0, 9);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mark_to_tag`
+--
+
+CREATE TABLE `mark_to_tag` (
+  `mark_to_tag_id` int(11) NOT NULL,
+  `markid` int(11) NOT NULL,
+  `tagid` int(11) NOT NULL,
+  `themeid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `mark_to_tag`
+--
+
+INSERT INTO `mark_to_tag` (`mark_to_tag_id`, `markid`, `tagid`, `themeid`) VALUES
+(1, 0, 1, 0),
+(2, 21, 2, 9),
+(3, 9, 3, 2),
+(4, 2, 3, 2);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tag`
+--
+
+CREATE TABLE `tag` (
+  `id` int(11) NOT NULL,
+  `tag_name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `tag`
+--
+
+INSERT INTO `tag` (`id`, `tag_name`) VALUES
+(1, '无'),
+(2, '全零决策'),
+(3, '数据集');
 
 -- --------------------------------------------------------
 
@@ -179,7 +225,8 @@ INSERT INTO `theme` (`id`, `theme_name`, `like_num`, `create_time`, `mark_num`) 
 (5, 'OO大作业开发必读', 0, '2015-12-08 09:04:17', 1),
 (6, '图像处理', 0, '2015-12-08 11:06:36', 0),
 (7, '服务器配置', 0, '2015-12-08 12:21:50', 1),
-(8, '意见反馈', 0, '2015-12-08 13:09:23', 1);
+(8, '意见反馈', 0, '2015-12-08 13:09:23', 1),
+(9, '视频编码', 0, '2015-12-12 04:54:40', 1);
 
 --
 -- Indexes for dumped tables
@@ -221,6 +268,18 @@ ALTER TABLE `mark`
   ADD KEY `contributor` (`contributor`);
 
 --
+-- Indexes for table `mark_to_tag`
+--
+ALTER TABLE `mark_to_tag`
+  ADD PRIMARY KEY (`mark_to_tag_id`);
+
+--
+-- Indexes for table `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `theme`
 --
 ALTER TABLE `theme`
@@ -244,22 +303,32 @@ ALTER TABLE `auth_login_attempts`
 -- 使用表AUTO_INCREMENT `auth_users`
 --
 ALTER TABLE `auth_users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- 使用表AUTO_INCREMENT `auth_users_groups`
 --
 ALTER TABLE `auth_users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- 使用表AUTO_INCREMENT `mark`
 --
 ALTER TABLE `mark`
-  MODIFY `mark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `mark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- 使用表AUTO_INCREMENT `mark_to_tag`
+--
+ALTER TABLE `mark_to_tag`
+  MODIFY `mark_to_tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- 使用表AUTO_INCREMENT `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `theme`
 --
 ALTER TABLE `theme`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- 限制导出的表
 --
