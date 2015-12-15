@@ -24,15 +24,14 @@ else {
 							.anchor('user/vote_mark/1/'.$mk->mark_id, '▼'); 
 				?>
 			</td>
-			<td><?php echo anchor($mk->url, $mk->title);?></td>
-			<td><?php echo anchor('user/'.$mk->contributor, $mk->username.'('.$mk->contribution).')';?></td>
-			
-            <td>
-            	<?php foreach ($tags[$key] as $tag): ?>
-            	<?php echo anchor('explore/tag_search_marks/'.$tag->tagid.'/'.$theme_id, $tag->tag_name);?>
+			<td><?php echo anchor($mk->url, $mk->title);?>
+				<?php foreach ($tags[$key] as $tag): ?>
+					<span class="label label-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">
+            		<?php echo anchor('explore/tag_search_marks/'.$tag->tagid.'/'.$theme_id, $tag->tag_name);?>
+            		</span>
             	<?php endforeach;?>
-            </td>
-
+			</td>
+			<td><?php echo anchor('user/'.$mk->contributor, $mk->username.'('.$mk->contribution).')';?></td>
 			<td><?php echo anchor('user/new_tag/'.$mk->mark_id.'/'.$theme_id, '+');?></td>
 
 		</tr>

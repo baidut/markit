@@ -1,6 +1,7 @@
 <?php
 /************************************************************************
-	<!--[if lt IE 9]>
+<html lang="en">
+	 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
@@ -31,17 +32,32 @@
 	</h1>
 
 	<div id="body">
+
+	
+
+	<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+    <br/>
+	<br/>
+  <div class="container">
+    <h1>起步</h1>
+    <p class="lead">简介整个项目、组件、和如何使用一个简单的模版入门</p>
+  </div>
+</header>
+
+	
 *************************************************************************/
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<html lang="zh-CN"> <!-- lang="en" -->
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title><?php echo isset($title)?$title:'Markit'; ?></title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
@@ -53,13 +69,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- User -->
-    <title>Markit</title>
+    <style>
+	body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;}
+	</style>
+
+	<!-- Fork me on GitHub -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css" />
+	<!--[if lt IE 9]>
+	  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.ie.min.css" />
+	<![endif]-->
+    <div class="github-fork-ribbon-wrapper right-bottom">
+        <div class="github-fork-ribbon">
+			<a href="https://github.com/baidut/markit">Fork me on GitHub</a>
+        </div>
+    </div>
+	<!-- See https://github.com/blog/273-github-ribbons -->
+	<!-- See https://github.com/simonwhitaker/github-fork-ribbon-css -->
+
   </head>
-  <body>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
+  	
 
-  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <a href="https://bootswatch.com/" class="navbar-brand">Markit</a>
