@@ -105,6 +105,15 @@ class User_model extends CI_Model{
 
 
     public function add_tag($name, $mark_id, $theme_id){
+		
+		if(!$theme_id){
+			$query = $this->db->select('theme_id')
+							   ->where('mark_id', $mark_id)
+							   ->get('mark');
+			$result = $query->row();
+			$theme_id = $result->theme_id;
+		}
+		
      	$query1 = $this->db->select('id, tag_name')
 		 		->where('tag_name', $name)
 		 		->get('tag');

@@ -28,15 +28,25 @@ class tag_model extends CI_Model{
 			show_error('Error in theme_model.get_marks: unknown cases!');
 		}
 
-
-    	$this->db->select('mark_id,title,url,contributor,value,username,contribution')
-		 		->where('tagid', $tag_id)
-		 		->where('themeid', $theme_id)
-		 		->from('mark_to_tag')
-		 		->order_by($order_by, $direction)
-		 		->join('mark','mark.mark_id = markid')
-				->join('auth_users', 'auth_users.id = contributor');
-
+		if($theme_id){
+			$this->db->select('mark_id,title,url,contributor,value,username,contribution')
+					 ->where('tagid', $tag_id)
+					 ->where('themeid', $theme_id)
+					 ->from('mark_to_tag')
+					 ->order_by($order_by, $direction)
+					 ->join('mark','mark.mark_id = markid')
+					 ->join('auth_users', 'auth_users.id = contributor');
+		}
+		else{
+			$this->db->select('mark_id,title,url,contributor,value,username,contribution')
+					 ->where('tagid', $tag_id)
+					 ->from('mark_to_tag')
+					 ->order_by($order_by, $direction)
+					 ->join('mark','mark.mark_id = markid')
+					 ->join('auth_users', 'auth_users.id = contributor');
+		}
+		
+		
 	    $query = $this->db->get();
 	    $result = $query->result();
 
