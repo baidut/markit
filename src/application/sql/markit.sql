@@ -1,23 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- ‰∏ªÊú∫: 127.0.0.1
--- ÁîüÊàêÊó•Êúü: 2015 Âπ?12 Êú?13 Êó?16:39
--- ÊúçÂä°Âô®ÁâàÊú¨: 5.6.11
--- PHP ÁâàÊú¨: 5.5.1
+-- Host: 127.0.0.1
+-- Generation Time: 2015-12-16 05:42:23
+-- ∑˛ŒÒ∆˜∞Ê±æ£∫ 10.1.9-MariaDB
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Êï∞ÊçÆÂ∫ì: `markit`
+-- Database: `markit`
 --
 CREATE DATABASE IF NOT EXISTS `markit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `markit`;
@@ -25,18 +19,17 @@ USE `markit`;
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `auth_groups`
+-- ±ÌµƒΩ·ππ `auth_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `auth_groups` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `auth_groups` (
+  `id` mediumint(8) UNSIGNED NOT NULL,
   `name` varchar(20) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `description` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `auth_groups`
+-- ◊™¥Ê±Ì÷–µƒ ˝æ› `auth_groups`
 --
 
 INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
@@ -46,25 +39,24 @@ INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `auth_login_attempts`
+-- ±ÌµƒΩ·ππ `auth_login_attempts`
 --
 
-CREATE TABLE IF NOT EXISTS `auth_login_attempts` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `auth_login_attempts` (
+  `id` int(11) UNSIGNED NOT NULL,
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
-  `time` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `time` int(11) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `auth_users`
+-- ±ÌµƒΩ·ππ `auth_users`
 --
 
-CREATE TABLE IF NOT EXISTS `auth_users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `auth_users` (
+  `id` int(11) UNSIGNED NOT NULL,
   `ip_address` varchar(15) NOT NULL,
   `username` varchar(100) DEFAULT NULL,
   `contribution` int(11) NOT NULL DEFAULT '0',
@@ -73,47 +65,42 @@ CREATE TABLE IF NOT EXISTS `auth_users` (
   `email` varchar(100) NOT NULL,
   `activation_code` varchar(40) DEFAULT NULL,
   `forgotten_password_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_time` int(11) unsigned DEFAULT NULL,
+  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
   `remember_code` varchar(40) DEFAULT NULL,
-  `created_on` int(11) unsigned NOT NULL,
-  `last_login` int(11) unsigned DEFAULT NULL,
-  `active` tinyint(1) unsigned DEFAULT NULL,
+  `created_on` int(11) UNSIGNED NOT NULL,
+  `last_login` int(11) UNSIGNED DEFAULT NULL,
+  `active` tinyint(1) UNSIGNED DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `company` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+  `phone` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `auth_users`
+-- ◊™¥Ê±Ì÷–µƒ ˝æ› `auth_users`
 --
 
 INSERT INTO `auth_users` (`id`, `ip_address`, `username`, `contribution`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
 (1, '127.0.0.1', 'administrator', 0, '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1449581313, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-(2, '::1', 'Âøú ÊåØÂº∫', 0, '$2y$08$zOn4Z7RxYamx1qw3N2bbY.BTi4o4teT0iNjwiIr4UUPF0tZ7ihFY6', NULL, 'yingzhenqiang@163.com', NULL, NULL, NULL, NULL, 1449465516, 1449581081, 1, 'ÊåØÂº∫', 'Âøú', '', ''),
-(4, '::1', 'ÂÖ≥ ‰∏ΩÂ™õ', 0, '$2y$08$xXm59t.azWRDVnyKxRMpSeAmtwojp405M/M2dG9h73qMKAcgt6H4q', NULL, 'yingzhenqiang@gmail.com', NULL, NULL, NULL, NULL, 1449471105, NULL, 1, '‰∏ΩÂ™õ', 'ÂÖ≥', '', ''),
-(5, '::1', 'Á®ã ÂæêÂ™õ', 0, '$2y$08$/RuKG3i8skFqcGVoCJAxoOObIUKA48vZKj6rhHFEKq/nmTxWsJY8C', NULL, 'chenxuyuan@163.com', NULL, NULL, NULL, NULL, 1449581421, 1449581497, 1, 'ÂæêÂ™õ', 'Á®ã', '', ''),
+(2, '::1', 'èÍ ’Ò«ø', 0, '$2y$08$zOn4Z7RxYamx1qw3N2bbY.BTi4o4teT0iNjwiIr4UUPF0tZ7ihFY6', NULL, 'yingzhenqiang@163.com', NULL, NULL, NULL, NULL, 1449465516, 1449581081, 1, '’Ò«ø', 'èÍ', '', ''),
+(4, '::1', 'πÿ ¿ˆÊ¬', 0, '$2y$08$xXm59t.azWRDVnyKxRMpSeAmtwojp405M/M2dG9h73qMKAcgt6H4q', NULL, 'yingzhenqiang@gmail.com', NULL, NULL, NULL, NULL, 1449471105, NULL, 1, '¿ˆÊ¬', 'πÿ', '', ''),
+(5, '::1', '≥Ã –ÏÊ¬', 0, '$2y$08$/RuKG3i8skFqcGVoCJAxoOObIUKA48vZKj6rhHFEKq/nmTxWsJY8C', NULL, 'chenxuyuan@163.com', NULL, NULL, NULL, NULL, 1449581421, 1449581497, 1, '–ÏÊ¬', '≥Ã', '', ''),
 (6, '::1', 'w ccandcc', 0, '$2y$08$XQVLFEEFQQTYruVQbv78TuEp3dyj2HrUqb12ubfGElNQdeSnnyXru', NULL, '1272864784@qq.com', NULL, NULL, NULL, 'mu01VWPZfXDwElJmdjoek.', 1449714882, 1450021039, 1, 'ccandcc', 'w', 'pku', '88888888');
 
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `auth_users_groups`
+-- ±ÌµƒΩ·ππ `auth_users_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `auth_users_groups` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL,
-  `group_id` mediumint(8) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
-  KEY `fk_users_groups_users1_idx` (`user_id`),
-  KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+CREATE TABLE `auth_users_groups` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `group_id` mediumint(8) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `auth_users_groups`
+-- ◊™¥Ê±Ì÷–µƒ ˝æ› `auth_users_groups`
 --
 
 INSERT INTO `auth_users_groups` (`id`, `user_id`, `group_id`) VALUES
@@ -127,63 +114,59 @@ INSERT INTO `auth_users_groups` (`id`, `user_id`, `group_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `mark`
+-- ±ÌµƒΩ·ππ `mark`
 --
 
-CREATE TABLE IF NOT EXISTS `mark` (
-  `mark_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mark` (
+  `mark_id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `url` varchar(100) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `contributor` int(11) unsigned NOT NULL,
+  `contributor` int(11) UNSIGNED NOT NULL,
   `value` int(11) NOT NULL DEFAULT '0',
-  `theme_id` int(11) NOT NULL,
-  PRIMARY KEY (`mark_id`),
-  KEY `themeid` (`theme_id`),
-  KEY `contributor` (`contributor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+  `theme_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `mark`
+-- ◊™¥Ê±Ì÷–µƒ ˝æ› `mark`
 --
 
 INSERT INTO `mark` (`mark_id`, `title`, `url`, `datetime`, `contributor`, `value`, `theme_id`) VALUES
 (2, 'Caltech Pedestrian Detection Benchmark', 'http://www.vision.caltech.edu/Image_Datasets/CaltechPedestri', '0000-00-00 00:00:00', 2, 0, 2),
 (3, 'INRIA Pedestrian Detector', 'http://ttic.uchicago.edu/~smaji/projects/ped-detector/', '2015-12-07 15:02:09', 2, 0, 2),
 (4, 'Single-Pedestrian Detection aided by Mul', 'http://www.ee.cuhk.edu.hk/~wlouyang/projects/ouyangWcvpr13Mu', '2015-12-08 03:10:52', 2, 0, 2),
-(5, 'Pedestrian Detection ËµÑÊ∫ê', 'http://www.cnblogs.com/yutenghit/archive/2012/07/03/2575261.html', '2015-12-08 03:13:25', 2, 0, 2),
-(6, 'Ê∫êÁ†Å Pedestrian Detection with Spatially Pooled Features and Structured Ensemble Learning', 'https://github.com/chhshen/pedestrian-detection', '2015-12-08 03:18:59', 2, 0, 2),
+(5, 'Pedestrian Detection ◊ ‘¥', 'http://www.cnblogs.com/yutenghit/archive/2012/07/03/2575261.html', '2015-12-08 03:13:25', 2, 0, 2),
+(6, '‘¥¬Î Pedestrian Detection with Spatially Pooled Features and Structured Ensemble Learning', 'https://github.com/chhshen/pedestrian-detection', '2015-12-08 03:18:59', 2, 0, 2),
 (7, 'Piotr''s Computer Vision Matlab Toolbox', 'http://vision.ucsd.edu/~pdollar/toolbox/doc/', '2015-12-08 03:19:37', 2, 0, 2),
 (8, 'Discriminatively trained deformable part models', 'http://www.cs.berkeley.edu/~rbg/latent/index.html', '2015-12-08 03:21:25', 2, 0, 2),
 (9, 'ETH Pedestrian Dataset', 'https://data.vision.ee.ethz.ch/cvl/aess/dataset/', '2015-12-08 03:23:11', 2, 0, 2),
 (10, 'IEEE Xplore Digital Library', 'http://ieeexplore.ieee.org/Xplore/home.jsp', '2015-12-08 03:23:22', 2, 0, 1),
 (11, ' Springer Link', 'http://link.springer.com/', '2015-12-08 03:25:31', 2, 0, 1),
-(12, '‰∏≠ÂõΩÁü•ÁΩë', 'http://www.cnki.net/', '2015-12-08 03:29:43', 2, 0, 1),
+(12, '÷–π˙÷™Õ¯', 'http://www.cnki.net/', '2015-12-08 03:29:43', 2, 0, 1),
 (13, 'KITTI:Road/Lane Detection Evaluation 2013', 'http://www.cvlibs.net/datasets/kitti/eval_road.php', '2015-12-08 06:33:02', 2, 0, 3),
 (14, 'KITTI:Road/Lane Detection Evaluation 2013', 'http://www.cvlibs.net/datasets/kitti/eval_road.php', '2015-12-08 06:34:03', 2, 0, 3),
-(15, 'PHP ÂºÄÂèëËßÑËåÉ', 'http://codeigniter.org.cn/user_guide/general/styleguide.html', '2015-12-08 09:04:46', 2, 0, 5),
-(16, 'Âú®Á∫øJS/CSS/HTMLÂéãÁº©', 'http://tool.oschina.net/jscompress', '2015-12-08 11:15:10', 2, 0, 4),
-(17, 'Âú®Á∫øÊ≠£ÂàôË°®ËææÂºèÊµãËØï', 'http://tool.oschina.net/regex', '2015-12-08 11:16:19', 2, 0, 4),
-(18, 'xamppÈÖçÁΩÆÂ±ÄÂüüÁΩëËÆøÈóÆ', 'http://www.cnblogs.com/tiny-bj/p/4092715.html', '2015-12-08 12:22:08', 2, 0, 7),
-(19, 'Âú®ËøôÈáåÂÜô‰∏ã‰Ω†ÁöÑÂèçÈ¶àÊÑèËßÅ', '#', '2015-12-08 13:10:09', 2, 0, 8),
+(15, 'PHP ø™∑¢πÊ∑∂', 'http://codeigniter.org.cn/user_guide/general/styleguide.html', '2015-12-08 09:04:46', 2, 0, 5),
+(16, '‘⁄œﬂJS/CSS/HTML—πÀı', 'http://tool.oschina.net/jscompress', '2015-12-08 11:15:10', 2, 0, 4),
+(17, '‘⁄œﬂ’˝‘Ú±Ì¥Ô Ω≤‚ ‘', 'http://tool.oschina.net/regex', '2015-12-08 11:16:19', 2, 0, 4),
+(18, 'xampp≈‰÷√æ÷”ÚÕ¯∑√Œ ', 'http://www.cnblogs.com/tiny-bj/p/4092715.html', '2015-12-08 12:22:08', 2, 0, 7),
+(19, '‘⁄’‚¿Ô–¥œ¬ƒ„µƒ∑¥¿°“‚º˚', '#', '2015-12-08 13:10:09', 2, 0, 8),
 (21, 'Fast Zero Block Detection and Early CU Termination for HEVC Video Coding', 'http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6572177', '2015-12-13 01:57:40', 6, 0, 9);
 
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `mark_to_tag`
+-- ±ÌµƒΩ·ππ `mark_to_tag`
 --
 
-CREATE TABLE IF NOT EXISTS `mark_to_tag` (
-  `mark_to_tag_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mark_to_tag` (
+  `mark_to_tag_id` int(11) NOT NULL,
   `markid` int(11) NOT NULL,
   `tagid` int(11) NOT NULL,
-  `themeid` int(11) NOT NULL,
-  PRIMARY KEY (`mark_to_tag_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `themeid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `mark_to_tag`
+-- ◊™¥Ê±Ì÷–µƒ ˝æ› `mark_to_tag`
 --
 
 INSERT INTO `mark_to_tag` (`mark_to_tag_id`, `markid`, `tagid`, `themeid`) VALUES
@@ -196,72 +179,185 @@ INSERT INTO `mark_to_tag` (`mark_to_tag_id`, `markid`, `tagid`, `themeid`) VALUE
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `tag`
+-- ±ÌµƒΩ·ππ `tag`
 --
 
-CREATE TABLE IF NOT EXISTS `tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag_name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+CREATE TABLE `tag` (
+  `id` int(11) NOT NULL,
+  `tag_name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `tag`
+-- ◊™¥Ê±Ì÷–µƒ ˝æ› `tag`
 --
 
 INSERT INTO `tag` (`id`, `tag_name`) VALUES
-(1, 'Êó†'),
-(2, 'ÂÖ®Èõ∂ÂÜ≥Á≠ñ'),
-(3, 'Êï∞ÊçÆÈõÜ'),
+(1, 'Œﬁ'),
+(2, '»´¡„æˆ≤ﬂ'),
+(3, ' ˝æ›ºØ'),
 (4, 'PHP');
 
 -- --------------------------------------------------------
 
 --
--- Ë°®ÁöÑÁªìÊûÑ `theme`
+-- ±ÌµƒΩ·ππ `theme`
 --
 
-CREATE TABLE IF NOT EXISTS `theme` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `theme` (
+  `id` int(11) NOT NULL,
   `theme_name` varchar(30) NOT NULL,
   `like_num` int(11) NOT NULL DEFAULT '0',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `mark_num` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `mark_num` int(11) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `theme`
+-- ◊™¥Ê±Ì÷–µƒ ˝æ› `theme`
 --
 
 INSERT INTO `theme` (`id`, `theme_name`, `like_num`, `create_time`, `mark_num`) VALUES
-(1, 'ÊñáÁåÆÊ£ÄÁ¥¢', 0, '2015-12-07 12:12:49', 3),
-(2, 'CV::Ë°å‰∫∫Ê£ÄÊµã', 0, '2015-12-07 12:12:49', 8),
-(3, 'CV::Ë∑ØÈù¢Ê£ÄÊµã', 0, '2015-12-08 03:48:23', 1),
-(4, 'Á´ôÈïøÂ∑•ÂÖ∑ÁÆ±', 0, '2015-12-08 08:50:52', 2),
-(5, 'OOÂ§ß‰Ωú‰∏öÂºÄÂèëÂøÖËØª', 0, '2015-12-08 09:04:17', 1),
-(6, 'ÂõæÂÉèÂ§ÑÁêÜ', 0, '2015-12-08 11:06:36', 0),
-(7, 'ÊúçÂä°Âô®ÈÖçÁΩÆ', 0, '2015-12-08 12:21:50', 1),
-(8, 'ÊÑèËßÅÂèçÈ¶à', 0, '2015-12-08 13:09:23', 1),
-(9, 'ËßÜÈ¢ëÁºñÁ†Å', 0, '2015-12-12 04:54:40', 1);
+(1, 'Œƒœ◊ºÏÀ˜', 0, '2015-12-07 12:12:49', 3),
+(2, 'CV::––»ÀºÏ≤‚', 0, '2015-12-07 12:12:49', 8),
+(3, 'CV::¬∑√ÊºÏ≤‚', 0, '2015-12-08 03:48:23', 1),
+(4, '’æ≥§π§æﬂœ‰', 0, '2015-12-08 08:50:52', 2),
+(5, 'OO¥Û◊˜“µø™∑¢±ÿ∂¡', 0, '2015-12-08 09:04:17', 1),
+(6, 'ÕºœÒ¥¶¿Ì', 0, '2015-12-08 11:06:36', 0),
+(7, '∑˛ŒÒ∆˜≈‰÷√', 0, '2015-12-08 12:21:50', 1),
+(8, '“‚º˚∑¥¿°', 0, '2015-12-08 13:09:23', 1),
+(9, ' ”∆µ±‡¬Î', 0, '2015-12-12 04:54:40', 1);
+
+-- --------------------------------------------------------
 
 --
--- ÈôêÂà∂ÂØºÂá∫ÁöÑË°®
+-- ±ÌµƒΩ·ππ `vote`
+--
+
+CREATE TABLE `vote` (
+  `user_id` int(11) NOT NULL,
+  `mark_id` int(11) NOT NULL,
+  `type` enum('1','-1') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- ÈôêÂà∂Ë°® `auth_users_groups`
+-- Indexes for table `auth_groups`
+--
+ALTER TABLE `auth_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auth_login_attempts`
+--
+ALTER TABLE `auth_login_attempts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auth_users`
+--
+ALTER TABLE `auth_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auth_users_groups`
+--
+ALTER TABLE `auth_users_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
+  ADD KEY `fk_users_groups_users1_idx` (`user_id`),
+  ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
+
+--
+-- Indexes for table `mark`
+--
+ALTER TABLE `mark`
+  ADD PRIMARY KEY (`mark_id`),
+  ADD KEY `themeid` (`theme_id`),
+  ADD KEY `contributor` (`contributor`);
+
+--
+-- Indexes for table `mark_to_tag`
+--
+ALTER TABLE `mark_to_tag`
+  ADD PRIMARY KEY (`mark_to_tag_id`);
+
+--
+-- Indexes for table `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `theme`
+--
+ALTER TABLE `theme`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vote`
+--
+ALTER TABLE `vote`
+  ADD PRIMARY KEY (`user_id`,`mark_id`);
+
+--
+-- ‘⁄µº≥ˆµƒ±Ì π”√AUTO_INCREMENT
+--
+
+--
+--  π”√±ÌAUTO_INCREMENT `auth_groups`
+--
+ALTER TABLE `auth_groups`
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+--  π”√±ÌAUTO_INCREMENT `auth_login_attempts`
+--
+ALTER TABLE `auth_login_attempts`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+--  π”√±ÌAUTO_INCREMENT `auth_users`
+--
+ALTER TABLE `auth_users`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+--  π”√±ÌAUTO_INCREMENT `auth_users_groups`
+--
+ALTER TABLE `auth_users_groups`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+--  π”√±ÌAUTO_INCREMENT `mark`
+--
+ALTER TABLE `mark`
+  MODIFY `mark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+--  π”√±ÌAUTO_INCREMENT `mark_to_tag`
+--
+ALTER TABLE `mark_to_tag`
+  MODIFY `mark_to_tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+--  π”√±ÌAUTO_INCREMENT `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+--  π”√±ÌAUTO_INCREMENT `theme`
+--
+ALTER TABLE `theme`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- œﬁ÷∆µº≥ˆµƒ±Ì
+--
+
+--
+-- œﬁ÷∆±Ì `auth_users_groups`
 --
 ALTER TABLE `auth_users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `auth_users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- ÈôêÂà∂Ë°® `mark`
+-- œﬁ÷∆±Ì `mark`
 --
 ALTER TABLE `mark`
   ADD CONSTRAINT `mark_ibfk_1` FOREIGN KEY (`contributor`) REFERENCES `auth_users` (`id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
