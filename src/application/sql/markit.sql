@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- 主机: 127.0.0.1
--- 生成日期: 2015 �?12 �?13 �?16:39
--- 服务器版本: 5.6.11
--- PHP 版本: 5.5.1
+-- Host: 127.0.0.1
+-- Generation Time: 2015-12-16 06:02:59
+-- 服务器版本： 10.1.9-MariaDB
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库: `markit`
+-- Database: `markit`
 --
 CREATE DATABASE IF NOT EXISTS `markit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `markit`;
@@ -29,11 +29,11 @@ USE `markit`;
 --
 
 CREATE TABLE IF NOT EXISTS `auth_groups` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `auth_groups`
@@ -50,12 +50,12 @@ INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `auth_login_attempts` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
-  `time` int(11) unsigned DEFAULT NULL,
+  `time` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `auth_login_attempts` (
 --
 
 CREATE TABLE IF NOT EXISTS `auth_users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(15) NOT NULL,
   `username` varchar(100) DEFAULT NULL,
   `contribution` int(11) NOT NULL DEFAULT '0',
@@ -73,17 +73,17 @@ CREATE TABLE IF NOT EXISTS `auth_users` (
   `email` varchar(100) NOT NULL,
   `activation_code` varchar(40) DEFAULT NULL,
   `forgotten_password_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_time` int(11) unsigned DEFAULT NULL,
+  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
   `remember_code` varchar(40) DEFAULT NULL,
-  `created_on` int(11) unsigned NOT NULL,
-  `last_login` int(11) unsigned DEFAULT NULL,
-  `active` tinyint(1) unsigned DEFAULT NULL,
+  `created_on` int(11) UNSIGNED NOT NULL,
+  `last_login` int(11) UNSIGNED DEFAULT NULL,
+  `active` tinyint(1) UNSIGNED DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `auth_users`
@@ -103,14 +103,14 @@ INSERT INTO `auth_users` (`id`, `ip_address`, `username`, `contribution`, `passw
 --
 
 CREATE TABLE IF NOT EXISTS `auth_users_groups` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL,
-  `group_id` mediumint(8) unsigned NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `group_id` mediumint(8) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `auth_users_groups`
@@ -135,13 +135,13 @@ CREATE TABLE IF NOT EXISTS `mark` (
   `title` varchar(100) NOT NULL,
   `url` varchar(100) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `contributor` int(11) unsigned NOT NULL,
+  `contributor` int(11) UNSIGNED NOT NULL,
   `value` int(11) NOT NULL DEFAULT '0',
   `theme_id` int(11) NOT NULL,
   PRIMARY KEY (`mark_id`),
   KEY `themeid` (`theme_id`),
   KEY `contributor` (`contributor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mark`
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `mark_to_tag` (
   `tagid` int(11) NOT NULL,
   `themeid` int(11) NOT NULL,
   PRIMARY KEY (`mark_to_tag_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mark_to_tag`
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `tag`
@@ -226,9 +226,9 @@ CREATE TABLE IF NOT EXISTS `theme` (
   `theme_name` varchar(30) NOT NULL,
   `like_num` int(11) NOT NULL DEFAULT '0',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `mark_num` int(11) unsigned NOT NULL DEFAULT '0',
+  `mark_num` int(11) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `theme`
@@ -244,6 +244,19 @@ INSERT INTO `theme` (`id`, `theme_name`, `like_num`, `create_time`, `mark_num`) 
 (7, '服务器配置', 0, '2015-12-08 12:21:50', 1),
 (8, '意见反馈', 0, '2015-12-08 13:09:23', 1),
 (9, '视频编码', 0, '2015-12-12 04:54:40', 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `vote`
+--
+
+CREATE TABLE IF NOT EXISTS `vote` (
+  `user_id` int(11) NOT NULL,
+  `mark_id` int(11) NOT NULL,
+  `type` enum('1','-1') DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`mark_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 限制导出的表
