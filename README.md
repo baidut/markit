@@ -1,6 +1,8 @@
 markit
 ======
 
+[![Join the chat at https://gitter.im/baidut/markit](https://badges.gitter.im/baidut/markit.svg)](https://gitter.im/baidut/markit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 a bookmark-sharing website
 
 安装
