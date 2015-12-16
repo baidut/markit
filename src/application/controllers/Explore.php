@@ -29,10 +29,11 @@ class Explore extends MARKIT_Controller {
 		$this->load->model('theme_model');
 		$this->theme_model->select($theme_id);
 		$this->load->model('mark_model');
-
+		$this->load->model('user_model');
 		$data['marks'] 		= $this->theme_model->get_marks($order);
 		$data['theme_name'] = $this->theme_model->get_name();
 		$data['theme_id'] 	= $theme_id;
+		$data['user_id'] = $this->user_model->get_id();
 
         foreach ($data['marks'] as $key => $mk):
             $data['tags'][$key] = $this->mark_model->get_tags($mk->mark_id);

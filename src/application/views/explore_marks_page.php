@@ -19,9 +19,26 @@ else {
 		<?php foreach ($marks as $key => $mk):?>
 		<tr>
 			<td>
-				<?php echo anchor('user/vote_mark/1/'.$mk->mark_id, '▲')
+				<?php
+				$query=$this->db->select('type')->where('user_id', $user_id)->where('mark_id', $mk->mark_id)->get('vote');
+				$avote =$query->row();
+				if(!$avote)
+				{
+					echo anchor('user/vote_mark/1/'.$mk->mark_id, '△')
 							.$mk->value
-							.anchor('user/vote_mark/1/'.$mk->mark_id, '▼'); 
+							.anchor('user/vote_mark/-1/'.$mk->mark_id, '▽');
+				}
+				else
+				{
+					if($avote->type==1)
+					{
+						echo '▲'.$mk->value.anchor('user/vote_mark/-1/'.$mk->mark_id,'▽');
+					}
+					else
+					{
+						echo anchor('user/vote_mark/1/'.$mk->mark_id,'△').$mk->value.'▼';
+					}
+				}
 				?>
 			</td>
 			<td><?php echo anchor($mk->url, $mk->title);?>

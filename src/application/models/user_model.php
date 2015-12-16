@@ -100,7 +100,23 @@ class User_model extends CI_Model{
 		// 
 	}
 
-	public function vote_url($up) {
+	public function vote_url($mark_id,$action) {
+		//点赞/踩
+		$query=$this->db->select('type')->where('user_id', $this->_id)->where('mark_id', $mark_id)->get('vote');
+		$result=$query->row();
+		if($result){
+			$this->db->delete('vote',array('user_id'=>$this->_id,'mark_id'=>$mark_id));
+		}
+		$new_vote_insert = array(
+				'user_id'=>$this->_id,
+				'mark_id'=>$mark_id,
+				'type'=>$action,
+		);
+		$this->db->insert('vote',$new_vote_insert);
+		//mark value+action
+		$this->db->set('value','value'+$action)
+				->where('mark_id',$mark_id)
+				->update('mark');
 	}
 
 

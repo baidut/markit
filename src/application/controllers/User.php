@@ -70,7 +70,9 @@ class User extends MARKIT_Controller {
 
 	public function like_theme() {
 	}
-	
-	public function vote_url() {
+
+	public function vote_mark($action,$mark_id) {
+		$this->user_model->vote_url($mark_id,$action);
+		redirect('explore/marks','refresh');
 	}
 }
