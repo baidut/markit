@@ -12,7 +12,7 @@
         <fieldset>
           <legend><?php echo lang('login_heading');?></legend>
           <p><?php echo lang('login_subheading');?></p>
-          <div id="infoMessage"><?php echo $message;?></div>
+
           <div class="form-group">
             <?php echo lang('login_identity_label', 'identity', 'class="col-lg-2 control-label"');?>
             <div class="col-lg-10">
@@ -40,6 +40,14 @@
               <?php echo form_submit('submit', lang('login_submit_btn'), 'class="btn btn-primary"'); ?>
             </div>
           </div>
+
+          <?php if($message) :?>
+          <div class="alert alert-dismissible alert-danger" id="infoMessage">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <?php echo $message;?>
+          </div>
+          <?php endif; ?>
+          
         </fieldset>
       <?php echo form_close();?>
     </div>
