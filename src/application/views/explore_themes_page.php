@@ -1,30 +1,34 @@
 <?php $this->load->view('includes/header'); ?>
-
-<h1>Hot themes <?php echo anchor('user/contrib_theme/','✛') ?></h1>
-
-<pre>while( You.at(here) ) {
-	if ( You.like(a_theme) ) {
-		You.press("❤"); // to express your grateful.
-		if ( You.have(a_good_mark) ){
-			You.press("↙"); // to share your mark
-		}
-	}
-}
-We.hope( You.love(this.website) ) );</pre>
-
-
 <table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th><?php echo lang('like')?></th>
+      <th><?php echo lang('#link') ?></th>
+      <th>
+      	<?php echo lang('name')?>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
 	<tbody>
 		<?php foreach ($themes as $th):?>
 			<tr>
 				<td><?php echo anchor('user/like_theme/'.$th->id, '❤')
-				.htmlspecialchars($th->like_num,ENT_QUOTES,'UTF-8');?></td>
+				.$th->like_num;?></td>
+				<td><?php echo '☍'.$th->mark_num;?></td>
 	            <td><?php echo anchor('explore/marks/'.$th->id, $th->theme_name);?></td>
-				<td><?php echo $th->mark_num.'☍';?></td>
-				<td><?php echo anchor('user/contrib2theme/'.$th->id, '↙') ;?></td>
+				<td>
+				  <?php echo anchor('user/contrib2theme/'.$th->id, lang('contrib_mark') ) ?>
+				  <?php echo anchor('user/like_theme/'.$th->id, lang('like') ) ?>
+				</td>
 			</tr>
 		<?php endforeach;?>
 	</tbody>
 </table>
+
+<div class="alert alert-dismissible alert-info">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong><?php echo lang('tips') ?></strong> 没有找到你喜欢的主题？导航栏->主题->新建主题
+</div>
 
 <?php $this->load->view('includes/footer'); ?>

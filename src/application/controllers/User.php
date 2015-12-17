@@ -46,10 +46,6 @@ class User extends MARKIT_Controller {
         }
 	}
 
-	public function contrib_theme() {
-		$this->load->view('new_theme_page');
-	}
-
 	public function new_tag($mark_id, $theme_id = 0) {
 		$data['theme_id'] = $theme_id;
 		$data['mark_id'] = $mark_id;

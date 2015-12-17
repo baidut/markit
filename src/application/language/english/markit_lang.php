@@ -12,6 +12,11 @@ $lang['markit'] 		= 'Markit';
 $lang['contributor'] 	= 'Contributor';
 $lang['help'] 			= 'Help';
 $lang['register'] 		= 'Register';
+$lang['close'] 			= 'Close';
+$lang['input'] 			= 'Input';
+$lang['like'] 			= 'Like';
+$lang['#link'] 			= 'Number of link';
+$lang['tips'] 			= 'Tips';
 
 // new_mark_page
 

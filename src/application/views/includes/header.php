@@ -104,8 +104,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
-            	<?php echo anchor('explore/themes', lang('theme'));?>
+              <?php echo anchor('explore/themes', lang('theme'));?>
             </li>
+            <li class="dropdown">
+            	<?php echo anchor('#', '<span class="caret"></span>','class="dropdown-toggle" data-toggle="dropdown" id="li_theme"');?>
+              <ul class="dropdown-menu" aria-labelledby="li_theme">
+                <li>
+                  <a href="<?php echo base_url('ui/language/zh_cn') ?>">
+                    按火热度
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/language/english') ?>">
+                    按资源数目
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
+                    <?php echo lang('new').' '.lang('theme'); ?>
+                  </button>
+                </li>
+              </ul>
+            </li>
+
             <li>
             	<?php echo anchor('explore/marks', lang('mark'));?>
             </li>
@@ -122,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           	<?php if ($this->session->userdata('user_id')): ?>
 
             <li><?php echo anchor('#', $this->session->userdata('username') ); ?></li>
-            <li><?php echo anchor('auth/logout', 'Logout'); ?></li>
+            <li><?php echo anchor('auth/logout', lang('logout')); ?></li>
         	  
             <?php else: ?>
             
@@ -157,8 +180,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 
+<?php $this->load->library('form_validation') ?>
+<!-- Modal -->
+<?php echo form_open('user/new_theme/');?>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo lang('new').' '.lang('theme') ?></h4>
+      </div>
+      <div class="modal-body">
+
+    <div class="form-group">
+      <div class="input-group">
+
+        <?php echo lang('name', 'focusedInput', 'class="control-label"');?>
+        <?php echo form_input('name', set_value('name'), 'class="form-control" id="focusedInput"');?>
+      </div>
+    </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <?php echo lang('close') ?>
+        </button>
+        <?php echo form_submit('submit', lang('submit'), 'class="btn btn-primary"');?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php echo form_close();?>
+
     <div class="container">
 
+    <br/>
     <br/>
     <br/>
 

@@ -8,10 +8,15 @@ $lang['contrib_mark'] 	= '贡献链接';
 // switch lang
 
 $lang['language'] 		= '语言';
-$lang['markit'] 		= '马克●伊特';
+$lang['markit'] 		= '马克伊特';
 $lang['contributor'] 	= '贡献者';
 $lang['help'] 			= '帮助';
 $lang['register'] 		= '注册';
+$lang['close'] 			= '关闭';
+$lang['input'] 			= '输入';
+$lang['like'] 			= '喜欢';
+$lang['#link'] 			= '资源数';
+$lang['tips'] 			= '小贴士';
 
 // new_mark_page
 
