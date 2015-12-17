@@ -97,7 +97,36 @@ class User_model extends CI_Model{
 	}
 
 	public function like_theme($theme_id) {
-		// 
+		// 先查询
+		$data = array(
+			'user_id' => $this->_id,
+			'theme_id' => $theme_id,
+		);
+		$query = $this->db->where($data)->get('user_like_theme');
+
+		if($query->num_rows()) {
+			 // 已喜欢 链接不可用 --- 改为 已喜欢则取消喜欢
+			// 删除
+			$status = $this->db->delete('user_like_theme',$data);
+			if($status){
+				// theme like_num + 1
+				$this->db->set('like_num', 'like_num-1', FALSE);
+				$this->db->where('id', $theme_id);
+				$this->db->update('theme');
+			}
+		}
+		else {
+			$status = $this->db->insert('user_like_theme', $data);
+			if($status){
+				// theme like_num + 1
+				$this->db->set('like_num', 'like_num+1', FALSE);
+				$this->db->where('id', $theme_id);
+				$this->db->update('theme');
+			}
+
+		}
+
+		return $status;
 	}
 
 	public function vote_url($mark_id,$action) {

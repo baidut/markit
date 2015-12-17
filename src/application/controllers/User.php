@@ -64,7 +64,10 @@ class User extends MARKIT_Controller {
 		redirect('explore/themes', 'refresh');
 	}
 
-	public function like_theme() {
+	public function like_theme($theme_id) {
+		$status = $this->user_model->like_theme($theme_id);
+		// 删除前提醒等放到前端
+		redirect('explore/themes', 'refresh');
 	}
 
 	public function vote_mark($action,$mark_id) {
