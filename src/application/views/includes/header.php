@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title><?php echo isset($title)?$title:'Markit'; ?></title>
+    <title><?php echo isset($title)?$title:lang('markit'); ?></title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="https://bootswatch.com/" class="navbar-brand">Markit</a>
+          <a href="https://bootswatch.com/" class="navbar-brand"><?php echo lang('markit') ?></a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -104,41 +104,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
-            	<?php echo anchor('explore/themes', 'Themes');?>
+            	<?php echo anchor('explore/themes', lang('theme'));?>
             </li>
             <li>
-            	<?php echo anchor('explore/marks', 'Marks');?>
+            	<?php echo anchor('explore/marks', lang('mark'));?>
             </li>
             <li>
-            	<?php echo anchor('explore/users', 'Contributors');?>
+            	<?php echo anchor('explore/users', lang('contributor'));?>
             </li>
             <li>
-              <a href="https://bootswatch.com/help/">Help</a>
-            </li>
-            <li>
-              <a href="http://news.bootswatch.com/">Blog</a>
+              <?php echo anchor('#', lang('help'));?>
             </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
 
-
           	<?php if ($this->session->userdata('user_id')): ?>
-            <li><?php echo anchor('#', 					$this->session->userdata('username') ); ?></li>
-            <li><?php echo anchor('auth/logout', 		'Logout'	); ?></li>
-        	<?php else: ?>
-            <li><?php echo anchor('auth/login', 		'Login'		); ?></li>
-            <li><?php echo anchor('auth/create_user', 	'Register'	); ?></li>
-        	<?php endif; ?>
+
+            <li><?php echo anchor('#', $this->session->userdata('username') ); ?></li>
+            <li><?php echo anchor('auth/logout', 'Logout'); ?></li>
+        	  
+            <?php else: ?>
+            
+            <li><?php echo anchor('auth/login', lang('login')) ?>
+            </li>
+            <li><?php echo anchor('auth/create_user', lang('register')) ?>
+            </li>
+        	  
+            <?php endif; ?>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">
+                <?php echo lang('language') ?>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li>
+                  <a href="<?php echo base_url('ui/language/zh_cn') ?>">
+                    中文
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/language/english') ?>">
+                    English
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
 
         </div>
       </div>
     </div>
 
-	<div class="container">
+    <div class="container">
 
-    <br/>
     <br/>
     <br/>
 

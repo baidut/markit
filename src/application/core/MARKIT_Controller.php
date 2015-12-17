@@ -18,14 +18,42 @@
 class MARKIT_Controller extends CI_Controller{
 	function __construct(){
 		parent::__construct();
+
+		/// 调整配置
+		// 优先为用户设定的语言
+		// $idiom = $this->session->get_userdata('language');
+		// print_r($idiom);
+		$this->load->library('session');
+
+		// 默认为浏览器语言
+		//判断浏览器语言
+		$default_lang_arr = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+		$strarr = explode(",",$default_lang_arr);
+		$default_lang = $strarr[0]; // zh-CN
+		// zh-CN zh_cn
+		$lang = str_replace('-', '_', strtolower($default_lang));
+
+		if($this->session->has_userdata('lang')){
+			$lang = $this->session->lang;
+		}
+
+		// 设置为该语言
+		$this->config->set_item('language', $lang);
+
+		/// 加载必要的文件，可在autoload中配置
 		$this->load->dbutil();
 		$this->load->database();
-		$this->load->library(array('ion_auth','session'));
+		$this->load->library('ion_auth');
 		$this->load->helper(array('url','language'));
+
+		$this->lang->load('markit');
+		$this->lang->load('auth');
+		$this->lang->load('ion_auth');
 		
 		// 登陆验证
 		// 权限验证
 	}
+
 	function get_captcha() {
 		$this->load->helper('captcha');
 		$vals = array(
