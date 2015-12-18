@@ -158,10 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
-                    <?php echo lang('new').' '.lang('mark'); ?>
-                  </button>
+                  <?php echo anchor('user/contrib/', lang('new').' '.lang('mark'));?>
                 </li>
               </ul>
             </li>
@@ -177,9 +174,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="nav navbar-nav navbar-right">
 
           	<?php if ($this->session->userdata('user_id')): ?>
+              
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="li_user">
+                <?php echo $this->session->userdata('username') ?>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="li_user">
+               
+                <li>
+                  <a href="<?php echo base_url('ui/language/english') ?>">
+                    我贡献的链接
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/language/english') ?>">
+                    我喜欢的主题
+                  </a>
+                </li>
 
-            <li><?php echo anchor('#', $this->session->userdata('username') ); ?></li>
-            <li><?php echo anchor('auth/logout', lang('logout')); ?></li>
+                <li class="divider"></li>
+                <li>
+                  <?php echo anchor('auth/logout', lang('logout')); ?>
+                </li>
+
+              </ul>
+            </li>
         	  
             <?php else: ?>
             

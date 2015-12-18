@@ -24,12 +24,14 @@ $lang['ui'] 			= '界面';
 
 // auth
 $lang['cancel'] 		= '取消';
+$lang['submit']   		= '确认提交';
 
 // new_mark_page
 
 $lang['title'] 			= '标题';
 $lang['url'] 			= '链接';
 $lang['theme'] 			= '主题';
+$lang['tag'] 			= '标签';
 $lang['mark'] 			= '链接';
 $lang['submit'] 		= '提交';
 $lang['new'] 			= '新建';
@@ -42,4 +44,5 @@ $lang['hottest'] 		= '热门';
 $lang['coldest'] 		= '冷门';
 $lang['most_mark_num'] 	= '资源最多';
 $lang['least_mark_num'] = '资源最少';
+$lang['select_theme']   = '选择主题';
 

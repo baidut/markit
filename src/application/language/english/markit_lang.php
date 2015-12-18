@@ -24,6 +24,7 @@ $lang['ui'] 			= 'UI';
 
 // auth
 $lang['cancel'] 		= 'Cancel';
+$lang['submit']   		= 'Submit';
 
 // new_mark_page
 
@@ -42,3 +43,4 @@ $lang['hottest'] 		= 'Hottest';
 $lang['coldest'] 		= 'Coldest';
 $lang['most_mark_num'] 	= 'Most ☍';
 $lang['least_mark_num'] = 'Least ☍';
+$lang['select_theme']   = 'Select Theme';

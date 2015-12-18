@@ -128,6 +128,21 @@ class User_model extends CI_Model{
 
 		return $status;
 	}
+	// 用户喜欢的主题
+	public function liked_theme() {
+		$query = $this->db->select('theme_name, theme_id')
+		                  ->where('user_id', $this->_id)
+		                  ->join('theme', 'theme.id = user_like_theme.theme_id')
+		                  ->get('user_like_theme');
+
+		$themes = $query->result();
+		// convert to an array
+		$data = array();
+		foreach ($themes as $key => $theme) {
+			$data[$theme->theme_id] = $theme->theme_name;
+		}
+		return $data;
+	}
 
 	public function vote_url($mark_id,$action) {
 		//点赞/踩

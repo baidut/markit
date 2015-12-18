@@ -28,6 +28,14 @@ class User extends MARKIT_Controller {
 		$this->load->view('new_mark_page', $data);
 
 	}
+
+	public function contrib() {
+		$data['opt_themes'] = $this->user_model->liked_theme();
+		$data['mark_url'] = urldecode($this->input->get('url')); // $mark_url
+		$data['mark_title'] = urldecode($this->input->get('title')); // $mark_title
+		// print_r($data['opt_themes']);
+		$this->load->view('new_mark_page', $data);
+	}
 	// user/new_mark
 	public function new_mark($theme_id) {
 
