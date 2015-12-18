@@ -17,6 +17,13 @@ $lang['input'] 			= '输入';
 $lang['like'] 			= '喜欢';
 $lang['#link'] 			= '资源数';
 $lang['tips'] 			= '小贴士';
+$lang['list-or-card'] 	= '浏览模式';
+$lang['list'] 			= '列表';
+$lang['card'] 			= '卡片';
+$lang['ui'] 			= '界面';
+
+// auth
+$lang['cancel'] 		= '取消';
 
 // new_mark_page
 
@@ -27,3 +34,12 @@ $lang['mark'] 			= '链接';
 $lang['submit'] 		= '提交';
 $lang['new'] 			= '新建';
 $lang['name'] 			= '名称';
+
+// nav
+$lang['newest'] 		= '最新';
+$lang['oldest'] 		= '最旧';
+$lang['hottest'] 		= '热门';
+$lang['coldest'] 		= '冷门';
+$lang['most_mark_num'] 	= '资源最多';
+$lang['least_mark_num'] = '资源最少';
+

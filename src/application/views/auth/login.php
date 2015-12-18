@@ -36,7 +36,7 @@
 
           <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-              <button type="reset" class="btn btn-default">Cancel</button>
+              <button type="reset" class="btn btn-default"><?php echo lang('cancel')?></button>
               <?php echo form_submit('submit', lang('login_submit_btn'), 'class="btn btn-primary"'); ?>
             </div>
           </div>

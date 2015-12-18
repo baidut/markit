@@ -17,6 +17,13 @@ $lang['input'] 			= 'Input';
 $lang['like'] 			= 'Like';
 $lang['#link'] 			= 'Number of link';
 $lang['tips'] 			= 'Tips';
+$lang['list-or-card'] 	= 'View Mode';
+$lang['list'] 			= 'List';
+$lang['card'] 			= 'Card';
+$lang['ui'] 			= 'UI';
+
+// auth
+$lang['cancel'] 		= 'Cancel';
 
 // new_mark_page
 
@@ -27,3 +34,11 @@ $lang['mark'] 			= 'Mark';
 $lang['submit'] 		= 'Submit';
 $lang['new'] 			= 'New';
 $lang['name'] 			= 'Name';
+
+// nav
+$lang['newest'] 		= 'Newest';
+$lang['oldest'] 		= 'Oldest';
+$lang['hottest'] 		= 'Hottest';
+$lang['coldest'] 		= 'Coldest';
+$lang['most_mark_num'] 	= 'Most ☍';
+$lang['least_mark_num'] = 'Least ☍';

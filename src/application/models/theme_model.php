@@ -78,25 +78,10 @@ class theme_model extends CI_Model{
 		return $query->result();
     }
 
-    public function get_all($order = 'newest') {
-
-    	switch ($order) {
-		case 'newest':
-		case 'latest':
-		  	$order_by = 'create_time';
-		  	$direction = 'desc';
-		  	break;  
-		case 'oldest':
-		  	$order_by = 'create_time';
-		  	$direction = 'asc';
-		  	break;
-
-		default:
-			show_error('Error in theme_model.get_all: unknown cases!');
-		}
+    public function get_all($order_by = 'like_num', $is_desc = true) {
 
 		$this->db->select('id,theme_name,like_num,mark_num')->from('theme');;
-		$this->db->order_by('create_time', 'desc'); // 
+		$this->db->order_by($order_by, $is_desc?'desc':'asc'); // 
 
 		$query = $this->db->get();
 		return $query->result();

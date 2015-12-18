@@ -110,6 +110,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             	<?php echo anchor('#', '<span class="caret"></span>','class="dropdown-toggle" data-toggle="dropdown" id="li_theme"');?>
               <ul class="dropdown-menu" aria-labelledby="li_theme">
                 <li>
+                  <?php echo anchor('explore/themes/newest', lang('newest'));?>
+                </li>
+                <li>
+                  <?php echo anchor('explore/themes/oldest', lang('oldest'));?>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <?php echo anchor('explore/themes/hottest', lang('hottest'));?>
+                </li>
+                <li>
+                  <?php echo anchor('explore/themes/coldest', lang('coldest'));?>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <?php echo anchor('explore/themes/most_mark_num', lang('most_mark_num'));?>
+                </li>
+                <li>
+                  <?php echo anchor('explore/themes/least_mark_num', lang('least_mark_num'));?>
+                </li>
+                
+                <li>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
+                    <?php echo lang('new').' '.lang('theme'); ?>
+                  </button>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+            	<?php echo anchor('explore/marks', lang('mark'));?>
+            </li>
+
+            <li class="dropdown">
+              <?php echo anchor('#', '<span class="caret"></span>','class="dropdown-toggle" data-toggle="dropdown" id="li_theme"');?>
+              <ul class="dropdown-menu" aria-labelledby="li_theme">
+                <li>
                   <a href="<?php echo base_url('ui/language/zh_cn') ?>">
                     按火热度
                   </a>
@@ -123,15 +160,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
-                    <?php echo lang('new').' '.lang('theme'); ?>
+                    <?php echo lang('new').' '.lang('mark'); ?>
                   </button>
                 </li>
               </ul>
             </li>
 
-            <li>
-            	<?php echo anchor('explore/marks', lang('mark'));?>
-            </li>
             <li>
             	<?php echo anchor('explore/users', lang('contributor'));?>
             </li>
@@ -174,6 +208,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
               </ul>
             </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">
+                <?php echo lang('list-or-card') ?>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li>
+                  <a href="<?php echo base_url('ui/language/zh_cn') ?>">
+                    <?php echo lang('list') ?>
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/language/english') ?>">
+                    <?php echo lang('card') ?>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">
+                <?php echo lang('ui') ?>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li>
+                  <a href="<?php echo base_url('ui/language/zh_cn') ?>">
+                    united
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/language/english') ?>">
+                    paper
+                  </a>
+                </li>
+              </ul>
+            </li>
+
           </ul>
 
         </div>
@@ -214,6 +287,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="container">
 
+    <br/>
     <br/>
     <br/>
     <br/>

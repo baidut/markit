@@ -13,10 +13,45 @@ class Explore extends MARKIT_Controller {
 	// 查看 themes 列表
 	public function themes($order = 'newest') {
 	// Explore/theme/newest 显示最近的主题
+		switch ($order) {
+		case 'newest':
+		case 'latest':
+		  	$order_by = 'create_time';
+		  	$is_desc = true;
+		  	break;  
+		case 'oldest':
+		  	$order_by = 'create_time';
+		  	$is_desc = false;
+		  	break;
+
+		case 'hottest':
+		case 'most_like_num':
+		  	$order_by = 'like_num';
+		  	$is_desc = true;
+		  	break;
+		case 'coldest':
+		case 'least_like_num':
+		  	$order_by = 'like_num';
+		  	$is_desc = false;
+		  	break;
+
+		case 'most_mark_num':
+		  	$order_by = 'mark_num';
+		  	$is_desc = true;
+		  	break;
+		case 'least_mark_num':
+		  	$order_by = 'mark_num';
+		  	$is_desc = false;
+		  	break;
+
+		default:
+			show_error('Error in theme_model.get_all: unknown cases!');
+		}
+
 
 		$this->load->model('theme_model');
 
-		$data['themes'] = $this->theme_model->get_all();
+		$data['themes'] = $this->theme_model->get_all($order_by, $is_desc);
 		$this->load->view('explore_themes_page', $data);
 
 	}
