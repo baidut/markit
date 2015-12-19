@@ -1,5 +1,6 @@
 <?php $this->load->view('includes/header'); ?>
 
+<br/>
 <div class="container">
 
 <div id="infoMessage"><?php echo $message;?></div>

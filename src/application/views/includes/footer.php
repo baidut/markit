@@ -21,10 +21,10 @@
     <footer class="footer">
       <div class="container">
         <p>Designed and built with all the love in the world by <a href="https://github.com/baidut/markit/watchers" target="_blank">OO Team-3</a>.</p>
-        <p>© Object Oriented Analysis and Design 2015</p>
       </div>
       <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+      <p>&copy; 2015 OOAD-Team-3, Object Oriented Analysis and Design. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
 
     </div>

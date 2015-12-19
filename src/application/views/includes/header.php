@@ -63,7 +63,7 @@ $this->session->set_userdata('referred_from', current_url());
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url().'css/bootswatch/'.($this->session->has_userdata('style')?($this->session->style):'default').'/bootstrap.min.css' ?>"> 
 
-    
+
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -167,13 +167,20 @@ $this->session->set_userdata('referred_from', current_url());
               <ul class="dropdown-menu" aria-labelledby="li_theme">
                 <li>
                   <a href="<?php echo base_url('ui/language/zh_cn') ?>">
-                    按火热度
+                    <?php echo anchor('explore/markes/newest', lang('newest'));?>
                   </a>
                 </li>
                 <li>
-                  <a href="<?php echo base_url('ui/language/english') ?>">
-                    按资源数目
+                  <a href="<?php echo base_url('ui/language/zh_cn') ?>">
+                    <?php echo anchor('explore/markes/oldest', lang('oldest'));?>
                   </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <?php echo anchor('explore/markes/hottest', lang('hottest'));?>
+                </li>
+                <li>
+                  <?php echo anchor('explore/markes/coldest', lang('coldest'));?>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -201,16 +208,16 @@ $this->session->set_userdata('referred_from', current_url());
               </a>
               <ul class="dropdown-menu" aria-labelledby="li_user">
                
-                <li>
-                  <a href="<?php echo base_url('ui/language/english') ?>">
+               <!--  <li>
+                  <a href="<?php //echo base_url('ui/language/english') ?>">
                     我贡献的链接
                   </a>
                 </li>
                 <li>
-                  <a href="<?php echo base_url('ui/language/english') ?>">
+                  <a href="<?php //echo base_url('ui/language/english') ?>">
                     我喜欢的主题
                   </a>
-                </li>
+                </li> -->
 
                 <li class="divider"></li>
                 <li>

@@ -50,32 +50,17 @@ class theme_model extends CI_Model{
     	return $this->like_num;
     }
 
-    public function get_marks($order = 'newest') {
-    	switch ($order) {
-		case 'newest':
-		case 'latest':
-		  	$order_by = 'datetime';
-		  	$direction = 'desc';
-		  	break;  
-		case 'oldest':
-		  	$order_by = 'datetime';
-		  	$direction = 'asc';
-		  	break;
+    public function get_marks($order_by, $is_desc) {
+      $this->db->select('mark_id,title,url,contributor,value,username,contribution')
+      	 		 ->from('mark');
+  		if($this->_id){
+  			$this->db->where('theme_id', $this->_id);
+  		}
+  		$this->db->order_by($order_by, $is_desc);
+  		$this->db->join('auth_users', 'auth_users.id = contributor');
 
-		default:
-			show_error('Error in theme_model.get_marks: unknown cases!');
-		}
-
-    	$this->db->select('mark_id,title,url,contributor,value,username,contribution')
-    	 		 ->from('mark');
-		if($this->_id){
-			$this->db->where('theme_id', $this->_id);
-		}
-		$this->db->order_by($order_by, $direction);
-		$this->db->join('auth_users', 'auth_users.id = contributor');
-
-		$query = $this->db->get();
-		return $query->result();
+  		$query = $this->db->get();
+  		return $query->result();
     }
 
     public function get_all($order_by = 'like_num', $is_desc = true) {

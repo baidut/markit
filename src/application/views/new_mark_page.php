@@ -2,6 +2,8 @@
 
 <div class="container">
 
+<br/>
+
 <div class="row">
   <div class="col-lg-6">
     <div class="well">
@@ -31,12 +33,12 @@
 		    </div>
 		  </div>
 
-		  <div class="form-group">
-		    <?php echo lang('tag', 'select_tag', 'class="col-lg-2 control-label"');?>
+<!-- 		  <div class="form-group">
+		    <?php // echo lang('tag', 'select_tag', 'class="col-lg-2 control-label"');?>
 		    <div class="col-lg-10">
 		      尚不支持
 		    </div>
-		  </div>
+		  </div> -->
           
           <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">

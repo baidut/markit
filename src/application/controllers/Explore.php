@@ -60,12 +60,38 @@ class Explore extends MARKIT_Controller {
 	// 查看 marks 列表 或指定theme里的marks
 	// latest:
 	public function marks($theme_id = null, $order = 'newest') { 
+		switch ($order) {
+		case 'newest':
+		case 'latest':
+		  	$order_by = 'datetime';
+		  	$is_desc = true;
+		  	break;  
+		case 'oldest':
+		  	$order_by = 'datetime';
+		  	$is_desc = false;
+		  	break;
+
+		case 'hottest':
+		case 'most_value':
+		  	$order_by = 'value';
+		  	$is_desc = true;
+		  	break;
+		case 'coldest':
+		case 'least_value':
+		  	$order_by = 'value';
+		  	$is_desc = false;
+		  	break;
+
+		default:
+			show_error('Error in theme_model.get_all: unknown cases!');
+		}
+
 		
 		$this->load->model('theme_model');
 		$this->theme_model->select($theme_id);
 		$this->load->model('mark_model');
 		$this->load->model('user_model');
-		$data['marks'] 		= $this->theme_model->get_marks($order);
+		$data['marks'] 		= $this->theme_model->get_marks($order_by, $is_desc);
 		$data['theme_name'] = $this->theme_model->get_name();
 		$data['theme_id'] 	= $theme_id;
 		$data['user_id'] = $this->user_model->get_id();
