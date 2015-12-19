@@ -145,27 +145,40 @@ class User_model extends CI_Model{
 	}
 
 	public function vote_url($mark_id,$action) {
+		if($action!=1&&$action!=-1)return;  //assert failed 
 		//点赞/踩
 		$query=$this->db->select('type')->where('user_id', $this->_id)->where('mark_id', $mark_id)->get('vote');
 		$result=$query->row();
-		if($result){
-			$this->db->delete('vote',array('user_id'=>$this->_id,'mark_id'=>$mark_id));
-		}
-		$new_vote_insert = array(
+
+		if(!$result){
+			$new_vote_insert = array(
 				'user_id'=>$this->_id,
 				'mark_id'=>$mark_id,
 				'type'=>$action,
-		);
-		$this->db->insert('vote',$new_vote_insert);
-		//mark value+action
-		$this->db->set('value','value'+$action)
-				->where('mark_id',$mark_id)
-				->update('mark');
+			);
+			$this->db->insert('vote',$new_vote_insert);
+			//mark value + action
+			// 要加FALSE
+			$this->db->set('value',($action==1)?'value+1':'value-1', FALSE) // 'value'+'-1' 'value'+'1'  'value'+'-1'
+ 					->where('mark_id',$mark_id)
+					->update('mark');
+		}
+		else if($result->type == $action){
+			$this->db->delete('vote',array('user_id'=>$this->_id,'mark_id'=>$mark_id));
+			$this->db->set('value',($action==1)?'value-1':'value+1', FALSE) // cancel
+					->where('mark_id',$mark_id)
+					->update('mark');
+		}
+		else {
+			$this->db->update('vote',array('type'=>$action), array('user_id'=>$this->_id,'mark_id'=>$mark_id));
+			$this->db->set('value',($action==1)?'value+2':'value-2', FALSE)
+					->where('mark_id',$mark_id)
+					->update('mark');
+		}
 	}
 
-
     public function add_tag($name, $mark_id, $theme_id){
-		
+		// no theme selected
 		if(!$theme_id){
 			$query = $this->db->select('theme_id')
 							   ->where('mark_id', $mark_id)

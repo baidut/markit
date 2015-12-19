@@ -36,6 +36,7 @@ $lang['mark'] 			= '链接';
 $lang['submit'] 		= '提交';
 $lang['new'] 			= '新建';
 $lang['name'] 			= '名称';
+$lang['tag']      = '标签';
 
 // nav
 $lang['newest'] 		= '最新';
@@ -45,4 +46,13 @@ $lang['coldest'] 		= '冷门';
 $lang['most_mark_num'] 	= '资源最多';
 $lang['least_mark_num'] = '资源最少';
 $lang['select_theme']   = '选择主题';
+$lang['thx4sharing']    = '谢谢您的分享！';
+$lang['action']    		= '操作';
 
+// about mark
+
+$lang['upvote']    = '顶';
+$lang['downvote']  = '踩';
+$lang['vote']  = '投票';
+$lang['add_tag']   = '加标签';
+$lang['value']   = '价值';

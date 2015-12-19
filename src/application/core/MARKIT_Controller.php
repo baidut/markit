@@ -69,6 +69,10 @@ class MARKIT_Controller extends CI_Controller{
 		$_SESSION['cap']= $cap['word'];
 		return $cap['image'];
 	}
-	
+
+	function redirect_back() {
+		$referred_from = $this->session->userdata('referred_from');
+		redirect($referred_from, 'refresh');
+	}
 
 }

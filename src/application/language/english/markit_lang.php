@@ -35,6 +35,7 @@ $lang['mark'] 			= 'Mark';
 $lang['submit'] 		= 'Submit';
 $lang['new'] 			= 'New';
 $lang['name'] 			= 'Name';
+$lang['tag'] 			= 'Tag';
 
 // nav
 $lang['newest'] 		= 'Newest';
@@ -44,3 +45,12 @@ $lang['coldest'] 		= 'Coldest';
 $lang['most_mark_num'] 	= 'Most ☍';
 $lang['least_mark_num'] = 'Least ☍';
 $lang['select_theme']   = 'Select Theme';
+$lang['thx4sharing']    = 'Thanks for sharing!';
+$lang['action']    		= 'Action';
+
+$lang['upvote']    = 'Upvote';
+$lang['downvote']  = 'Downvote';
+$lang['vote']  = 'Vote';
+$lang['add_tag']   = 'Add Tag';
+$lang['value']   = 'Value';
+

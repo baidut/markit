@@ -6,7 +6,7 @@
     <!-- "user/new_mark/".$theme_id -->
       <?php echo form_open("user/contrib_mark/", 'class="form-horizontal" ') ?>
         <fieldset>
-          <legend><?php echo lang('new').lang('mark') ?></legend>
+          <legend><?php echo lang('new').' '.lang('mark') ?></legend>
 
           <div class="form-group">
             <?php echo lang('title', 'title', 'class="col-lg-2 control-label"') ?>
@@ -32,7 +32,7 @@
 		  <div class="form-group">
 		    <?php echo lang('tag', 'select_tag', 'class="col-lg-2 control-label"');?>
 		    <div class="col-lg-10">
-		       <?php echo form_dropdown('tag_id', $opt_themes, null, 'class="form-control" id="select_tag"') ?>
+		      尚不支持
 		    </div>
 		  </div>
           

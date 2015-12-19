@@ -50,6 +50,7 @@
 *************************************************************************/
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+$this->session->set_userdata('referred_from', current_url());
 ?><!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -72,6 +73,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <style>
 	body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;}
 	</style>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- jquery 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+  });
+  </script>-->
 
 	<!-- Fork me on GitHub -->
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css" />

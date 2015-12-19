@@ -54,7 +54,7 @@ class Ui extends MARKIT_Controller {
 	}
 	public function language($lang) {
 		$this->session->lang = $lang;
-		redirect('explore/themes', 'refresh'); // 设置语言后页面变化。。需要传入当前页面信息
+		$this->redirect_back(); // 设置语言后页面变化。。需要传入当前页面信息
 		// echo '<script language=\"javascript\">alert("ok");location.href = "javascript:history.go(-2);"</script>';
 	}
 }

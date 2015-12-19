@@ -23,19 +23,37 @@ class User extends MARKIT_Controller {
 		redirect('explore/themes', 'refresh');
 	}
 
-	public function contrib2theme($theme_id) {
-		$data['theme_id'] = $theme_id;
-		$this->load->view('new_mark_page', $data);
-
-	}
-
-	public function contrib() {
-		$data['opt_themes'] = $this->user_model->liked_theme();
+	public function contrib($theme_id = null, $theme_name = null) {
+		if($theme_id && $theme_name){
+			$data['opt_themes'] = array($theme_id=>urldecode($theme_name));
+		} else {
+			$data['opt_themes'] = $this->user_model->liked_theme();
+		}
 		$data['mark_url'] = urldecode($this->input->get('url')); // $mark_url
 		$data['mark_title'] = urldecode($this->input->get('title')); // $mark_title
 		// print_r($data['opt_themes']);
 		$this->load->view('new_mark_page', $data);
 	}
+	public function contrib_mark() {
+
+		$this->form_validation->set_rules('title', 'title', 'required');
+		$this->form_validation->set_rules('url', 'url', 'required');
+
+		if ($this->form_validation->run() == FALSE) {
+			show_error('填写不正确');
+			$this->session->set_flashdata('message', $this->ion_auth->errors());
+			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$this->load->view('user/contrib_mark', $data);
+			// redirect('user/contrib_mark', 'refresh');
+		} else {
+			$this->user_model->new_mark(
+	    		$this->input->post('title'),
+	    		$this->input->post('url'),
+	    		$this->input->post('theme_id'));
+			redirect('explore/marks/'.$this->input->post('theme_id').'/newest', 'refresh');
+		}
+	}
+
 	// user/new_mark
 	public function new_mark($theme_id) {
 
@@ -80,6 +98,6 @@ class User extends MARKIT_Controller {
 
 	public function vote_mark($action,$mark_id) {
 		$this->user_model->vote_url($mark_id,$action);
-		redirect('explore/marks','refresh');
+		$this->redirect_back(); 
 	}
 }

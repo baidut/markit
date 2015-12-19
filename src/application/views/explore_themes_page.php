@@ -18,8 +18,10 @@
 				<td><?php echo '☍'.$th->mark_num;?></td>
 	            <td><?php echo anchor('explore/marks/'.$th->id, $th->theme_name);?></td>
 				<td>
-				  <?php echo anchor('user/contrib2theme/'.$th->id, lang('contrib_mark') ) ?>
-				  <?php echo anchor('user/like_theme/'.$th->id, lang('like') ) ?>
+					<div class="btn-group">
+				    <?php echo anchor('user/contrib/'.$th->id.'/'.$th->theme_name, lang('contrib_mark'), 'class="btn btn-xs"') ?>
+				    <?php echo anchor('user/like_theme/'.$th->id, lang('like'), 'class="btn btn-xs"') ?>
+				  </div>
 				</td>
 			</tr>
 		<?php endforeach;?>
