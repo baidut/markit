@@ -61,7 +61,10 @@ $this->session->set_userdata('referred_from', current_url());
     <title><?php echo isset($title)?$title:lang('markit'); ?></title>
 
     <!-- Bootstrap -->
-    <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url().'css/bootswatch/'.($this->session->has_userdata('style')?($this->session->style):'default').'/bootstrap.min.css' ?>"> 
+
+    
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,7 +89,7 @@ $this->session->set_userdata('referred_from', current_url());
   });
   </script>-->
 
-  <!-- Bootswatch -->
+  <!-- Bootswatch style -->
   <link rel="stylesheet" href="<?php echo base_url('css/custom.min.css') ?>">
 
 	<!-- Fork me on GitHub -->
@@ -270,14 +273,92 @@ $this->session->set_userdata('referred_from', current_url());
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="download">
+              
                 <li>
-                  <a href="<?php echo base_url('ui/language/zh_cn') ?>">
+                  <a href="<?php echo base_url('ui/style/default') ?>">
+                    default
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/cerulean') ?>">
+                    cerulean
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/cosmo') ?>">
+                    cosmo
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/flatly') ?>">
+                    flatly
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/journal') ?>">
+                    journal
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/journal') ?>">
+                    lumen
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/paper') ?>">
+                    paper
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/readable') ?>">
+                    readable
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/sandstone') ?>">
+                    sandstone
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/simplex') ?>">
+                    simplex
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/spacelab') ?>">
+                    spacelab
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/united') ?>">
                     united
                   </a>
                 </li>
                 <li>
-                  <a href="<?php echo base_url('ui/language/english') ?>">
-                    paper
+                  <a href="<?php echo base_url('ui/style/yeti') ?>">
+                    yeti
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/cyborg') ?>">
+                    cyborg
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/darkly') ?>">
+                    darkly
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/slate') ?>">
+                    slate
+                  </a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('ui/style/superhero') ?>">
+                    superhero
                   </a>
                 </li>
               </ul>

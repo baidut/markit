@@ -65,8 +65,8 @@
 	          </a>
 	        </div>
 	        <div class="options">
-	          <h3><?php echo $th->theme_name ?></h3>
-	          <p>blablabla</p>
+	          <h4><?php echo $th->theme_name ?></h4> <!-- h3 -->
+	          <!-- <p>blablabla</p> -->
 	          <div class="btn-group">
 		          <?php
 			  					if($user_id = $this->session->userdata('user_id')){

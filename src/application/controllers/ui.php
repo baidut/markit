@@ -63,6 +63,10 @@ class Ui extends MARKIT_Controller {
     $this->session->view_mode = $mode;
     $this->redirect_back();
   }
+  public function style($s) {
+    $this->session->style = $s;
+    $this->redirect_back();
+  }
 
 
 }
