@@ -13,7 +13,15 @@
 	<tbody>
 		<?php foreach ($themes as $th):?>
 			<tr>
-				<td><?php echo anchor('user/like_theme/'.$th->id, '❤')
+				<td>
+				<?php
+  					if($user_id = $this->session->userdata('user_id')){
+              $query=$this->db->select('theme_id')->where('user_id', $user_id)->where('theme_id', $th->id)->get('user_like_theme');
+    					$liked = ($query->row())?true:false;
+            }
+            else $liked = null;
+        ?>
+				<?php echo anchor('user/like_theme/'.$th->id, $liked?'❤':'♡')
 				.$th->like_num;?></td>
 				<td><?php echo '☍'.$th->mark_num;?></td>
 	            <td><?php echo anchor('explore/marks/'.$th->id, $th->theme_name);?></td>

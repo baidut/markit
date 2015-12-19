@@ -185,7 +185,7 @@ $this->session->set_userdata('referred_from', current_url());
           <ul class="nav navbar-nav navbar-right">
 
           	<?php if ($this->session->userdata('user_id')): ?>
-              
+            <?php $user_id = $this->session->userdata('user_id'); ?>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="li_user">
                 <?php echo $this->session->userdata('username') ?>
