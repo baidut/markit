@@ -1,6 +1,6 @@
 <?php $this->load->view('includes/header'); ?>
 
-<?php if(0): ?>
+<?php if($this->session->has_userdata('view_mode') && $this->session->view_mode == 'list'): ?>
 
 <br/>
 
@@ -66,7 +66,7 @@
 	        </div>
 	        <div class="options">
 	          <h3><?php echo $th->theme_name ?></h3>
-	          <p>Silvery and sleek</p>
+	          <p>blablabla</p>
 	          <div class="btn-group">
 		          <?php
 			  					if($user_id = $this->session->userdata('user_id')){

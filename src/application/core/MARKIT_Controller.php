@@ -75,4 +75,9 @@ class MARKIT_Controller extends CI_Controller{
 		redirect($referred_from, 'refresh');
 	}
 
+	function render_page($page, $data) {
+		$data['view_mode'] = $this->session->userdata('view_mode');
+		$this->load->view($page, $data);
+	}
+
 }

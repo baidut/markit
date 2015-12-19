@@ -1,5 +1,7 @@
 <?php $this->load->view('includes/header'); ?>
 
+<div class="container">
+
 <div class="well bs-component">
   <?php echo form_open("auth/create_user");?>
     <fieldset>
@@ -73,6 +75,8 @@
       </div>
     </fieldset>
   <?php echo form_close();?>
+</div>
+
 </div>
 
 <?php $this->load->view('includes/footer'); ?>

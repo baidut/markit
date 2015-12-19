@@ -1,5 +1,7 @@
 <?php $this->load->view('includes/header'); ?>
 
+<div class="container">
+
 <h1><?php echo lang('forgot_password_heading');?></h1>
 
 
@@ -17,5 +19,7 @@
       <p><?php echo form_submit('submit', lang('forgot_password_submit_btn'));?></p>
 
 <?php echo form_close();?>
+
+</div>
 
 <?php $this->load->view('includes/footer'); ?>

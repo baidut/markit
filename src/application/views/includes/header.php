@@ -211,7 +211,7 @@ $this->session->set_userdata('referred_from', current_url());
 
                 <li class="divider"></li>
                 <li>
-                  <?php echo anchor('auth/logout', '<i class="fa fa-sign-out"></i>'.lang('logout')); ?>
+                  <?php echo anchor('auth/logout', '<i class="fa fa-sign-out"></i> '.lang('logout')); ?>
                 </li>
 
               </ul>
@@ -219,7 +219,7 @@ $this->session->set_userdata('referred_from', current_url());
         	  
             <?php else: ?>
             
-            <li><?php echo anchor('auth/login', '<i class="fa fa-sign-in"></i>'.lang('login')) ?>
+            <li><?php echo anchor('auth/login', '<i class="fa fa-sign-in"></i> '.lang('login')) ?>
             </li>
             <li><?php echo anchor('auth/create_user', lang('register')) ?>
             </li>
@@ -252,12 +252,12 @@ $this->session->set_userdata('referred_from', current_url());
               </a>
               <ul class="dropdown-menu" aria-labelledby="download">
                 <li>
-                  <a href="<?php echo base_url('ui/language/zh_cn') ?>">
+                  <a href="<?php echo base_url('ui/view_mode/list') ?>">
                     <?php echo lang('list') ?>
                   </a>
                 </li>
                 <li>
-                  <a href="<?php echo base_url('ui/language/english') ?>">
+                  <a href="<?php echo base_url('ui/view_mode/card') ?>">
                     <?php echo lang('card') ?>
                   </a>
                 </li>

@@ -16,8 +16,8 @@
 ?>
   <div class="container">
 
-    <!-- Footer
-    ================================================== -->
+<!-- Footer
+================================================== -->
     <footer class="footer">
       <div class="container">
         <p>Designed and built with all the love in the world by <a href="https://github.com/baidut/markit/watchers" target="_blank">OO Team-3</a>.</p>
@@ -29,6 +29,8 @@
 
     </div>
 
+<!-- Bootstrap core JavaScript
+================================================== -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

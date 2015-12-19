@@ -52,10 +52,18 @@ class Ui extends MARKIT_Controller {
 	public function index() {
 		
 	}
+
+  // 可以使用魔术方法 避免重复
 	public function language($lang) {
 		$this->session->lang = $lang;
 		$this->redirect_back(); // 设置语言后页面变化。。需要传入当前页面信息
 		// echo '<script language=\"javascript\">alert("ok");location.href = "javascript:history.go(-2);"</script>';
 	}
+  public function view_mode($mode) {
+    $this->session->view_mode = $mode;
+    $this->redirect_back();
+  }
+
+
 }
 		

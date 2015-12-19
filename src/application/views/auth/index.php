@@ -1,5 +1,7 @@
 <?php $this->load->view('includes/header'); ?>
 
+<div class="container">
+
 <h1><?php echo lang('index_heading');?></h1>
 <p><?php echo lang('index_subheading');?></p>
 
@@ -31,5 +33,7 @@
 </table>
 
 <p><?php echo anchor('auth/create_user', lang('index_create_user_link'))?> | <?php echo anchor('auth/create_group', lang('index_create_group_link'))?></p>
+
+</div>
 
 <?php $this->load->view('includes/footer'); ?>

@@ -1,5 +1,10 @@
 <?php $this->load->view('includes/header'); ?>
 
+<div class="container">
+
+<br/>
+<br/>
+
 <div class="row">
   <div class="col-lg-6">
     <div class="well">
@@ -40,6 +45,8 @@
 	  </p>
 	</div>
   </div>
+
+</div>
 
 </div>
 

@@ -1,5 +1,7 @@
 <?php $this->load->view('includes/header'); ?>
 
+<div class="container">
+
 <div class="row">
   <div class="col-lg-6">
     <div class="well">
@@ -25,6 +27,8 @@
       <?php echo form_close();?>
     </div>
   </div>
+
+</div>
 
 </div>
 
