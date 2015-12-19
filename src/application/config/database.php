@@ -70,8 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
-$query_builder = TRUE;
+// $active_group = 'local'; // default
+// $query_builder = TRUE;
 
 // $db['default'] = array(
 	// 'dsn'	=> '',
@@ -95,7 +95,34 @@ $query_builder = TRUE;
 	// 'save_queries' => TRUE
 // );
 
-$db['default'] = array(
+if(defined('SAE_MYSQL_HOST_M')){
+	
+	$active_group = 'sae'; // default
+	$query_builder = TRUE;
+
+	$db['sae']['hostname'] = SAE_MYSQL_HOST_M;//主库
+	$db['sae']['hostname_s'] = SAE_MYSQL_HOST_S;//从库 
+	$db['sae']['username'] = SAE_MYSQL_USER;
+	$db['sae']['password'] = SAE_MYSQL_PASS;
+	$db['sae']['database'] = SAE_MYSQL_DB;
+	$db['sae']['port'] = SAE_MYSQL_PORT;
+	$db['sae']['dbdriver'] = 'mysql';
+	$db['sae']['dbprefix'] = '';
+	$db['sae']['pconnect'] = FALSE;
+	$db['sae']['db_debug'] = TRUE;
+	$db['sae']['cache_on'] = FALSE;
+	$db['sae']['cachedir'] = ''; //SAE数据库缓存, 使用kvdb进行缓存. 此配置值为key前缀, 例如 "dbcache_". 若不设置, 则不缓存
+	$db['sae']['char_set'] = 'utf8';
+	$db['sae']['dbcollat'] = 'utf8_general_ci';
+	$db['sae']['swap_pre'] = '';
+	$db['sae']['autoinit'] = TRUE;
+	$db['sae']['stricton'] = FALSE;
+} else {
+	
+$active_group = 'local'; // default
+$query_builder = TRUE;
+
+$db['local'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
@@ -116,3 +143,6 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+}
+
