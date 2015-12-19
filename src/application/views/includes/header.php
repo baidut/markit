@@ -75,7 +75,9 @@ $this->session->set_userdata('referred_from', current_url());
 	</style>
 
   <!-- fontawesome -->
+  <!-- https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
 
   <!-- jquery 
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
@@ -83,6 +85,9 @@ $this->session->set_userdata('referred_from', current_url());
   $(document).ready(function(){
   });
   </script>-->
+
+  <!-- Bootswatch -->
+  <link rel="stylesheet" href="<?php echo base_url('css/custom.min.css') ?>">
 
 	<!-- Fork me on GitHub -->
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css" />
@@ -105,7 +110,7 @@ $this->session->set_userdata('referred_from', current_url());
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="https://bootswatch.com/" class="navbar-brand"><?php echo lang('markit') ?></a>
+          <a href="<?php echo base_url()?>" class="navbar-brand"><?php echo lang('markit') ?></a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -188,7 +193,7 @@ $this->session->set_userdata('referred_from', current_url());
             <?php $user_id = $this->session->userdata('user_id'); ?>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="li_user">
-                <?php echo $this->session->userdata('username') ?>
+                <i class="fa fa-user fa-fw"></i> <?php echo $this->session->userdata('username') ?>
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="li_user">
@@ -206,7 +211,7 @@ $this->session->set_userdata('referred_from', current_url());
 
                 <li class="divider"></li>
                 <li>
-                  <?php echo anchor('auth/logout', lang('logout')); ?>
+                  <?php echo anchor('auth/logout', '<i class="fa fa-sign-out"></i>'.lang('logout')); ?>
                 </li>
 
               </ul>
@@ -214,7 +219,7 @@ $this->session->set_userdata('referred_from', current_url());
         	  
             <?php else: ?>
             
-            <li><?php echo anchor('auth/login', lang('login')) ?>
+            <li><?php echo anchor('auth/login', '<i class="fa fa-sign-in"></i>'.lang('login')) ?>
             </li>
             <li><?php echo anchor('auth/create_user', lang('register')) ?>
             </li>
@@ -315,11 +320,3 @@ $this->session->set_userdata('referred_from', current_url());
   </div>
 </div>
 <?php echo form_close();?>
-
-    <div class="container">
-
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-

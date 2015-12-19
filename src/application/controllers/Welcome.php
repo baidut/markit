@@ -21,6 +21,7 @@ class Welcome extends MARKIT_Controller {
 	public function index() {
 		// $this->load->helper(array('url','language'));
 		// $this->lang->load('markit');
-		redirect('explore/themes', 'refresh');
+		// redirect('explore/themes', 'refresh');
+		$this->load->view('welcome_page');
 	}
 }
