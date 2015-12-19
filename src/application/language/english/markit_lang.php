@@ -53,4 +53,5 @@ $lang['downvote']  = 'Downvote';
 $lang['vote']  = 'Vote';
 $lang['add_tag']   = 'Add Tag';
 $lang['value']   = 'Value';
+$lang['contribution']   = 'Contribution';
 

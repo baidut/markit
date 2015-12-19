@@ -17,7 +17,7 @@ class User extends MARKIT_Controller {
 			// redirect them to the login page
 			redirect('auth/login', 'refresh');
 		}
-    }
+  }
 
 	public function index() {
 		redirect('explore/themes', 'refresh');
@@ -78,7 +78,7 @@ class User extends MARKIT_Controller {
 		$this->load->view('new_tag_page', $data);
 	}
 
-	public function add_tag($mark_id, $theme_id = 0) {
+	public function add_tag($mark_id, $theme_id = null) {
 		$this->user_model->add_tag(
 			$this->input->post('name'), $mark_id, $theme_id);
 		redirect('explore/marks/'.$theme_id, 'refresh');

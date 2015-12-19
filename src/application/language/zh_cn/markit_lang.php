@@ -56,3 +56,4 @@ $lang['downvote']  = '踩';
 $lang['vote']  = '投票';
 $lang['add_tag']   = '加标签';
 $lang['value']   = '价值';
+$lang['contribution']   = '贡献值';

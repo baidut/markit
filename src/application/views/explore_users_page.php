@@ -1,27 +1,46 @@
 <?php $this->load->view('includes/header'); ?>
 
-<h1>Contribution leaderboard</h1>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="well">
+    	<table class="table table-striped table-hover ">
+			  <thead>
+			    <tr>
+			      <th><?php echo lang('contributor')?></th>
+			      <th><?php echo lang('contribution') ?></th>
+			    </tr>
+			  </thead>
+				<tbody>
+					<?php foreach ($users as $user):?>
+					<tr>
+						<td><?php echo htmlspecialchars($user->username,ENT_QUOTES,'UTF-8'); ?></td>
+						<td><?php echo htmlspecialchars($user->contribution,ENT_QUOTES,'UTF-8'); ?></td>
+					</tr>
+					<?php endforeach;?>
+				</tbody>
+			</table>
+    </div>
+  </div>
 
-<pre>
-You.contrib(mark_xxx);
-if( Someone.vote_up(mark_xxx) ){
-	You.contribution ++;
-} 
-if( Someone.vote_down(mark_xxx) ){
-	You.contribution --;
-}
-this.show_leaderboard();
-</pre>
+  <div class="col-lg-4 col-lg-offset-1">
+	<div class="alert alert-dismissible alert-info">
+  	  <button type="button" class="close" data-dismiss="alert">×</button>
+  	  <h4>如何提高贡献值</h4>
+	  <p>
+	  	分享有价值的链接，
+	  </p>
+	  <p>
+	  	每被他人顶1次，就获得1贡献值;
+	  </p>
+	  <p>
+		  每被他人踩1次，就失去1贡献值。
+		</p>
+	  <p>
+		  (偷偷告诉你，自己也可以顶自己哦)
+	  </p>
+	</div>
+  </div>
 
-<table class="table table-striped table-hover ">
-	<tbody>
-	<?php foreach ($users as $user):?>
-		<tr>
-			<td><?php echo htmlspecialchars($user->username,ENT_QUOTES,'UTF-8'); ?></td>
-			<td><?php echo htmlspecialchars($user->contribution,ENT_QUOTES,'UTF-8'); ?></td>
-		</tr>
-	<?php endforeach;?>
-	</tbody>
-</table>
+</div>
 
 <?php $this->load->view('includes/footer'); ?>

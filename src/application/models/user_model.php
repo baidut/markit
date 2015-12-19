@@ -146,6 +146,14 @@ class User_model extends CI_Model{
 
 	public function vote_url($mark_id,$action) {
 		if($action!=1&&$action!=-1)return;  //assert failed 
+
+		// get mark contributor
+		$query = $this->db->select('contributor')
+						   ->where('mark_id', $mark_id)
+						   ->get('mark');
+		$result = $query->row();
+		$contributor = $result->contributor;
+
 		//点赞/踩
 		$query=$this->db->select('type')->where('user_id', $this->_id)->where('mark_id', $mark_id)->get('vote');
 		$result=$query->row();
@@ -159,22 +167,28 @@ class User_model extends CI_Model{
 			$this->db->insert('vote',$new_vote_insert);
 			//mark value + action
 			// 要加FALSE
-			$this->db->set('value',($action==1)?'value+1':'value-1', FALSE) // 'value'+'-1' 'value'+'1'  'value'+'-1'
- 					->where('mark_id',$mark_id)
-					->update('mark');
+			$add = ($action==1)?'+1':'-1';
+
 		}
 		else if($result->type == $action){
 			$this->db->delete('vote',array('user_id'=>$this->_id,'mark_id'=>$mark_id));
-			$this->db->set('value',($action==1)?'value-1':'value+1', FALSE) // cancel
-					->where('mark_id',$mark_id)
-					->update('mark');
+			$add = ($action==1)?'-1':'+1';
 		}
 		else {
 			$this->db->update('vote',array('type'=>$action), array('user_id'=>$this->_id,'mark_id'=>$mark_id));
-			$this->db->set('value',($action==1)?'value+2':'value-2', FALSE)
-					->where('mark_id',$mark_id)
-					->update('mark');
+			$add = ($action==1)?'+2':'-2';
 		}
+
+		// update mark value and contribution
+
+		$this->db->set('value','value'.$add, FALSE) // 'value'+'-1' 'value'+'1'  'value'+'-1'
+					->where('mark_id',$mark_id)
+				->update('mark');
+
+		// contribution
+		$this->db->set('contribution','contribution'.$add, FALSE) // 'value'+'-1' 'value'+'1'  'value'+'-1'
+					->where('id',$contributor)
+				->update('auth_users');
 	}
 
     public function add_tag($name, $mark_id, $theme_id){
@@ -186,7 +200,8 @@ class User_model extends CI_Model{
 			$result = $query->row();
 			$theme_id = $result->theme_id;
 		}
-		
+
+		// 
      	$query1 = $this->db->select('id, tag_name')
 		 		->where('tag_name', $name)
 		 		->get('tag');
