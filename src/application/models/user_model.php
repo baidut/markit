@@ -186,12 +186,13 @@ class User_model extends CI_Model{
 			$result = $query->row();
 			$theme_id = $result->theme_id;
 		}
-		
+		//result1 judge whether there is tag
      	$query1 = $this->db->select('id, tag_name')
 		 		->where('tag_name', $name)
 		 		->get('tag');
 		$result1 = $query1->row();
 		
+		//result2 judge whether mark have this tag
 		if($result1){
      		$query2 = $this->db->select('markid, tagid')
 		 			->where('tagid', $result1->id)
