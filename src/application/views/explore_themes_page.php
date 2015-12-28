@@ -61,13 +61,7 @@
 	      <div class="preview">
               <div class="image" >
 	          <a href="<?php echo base_url('explore/marks/'.$th->id);?>"> 
-                  
-                  <?php if(         file_exists($_SERVER['DOCUMENT_ROOT'].'/img/'.$th->theme_name.'.jpg')           ) $img_src = base_url('/img/'.$th->theme_name.'.jpg'); 
-                           else $img_src = base_url('/img/default.jpg');
-                  
-                  
-                  ?>
-                  <img class="img-responsive" blabla="<?php echo base_url('/img/'.$th->id.'.jpg').$_SERVER['DOCUMENT_ROOT'] ?>" src="<?php echo $img_src ?>" alt="<?php echo urlencode($th->theme_name) ?>">
+              <img class="img-responsive" src="<?php echo base_url('/img/'.$th->theme_name.'.jpg'); ?>" onerror="this.src='<?php echo base_url('/img/default.jpg'); ?>'"" alt="<?php echo urlencode($th->theme_name) ?>">
 	          </a>
 	        </div>
 	        <div class="options">
