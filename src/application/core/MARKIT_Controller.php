@@ -18,12 +18,14 @@
 class MARKIT_Controller extends CI_Controller{
 	function __construct(){
 		parent::__construct();
+        
+        session_start();
 
 		/// 调整配置
 		// 优先为用户设定的语言
 		// $idiom = $this->session->get_userdata('language');
 		// print_r($idiom);
-		$this->load->library('session');
+        //$this->load->library('session');
 
 		// 默认为浏览器语言
 		//判断浏览器语言
@@ -32,9 +34,19 @@ class MARKIT_Controller extends CI_Controller{
 		$default_lang = $strarr[0]; // zh-CN
 		// zh-CN zh_cn
 		$lang = str_replace('-', '_', strtolower($default_lang));
+        
+        // 目前仅提供两种语言
+        switch($lang){
+            case 'zh_cn':
+            case 'english':
+           		break;
+            default:
+            $lang = 'english';
+            break;
+        }
 
-		if($this->session->has_userdata('lang')){
-			$lang = $this->session->lang;
+		if(isset($_SESSION['lang'])){
+			$lang =$_SESSION['lang'];
 		}
 
 		// 设置为该语言
@@ -71,8 +83,14 @@ class MARKIT_Controller extends CI_Controller{
 	}
 
 	function redirect_back() {
-		$referred_from = $this->session->userdata('referred_from');
+        
+        if(isset($_SESSION['referred_from'])){
+        $referred_from = $_SESSION['referred_from']; //$this->session->userdata('referred_from');
 		redirect($referred_from, 'refresh');
+        } else {
+            redirect('explore/themes', 'refresh');
+        }
+        
 	}
 
 	function render_page($page, $data) {

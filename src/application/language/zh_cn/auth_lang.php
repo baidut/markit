@@ -25,8 +25,8 @@ $lang['error_csrf'] = '该表单提交未通过我们的安全性检查.';
 
 // Login
 $lang['login_heading']         = '登录';
-$lang['login_subheading']      = '请输入下列的邮箱/用户名和密码进行登录.';
-$lang['login_identity_label']  = '邮箱/用户名:';
+$lang['login_subheading']      = '请输入下列的邮箱和密码进行登录.'; // /用户名
+$lang['login_identity_label']  = '邮箱:'; // /用户名
 $lang['login_password_label']  = '密码:';
 $lang['login_remember_label']  = '记住我:';
 $lang['login_submit_btn']      = '登录';

@@ -55,16 +55,20 @@ class Ui extends MARKIT_Controller {
 
   // 可以使用魔术方法 避免重复
 	public function language($lang) {
-		$this->session->lang = $lang;
+        // $this->session->lang = $lang;
+        $_SESSION['lang'] = $lang;
 		$this->redirect_back(); // 设置语言后页面变化。。需要传入当前页面信息
 		// echo '<script language=\"javascript\">alert("ok");location.href = "javascript:history.go(-2);"</script>';
 	}
   public function view_mode($mode) {
-    $this->session->view_mode = $mode;
+      // $this->session->view_mode = $mode;
+    $_SESSION['view_mode'] = $mode;
     $this->redirect_back();
   }
   public function style($s) {
-    $this->session->style = $s;
+      // $this->session->style = $s;
+      $_SESSION['style'] = $s;
+      // $this->session->set_userdata('style',$);
     $this->redirect_back();
   }
 

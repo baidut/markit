@@ -11,7 +11,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1 style='color:white'>Free themes for Bootstrap</h1>
+        <h1 style='color:white'>Explore your interests and MARK IT!</h1>
         <div id="social">
           <span>
             <iframe id="gh-fork" src="https://ghbtns.com/github-btn.html?user=baidut&repo=markit&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>

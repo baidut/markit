@@ -1,6 +1,6 @@
 <?php $this->load->view('includes/header'); ?>
 
-<?php if($this->session->has_userdata('view_mode') && $this->session->view_mode == 'list'): ?>
+<?php if(isset($_SESSION['view_mode']) && $_SESSION['view_mode'] == 'list'): ?>
 
 <br/>
 
@@ -59,9 +59,15 @@
 
 	    <div class="col-lg-4 col-sm-6">
 	      <div class="preview">
-	        <div class="image">
+              <div class="image" >
 	          <a href="<?php echo base_url('explore/marks/'.$th->id);?>"> 
-	          	<img class="img-responsive" src="<?php echo base_url('img/default.jpg')?>" alt="<?php echo $th->theme_name ?>">
+                  
+                  <?php if(         file_exists($_SERVER['DOCUMENT_ROOT'].'/img/'.$th->theme_name.'.jpg')           ) $img_src = base_url('/img/'.$th->theme_name.'.jpg'); 
+                           else $img_src = base_url('/img/default.jpg');
+                  
+                  
+                  ?>
+                  <img class="img-responsive" blabla="<?php echo base_url('/img/'.$th->id.'.jpg').$_SERVER['DOCUMENT_ROOT'] ?>" src="<?php echo $img_src ?>" alt="<?php echo urlencode($th->theme_name) ?>">
 	          </a>
 	        </div>
 	        <div class="options">

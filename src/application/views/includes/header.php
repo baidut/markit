@@ -48,9 +48,9 @@
 
 	
 *************************************************************************/
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-$this->session->set_userdata('referred_from', current_url());
+
+$_SESSION['referred_from'] = current_url();
 ?><!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -61,7 +61,7 @@ $this->session->set_userdata('referred_from', current_url());
     <title><?php echo isset($title)?$title:lang('markit'); ?></title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="<?php echo base_url().'css/bootswatch/'.($this->session->has_userdata('style')?($this->session->style):'default').'/bootstrap.min.css' ?>"> 
+    <link rel="stylesheet" href="<?php echo base_url().'css/bootswatch/'.(isset($_SESSION['style'])?($_SESSION['style']):'default').'/bootstrap.min.css' ?>"> 
 
 
 
@@ -148,13 +148,12 @@ $this->session->set_userdata('referred_from', current_url());
                 <li>
                   <?php echo anchor('explore/themes/least_mark_num', lang('least_mark_num'));?>
                 </li>
-                
+                <li class="divider"></li>
                 <li>
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
-                    <?php echo lang('new').' '.lang('theme'); ?>
-                  </button>
+                  <?php echo anchor('#', lang('new').' '.lang('theme'), 'data-toggle="modal" data-target="#myModal"');?>
                 </li>
+                
               </ul>
             </li>
 
@@ -167,20 +166,20 @@ $this->session->set_userdata('referred_from', current_url());
               <ul class="dropdown-menu" aria-labelledby="li_theme">
                 <li>
                   <a href="<?php echo base_url('ui/language/zh_cn') ?>">
-                    <?php echo anchor('explore/markes/newest', lang('newest'));?>
+                    <?php echo anchor('explore/marks/newest', lang('newest'));?>
                   </a>
                 </li>
                 <li>
                   <a href="<?php echo base_url('ui/language/zh_cn') ?>">
-                    <?php echo anchor('explore/markes/oldest', lang('oldest'));?>
+                    <?php echo anchor('explore/marks/oldest', lang('oldest'));?>
                   </a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <?php echo anchor('explore/markes/hottest', lang('hottest'));?>
+                  <?php echo anchor('explore/marks/hottest', lang('hottest'));?>
                 </li>
                 <li>
-                  <?php echo anchor('explore/markes/coldest', lang('coldest'));?>
+                  <?php echo anchor('explore/marks/coldest', lang('coldest'));?>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -193,7 +192,7 @@ $this->session->set_userdata('referred_from', current_url());
             	<?php echo anchor('explore/users', lang('contributor'));?>
             </li>
             <li>
-              <?php echo anchor('#', lang('help'));?>
+                <a href='http://markit.sinaapp.com/html/'><?php echo lang('help') ?></a>
             </li>
           </ul>
 

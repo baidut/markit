@@ -90,7 +90,7 @@ class User_model extends CI_Model{
 			show_error('Error in user_model.get_leaderboard: unknown cases!');
 		}
 
-		$query = $this->db->select('id, username, contribution')
+		$query = $this->db->select('id, username, contribution')->order_by($order_by, $direction)
 		                  ->get('auth_users');
 
 		return $query->result();

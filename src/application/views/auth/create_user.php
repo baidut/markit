@@ -8,7 +8,14 @@
     <fieldset>
       <legend><?php echo lang('create_user_heading');?></legend>
       <p><?php echo lang('create_user_subheading');?></p>
-      <div id="infoMessage"><?php echo $message;?></div>
+      
+       <?php if($message) :?>
+          <div class="alert alert-dismissible alert-danger" id="infoMessage">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <?php echo $message;?>
+          </div>
+          <?php endif; ?> 
+        
       <div class="form-group">
         <?php echo lang('create_user_fname_label', 'first_name', 'class="col-lg-2 control-label"');?>
         <div class="col-lg-10">

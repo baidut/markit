@@ -7,7 +7,7 @@
 	</div>
 <?php endif ?>
 
-<?php if($this->session->has_userdata('view_mode') && $this->session->view_mode == 'list'): ?>
+<?php if(isset($_SESSION['view_mode']) && $_SESSION['view_mode'] == 'list'): ?>
 
 <br/>
 
@@ -34,11 +34,12 @@
   				<td>
             <div class="btn-group-vertical">
   					  <?php
-    					if($user_id=$this->session->user_id){
+    if($user_id = $this->session->userdata('user_id')){ //if(isset($_SESSION['user_id']) ){ $user_id = $_SESSION['user_id'];
+    				
                 $query=$this->db->select('type')->where('user_id', $user_id)->where('mark_id', $mk->mark_id)->get('vote');
       					$avote =$query->row();
               }
-              else $avote = null;
+else { $avote = null;}
               ?>
               <?php echo anchor('user/vote_mark/1/'.$mk->mark_id, '<i class="fa fa-chevron-up"></i><br/>'.$mk->value,'class="btn btn-xs '.(($avote&&$avote->type==1)?'btn-primary':'').'"' ); ?>
               <?php echo anchor('user/vote_mark/-1/'.$mk->mark_id, '<i class="fa fa-chevron-down"></i>','class="btn btn-xs '.(($avote&&$avote->type==-1)?'btn-primary':'').'"' ); ?>
@@ -136,43 +137,43 @@
       <div class="col-lg-4 col-sm-6">
         <div class="preview">
 
-          <div class="options" style="height:200px">
+          <div class="options" style="height:160px">
             <!-- icon -->
-            <h4 style='text-overflow: ellipsis;overflow:hidden;display: -webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;'>
+            <h4 style='text-overflow: ellipsis;overflow:hidden;display: -webkit-box;-webkit-line-clamp:4;-webkit-box-orient: vertical;'>
+
               <div class="btn-group">
-                <?php echo anchor('#', '<i class="fa fa-user"></i>','class="btn btn-xs btn-primary"')?>
-                <?php echo anchor('#', $mk->username,'class="btn btn-xs"')?>
+                <?php echo anchor('#', '<i class="fa fa-user"></i>','class="btn btn-primary disabled btn-xs"')?>
+                <?php echo anchor('#', $mk->username,'class="btn disabled btn-xs btn-primary "')?>
                 <?php // echo anchor('#', $mk->contribution,'class="btn btn-xs"')
                 ?>
               </div>
 
               <div class="btn-group">
-                <?php
-                if($user_id=$this->session->user_id){
-                  $query=$this->db->select('type')->where('user_id', $user_id)->where('mark_id', $mk->mark_id)->get('vote');
-                  $avote =$query->row();
-                }
-                else $avote = null;
-                ?>
-                <?php echo anchor('user/vote_mark/1/'.$mk->mark_id, $mk->value.' <i class="fa fa-thumbs-up"></i>','class="btn btn-xs '.(($avote&&$avote->type==1)?'btn-primary':'').'"' ); ?>
-                <?php echo anchor('user/vote_mark/-1/'.$mk->mark_id, '<i class="fa fa-thumbs-down"></i>','class="btn btn-xs '.(($avote&&$avote->type==-1)?'btn-primary':'').'"' ); ?>
-                <?php //echo anchor($mk->url, '<i class="fa fa-external-link"></i>', 'class="btn btn-xs"');?>
-              </div>
-
-              <br/>
-
-              <div class="btn-group">
-                <?php echo anchor('#', '<i class="fa fa-tag"></i>','class="btn btn-xs btn-primary"')?>
+                <?php echo anchor('#', '<i class="fa fa-tag"></i>','class="btn btn-primary disabled btn-xs" ')?>
                 <?php foreach ($tags[$key] as $tag): ?>
                 <?php echo anchor('explore/tag_search_marks/'.$tag->tagid.'/'.$theme_id, $tag->tag_name, 'class="btn btn-xs btn-info"');?>
                 <?php endforeach;?>
-                <?php echo anchor('user/new_tag/'.$mk->mark_id.'/'.$theme_id, '<i class="fa fa-plus"></i>','class="btn btn-xs"')?>
+                <?php echo anchor('user/new_tag/'.$mk->mark_id.'/'.$theme_id, '<i class="fa fa-plus"></i>','class="btn btn-xs "')?>
               </div>
 
-              <hr>
+              <br/>
+              <br/>
               
-              <?php echo anchor($mk->title, $mk->title, 'title="'.$mk->title.'"') ?>
+              <?php echo anchor($mk->url, $mk->title, 'title="'.$mk->title.'"') ?>
+
             </h4>
+            <div class="btn-group">
+              <?php
+                  if ($user_id= $this->session->userdata('user_id')){     //(isset($_SESSION['user_id'])){
+                $query=$this->db->select('type')->where('user_id',$user_id)->where('mark_id', $mk->mark_id)->get('vote');
+                $avote =$query->row();
+              }
+              else $avote = null;
+              ?>
+              <?php echo anchor('user/vote_mark/1/'.$mk->mark_id, $mk->value.' <i class="fa fa-thumbs-up"></i>','class="btn  '.(($avote&&$avote->type==1)?'btn-primary':'').'"' ); ?>
+              <?php echo anchor('user/vote_mark/-1/'.$mk->mark_id, '<i class="fa fa-thumbs-down"></i>','class="btn  '.(($avote&&$avote->type==-1)?'btn-primary':'').'"' ); ?>
+              <?php //echo anchor($mk->url, '<i class="fa fa-external-link"></i>', 'class="btn btn-xs"');?>
+            </div>
           </div>
         </div>
       </div>

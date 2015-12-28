@@ -11,7 +11,7 @@ class Explore extends MARKIT_Controller {
 	
 	// Explore/themes
 	// 查看 themes 列表
-	public function themes($order = 'newest') {
+	public function themes($order = 'hottest') {
 	// Explore/theme/newest 显示最近的主题
 		switch ($order) {
 		case 'newest':
