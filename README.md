@@ -5,9 +5,39 @@ markit
 
 a bookmark-sharing website
 
+demo website: <http://markit.sinaapp.com/>
+
+capture:
+
+Markit tool: easy to add marks.
+![](capture/markit_tool.jpg)
+
+Explore themes: find your interests.
+![](capture/themes_list_en.jpg)
+
+Explore marks: find related resources.
+![](capture/marks_list_en.jpg)
+
+Switch ui themes/view mode/ langugage.
+![](capture/themes_card_cn.jpg)
+![](capture/marks_list_dark_theme.jpg)
+![](capture/marks_card_dark_theme.jpg)
+
+
+开发环境
+--------
+
+* via cross-platform environment: XAMPP (Linux/Windows)
+* using php & MySQL
+* front-end based on Bootstrap with Bootswatch themes.
+* back-end based on Codeigniter MVC framework.
+
 安装
 ---
 
+安装说明 <https://github.com/baidut/markit/wiki/GetStarted>
+
+<!-- 
 1. 从[CI中国站](http://codeigniter.org.cn/downloads)下载CodeIgniter_2.2.0
 1. 解压，只需要其中system文件夹下的所有文件
 1. clone工程，添加system文件夹到工程根目录下
@@ -21,3 +51,4 @@ a bookmark-sharing website
 
 
 代码说明参见：https://github.com/baidut/markit/wiki
+ -->

@@ -11,16 +11,22 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1 style='color:white'>Explore your interests and MARK IT!</h1>
+        <h1 style='color:white'>MARKIT: Mark-it And Remember<sup>2</sup> Keep In Touch</h1>
         <div id="social">
           <span>
             <iframe id="gh-fork" src="https://ghbtns.com/github-btn.html?user=baidut&repo=markit&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>
             <iframe id="gh-star" src="https://ghbtns.com/github-btn.html?user=baidut&repo=markit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
           </span>
         </div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="sponsor">
+              <img src="<?php echo base_url('img/qr_code.jpg') ?>" alt="QR code" width="150" height="150" >
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </div>
 
